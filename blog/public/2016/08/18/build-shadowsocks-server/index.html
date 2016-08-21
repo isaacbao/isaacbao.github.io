@@ -9,25 +9,25 @@
 A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建shadowsocks服务器">
-<meta property="og:url" content="http://yoursite.com/2016/08/18/build-shadowsocks-server/index.html">
+<meta property="og:url" content="http://isaacbao.github.io/2016/08/18/build-shadowsocks-server/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
 A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/bind-credit-card.png">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/bind-credit-card2.png">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/charge.png">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/selectLocation.png">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/selectServer.png">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/selectLocation2.png">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/selectServer2.png">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/selectServer3.png">
-<meta property="og:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/selectServer4.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/bind-credit-card.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/bind-credit-card2.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/charge.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/selectLocation.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/selectServer.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/selectLocation2.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/selectServer2.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/selectServer3.png">
+<meta property="og:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/selectServer4.png">
 <meta property="og:updated_time" content="2016-08-20T17:03:51.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建shadowsocks服务器">
 <meta name="twitter:description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
 A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
-<meta name="twitter:image" content="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/bind-credit-card.png">
+<meta name="twitter:image" content="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/bind-credit-card.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -70,7 +70,7 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://isaacbao.github.io"></form>
       </div>
     </div>
   </div>
@@ -117,7 +117,7 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/blog/2016/08/18/build-shadowsocks-server/" data-id="cis4pue9o00016w9jzktksai9" class="article-share-link">Share</a>
+      <a data-url="http://isaacbao.github.io/blog/2016/08/18/build-shadowsocks-server/" data-id="cis4pwiur00049k9jmxk91j6c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/科学上网/">科学上网</a></li></ul>
