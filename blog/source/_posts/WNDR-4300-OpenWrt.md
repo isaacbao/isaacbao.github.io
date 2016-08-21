@@ -76,3 +76,4 @@ cd F:\soft
   只要出了问题，重启都能解决
 
 ### E 配置openwrt
+#### E1 下载putty
