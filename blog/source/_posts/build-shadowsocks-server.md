@@ -49,3 +49,20 @@ PS. 点完那个按钮钱就直接冲进去了，没有确认键……别手抖�
 
   最后点击最下面这个按钮，等几分钟服务器就会部署完毕
 {% asset_img selectServer4.png %}
+
+### B 连接服务器
+#### B1 下载putty
+putty是一个远程连接linux主机的工具，原理可以自行google。
+<b><a href="https://the.earth.li/~sgtatham/putty/latest/x86/putty.exe">下载putty</a></b>
+
+#### B2 通过putty连接服务器
+回到vultr个人主页，选择刚刚部署的服务器
+{% asset_img editServer.png %}
+点进去后可以看到服务器ip，用户名和密码（点密码右边的眼睛可以看到密码，眼睛旁边的那两个框框是复制密码到剪切板）
+{% asset_img editServer2.png %}
+打开putty，在上面那个红框内输入你的服务器ip，中间那个红框里随便填些东西，然后保存
+{% asset_img usePutty.png %}
+双击刚才保存的配置，进入putty，输入用户名，回车
+{% asset_img usePutty2.png %}
+输入密码（输入密码的时候，密码是看不见的，连星号都没有，输错了请重新再来，复制密码之后在putty的黑框框里按右键可以直接粘贴），回车
+{% asset_img usePutty3.png %}
