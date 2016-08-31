@@ -93,17 +93,141 @@ ant
 {% endcodeblock %}
 如果出了问题，请检查自己A-2步骤有没有做对，可以重新执行一下A-2
 编译完毕后，就可以试用了
-<b><a href="TODO">DEMO</a></b>
+
+{% codeblock %}
+//初始化tess实例
+public Tesseract initialTesseractInstance() {
+  Tesseract instance = new Tesseract();
+  URL url = this.getClass().getClassLoader().getResource("/");
+  String dir;
+  if (null == url) {
+    url = this.getClass().getClassLoader().getResource(".");
+  }
+  dir = url.getPath();
+  // String system_name = System.getProperty("os.name");
+  if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+    dir = dir.substring(1);
+  }
+  instance.setDatapath(dir + "tessdata");
+  return instance;
+}
+{% endcodeblock %}
+
+<b><a href="https://github.com/isaacbao/captcha-identify-demo">验证码识别DEMO</a></b>
+
+## 前置知识
+要学习爬虫，至少需要对http协议和html代码有基本的了解。
+<b><a href="https://hit-alibaba.github.io/interview/basic/network/HTTP.html">http协议</a></b>
+<b><a href="http://www.w3school.com.cn/html/index.asp">html语言</a></b>
 
 ## htmlunit
 ### htmlunit 简介
-htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素。
+htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素,此外htmlunit也会帮你自动保存cookie。
     <b><a href="http://htmlunit.sourceforge.net/">htmlunit官网</a></b>
     <b><a href="https://sourceforge.net/projects/htmlunit/files/latest/download">htmlunit下载</a></b>
-<b><a href="TODO">DEMO</a></b>
+其实不下载jar也可以，htmlunit，maven找得到。
+api文档？不需要这样的东西，intellij + maven，直接就能把文档和源码都弄下来。
+htmlunit的核心是一个叫WebClient的东西，基本上我们可以这么理解：一个WebClient实例就是一个浏览器。这意味着如果我们在某个网站拥有多个账号，就可以通过不同的浏览器登录不同的账号，然后一个并发爬取大量信息。
+
+使用WebClient之前，可以通过WebClient.getOption()方法获取浏览器配置，并对配置进行变更，比如：
+{% codeblock %}
+// 设置请求超时时间
+webClient.getOptions().setTimeout(60000);
+// 是否允许加载css
+webClient.getOptions().setCssEnabled(false);
+// response不是200的时候是否抛出异常
+webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+// 是否允许applet应用（比如各种浏览器插件）运行
+webClient.getOptions().setAppletEnabled(false);
+// 是否使用格林尼治时间
+webClient.getOptions().setGeolocationEnabled(false);
+// 是否允许弹出alert框框
+webClient.getOptions().setPopupBlockerEnabled(false);
+// 是否使用不安全的ssl连接（想不装证书访问使用https协议的网站需要把这个设为true）
+webClient.getOptions().setUseInsecureSSL(true);
+{% endcodeblock %}
+
+WebClient可以通过两种方式请求页面：
+①
+等效于直接从浏览器地址栏输入一个url，会执行可以执行的js，此外返回的page对象会将html里面的dom元素转换成java对象，可以通过tag，标签等选择。
+{% codeblock %}
+HtmlPage page = webClient.getPage(targetURL);
+{% endcodeblock %}
+②
+只请求需要的数据，不加载js
+{% codeblock %}
+WebRequest request;
+WebResponse response = null;
+try {
+  // 这里设定get post
+  request = new WebRequest(new URL(url), HttpMethod.GET);
+  if (additionalHeaders != null) {
+    request.setAdditionalHeaders(additionalHeaders);
+  }
+  response = webClient.loadWebResponse(request);
+} catch (IOException e) {
+  e.printStackTrace();
+}
+return response;
+{% endcodeblock %}
+
 
 ## Jsoup
 ### Jsoup 简介
 Jsoup可以将纯文本的html转换成java对象，让用户可以进行诸如CSS Select之类的操作，让爬虫更加方便快捷。
     <b><a href="https://jsoup.org/">Jsoup官网</a></b>
-<b><a href="TODO">DEMO</a></b>
+
+比如像这样通过css选择器选择所有class="search_feed"的dom元素
+{% codeblock %}
+String searchResult = extractSearchResult(scriptStr);
+Document searchResultDoc = Jsoup.parse(searchResult);
+Elements divSearchFeed = searchResultDoc.select(".search_feed");
+{% endcodeblock %}
+
+<b><a href="http://www.w3school.com.cn/cssref/css_selectors.asp">css选择器教学</a></b>
+
+## 正则表达式
+有些时候，爬回来的数据会是一个js文件，或者是一段CDATA数据，这个时候就需要通过正则表达式提取自己所需的信息。
+<b><a href="http://www.runoob.com/regexp/regexp-tutorial.html">正则表达式教学</a></b>
+
+这里有一个很好使的正则测试网站
+<b><a href="http://regexr.com/">regex测试</a></b>
+网站左边还有很多很神奇很实用的功能，各位可以自行挖掘
+{% asset_img regexr.png %}
+
+## 举个例子
+爬虫之前，我们还要分析网站，确认是要向哪个url发什么请求
+一个及格的开发者电脑里都应该备一个 <b><a href="https://www.google.com.tw/intl/zh-CN/chrome/browser/desktop/index.html">chrome</a></b>
+
+我们先拿 <b><a href="http://s.weibo.com/weibo/">新浪微博</a></b> 开个刀：
+打开浏览器，二话不说先按一下F12，点到network，把preserve log勾上
+{% asset_img view.png %}
+然后在搜索框随便输点什么东西，把页签切到doc里，从上往下挨个看，就找到搜索的http请求了
+{% asset_img find-request.png %}
+让我们看看参数长啥样的……握日？？没有参数？嗯？url最后那段看着有点像是被urlencode过啊？
+{% asset_img no_param.png %}
+
+> urlencode
+> 網路上的定義
+> 百分號編碼, 也稱作URL編碼, 是特定上下文的統一資源定位符 的編碼機制. 實際上也適用於統一資源標誌符的編碼。也用於為"application/x-www-form-urlencoded" MIME準備數據, 因為它用於通過HTTP的請求操作提交HTML表單數據。
+
+urldecode一下，确认搜索参数是直接写到请求url中
+{% asset_img urldeocde1.png %}
+{% asset_img urldeocde2.png %}
+{% asset_img urldeocde3.png %}
+
+开始分析页面
+点一下审查元素左上角这里
+{% asset_img select-dom.png %}
+点一下页面里的某一条微博
+{% asset_img select-dom2.png %}
+element页签里就会传送到这个元素，可以分析元素结构，到时候就可以通过jsoup的css选择器从dom元素中提取自己想要的信息了
+{% asset_img select-dom3.png %}
+
+但是，先别急，现在的你看到的页面，未必是你想象的这样子的
+在微博搜索页面按一下ctrl+u，发现，页面里的html代码是放在javascript里的，而且unicode编码过，htmlunit还解析不出来
+{% asset_img view-source.png %}
+
+  于是，怎么破呢，用文字很难说清，我们用<s>身体</s>实例来体会吧
+
+<b><a href="TODO">爬虫demo</a></b>
