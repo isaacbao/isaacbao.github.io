@@ -66,3 +66,41 @@ putty是一个远程连接linux主机的工具，原理可以自行google。
 {% asset_img usePutty2.png %}
 输入密码（输入密码的时候，密码是看不见的，连星号都没有，输错了请重新再来，复制密码之后在putty的黑框框里按右键可以直接粘贴），回车
 {% asset_img usePutty3.png %}
+
+复制这两段代码，右键，回车
+{% codeblock %}
+wget -O- http://shadowsocks.org/debian/1D27208A.gpg | sudo apt-key add -
+deb http://shadowsocks.org/ubuntu trusty main   
+sudo vi /etc/apt/sources.list     
+{% endcodeblock %}      
+vi进入source.list
+在最底下加一行
+deb http://shadowsocks.org/ubuntu trusty main
+
+然后继续
+{% codeblock %}                
+sudo apt-get update                                     
+sudo apt-get install shadowsocks-libev    
+sudo vi /etc/shadowsocks-libev/config.json
+{% endcodeblock %}
+
+往配置文件里填入这些东西
+{% codeblock %}    
+{
+    "server":"0.0.0.0",
+    "server_port":,//自己设端口10000~65535之间随便填一个
+    "local_port":1080,
+    "password":"",//自己设密码
+    "timeout":60,
+    "method":"aes-256-cfb"
+}
+{% endcodeblock %}
+按一下 : （冒号，在输入法为半角英文的情况下按住shitf然后点击L右边那个键），然后输入wq保存配置文件
+
+最后
+{% codeblock %}  
+ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks.pid -v   
+ps ax | grep ss-server     
+{% endcodeblock %}
+
+如无意外ss服务器就部署成功了
