@@ -2,10 +2,17 @@
 <html>
 <head>
   <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
   
-  <title>搭建shadowsocks服务器 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
+    搭建shadowsocks服务器
+  
+</title>
+
+<meta name="description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
 A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建shadowsocks服务器">
@@ -33,81 +40,161 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
 <meta name="twitter:description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
 A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
 <meta name="twitter:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/blog/public/css/style.css">
-  
+
+
+  <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/blog/public/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/blog/public/styles/main.css">
+
+
+
+
+
 
 </head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/blog/public/">Hexo</a>
+</div>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/blog/public/" id="logo">Hexo</a>
-      </h1>
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/blog/public/">Hexo</a></h1>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">John Doe</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://cn.gravatar.com/avatar/35fef74d731255cd569c2c2b0b9e87e4?s=200"></a>
+          
+        </div>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/blog/public/">Home</a>
-        
-          <a class="main-nav-link" href="/blog/public/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://isaacbao.github.io"></form>
-      </div>
-    </div>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-build-shadowsocks-server" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/public/2016/08/18/build-shadowsocks-server/" class="article-date">
-  <time datetime="2016-08-18T14:48:44.000Z" itemprop="datePublished">2016-08-18</time>
-</a>
+  <div class="body">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/public/categories/技术/">技术</a>
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">Category</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a><span class="category-list-count">3</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a><span class="tag-list-count">2</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/">2016</a><span class="archive-list-count">4</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/blog/public/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/blog/public/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/denjones/hexo-theme-chan" title="Chan" target="_blank" rel="external">Chan</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/denjones" title="Github" target="_blank" rel="external">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/blog/public/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
   </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-build-shadowsocks-server" class="article article-type-post">
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="article-header">
       搭建shadowsocks服务器
     </h1>
   
+  
 
-      </header>
+  <div class="article-info">
+    <span class="article-date">
+  2016-08-18
+</span>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="搭建shadowsocks服务器"><a href="#搭建shadowsocks服务器" class="headerlink" title="搭建shadowsocks服务器"></a>搭建shadowsocks服务器</h2><h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="一张信用卡，支持境外支付"><a href="#一张信用卡，支持境外支付" class="headerlink" title="一张信用卡，支持境外支付"></a>一张信用卡，支持境外支付</h3><p>  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询</p>
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h2 id="搭建shadowsocks服务器"><a href="#搭建shadowsocks服务器" class="headerlink" title="搭建shadowsocks服务器"></a>搭建shadowsocks服务器</h2><h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="一张信用卡，支持境外支付"><a href="#一张信用卡，支持境外支付" class="headerlink" title="一张信用卡，支持境外支付"></a>一张信用卡，支持境外支付</h3><p>  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询</p>
 <h3 id="A-申请服务器"><a href="#A-申请服务器" class="headerlink" title="A 申请服务器"></a>A 申请服务器</h3><p>  本文采用的服务器供应商是vultr<br>  说说本人用vultr的理由：<br>  1 有日本节点<br>  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月<br>  3 按小时收费，如果发现速度不理想或者不符合要求，可以马上停掉这台机器换一台别的</p>
 <h4 id="A1-注册账号"><a href="#A1-注册账号" class="headerlink" title="A1 注册账号"></a>A1 注册账号</h4><pre><code>&lt;b&gt;&lt;a href=&quot;http://www.vultr.com/?ref=6949606-3B&quot;&gt;vultr注册地址&lt;/a&gt;&lt;/b&gt;
 </code></pre><h4 id="A2-绑定信用卡"><a href="#A2-绑定信用卡" class="headerlink" title="A2 绑定信用卡"></a>A2 绑定信用卡</h4><p>  注册之后进入图中的界面，点add new添加信用卡<br><img src="/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card.png" alt="bind-credit-card.png" title=""><br><img src="/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card2.png" alt="bind-credit-card2.png" title=""></p>
@@ -126,132 +213,119 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
 <p>最后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks.pid -v   </div><div class="line">ps ax | grep ss-server     </div></pre></td></tr></table></figure></p>
 <p>如无意外ss服务器就部署成功了</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/" data-id="cism5wm3700006g9jrzzq7vqq" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a></li></ul>
-
-    </footer>
   </div>
-  
+  <footer class="article-footer">
     
-<nav id="article-nav">
-  
-  
-    <a href="/blog/public/2016/08/18/java-web-crawling-startup/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">java 爬虫入门</div>
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="Attribution-ShareAlike">
+      <img src="/blog/public/images/cc/cc.png">
+      
+          <img src="/blog/public/images/cc/by.png">
+        
+          <img src="/blog/public/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
     </a>
-  
-</nav>
+  </div>
 
-  
+
+    
+
+  </footer>
 </article>
 
-</section>
-        
-          <aside id="sidebar">
+
+
+
+
+
+
+          <div class="main-footer">
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
+    © 2016 Hexo - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
     </div>
   </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
+  <link rel="stylesheet" href="/blog/public/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/blog/public/PhotoSwipe/default-skin/default-skin.css">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a></li></ul>
-    </div>
-  </div>
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
-    <div class="widget tagcloud">
-      <a href="/blog/public/tags/java/" style="font-size: 10px;">java</a> <a href="/blog/public/tags/文字图像识别/" style="font-size: 10px;">文字图像识别</a> <a href="/blog/public/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/blog/public/tags/科学上网/" style="font-size: 20px;">科学上网</a>
-    </div>
-  </div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/06/">June 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/public/2016/08/18/build-shadowsocks-server/">搭建shadowsocks服务器</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/08/18/java-web-crawling-startup/">java 爬虫入门</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/07/02/WNDR-4300-OpenWrt/">WNDR-4300-shadowsock代理路由器搭建</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/06/19/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/blog/public/" class="mobile-nav-link">Home</a>
-  
-    <a href="/blog/public/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/blog/public/PhotoSwipe/photoswipe.js"></script>
+  <script src="/blog/public/PhotoSwipe/photoswipe-ui-default.js"></script>
 
 
-  <link rel="stylesheet" href="/blog/public/fancybox/jquery.fancybox.css">
-  <script src="/blog/public/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/blog/public/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/blog/public/scripts/main.js"></script>
 
-
-<script src="/blog/public/js/script.js"></script>
-
-  </div>
 </body>
 </html>

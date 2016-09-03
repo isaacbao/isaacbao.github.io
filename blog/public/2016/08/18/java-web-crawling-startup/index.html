@@ -2,10 +2,17 @@
 <html>
 <head>
   <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
   
-  <title>java 爬虫入门 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
+    java 爬虫入门
+  
+</title>
+
+<meta name="description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
 htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java 爬虫入门">
@@ -36,81 +43,161 @@ htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬�
 <meta name="twitter:description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
 htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素">
 <meta name="twitter:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/regexr.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/blog/public/css/style.css">
-  
+
+
+  <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/blog/public/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/blog/public/styles/main.css">
+
+
+
+
+
 
 </head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/blog/public/">Hexo</a>
+</div>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/blog/public/" id="logo">Hexo</a>
-      </h1>
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/blog/public/">Hexo</a></h1>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">John Doe</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="https://cn.gravatar.com/avatar/35fef74d731255cd569c2c2b0b9e87e4?s=200"></a>
+          
+        </div>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/blog/public/">Home</a>
-        
-          <a class="main-nav-link" href="/blog/public/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://isaacbao.github.io"></form>
-      </div>
-    </div>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-java-web-crawling-startup" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/public/2016/08/18/java-web-crawling-startup/" class="article-date">
-  <time datetime="2016-08-18T14:26:12.000Z" itemprop="datePublished">2016-08-18</time>
-</a>
+  <div class="body">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/public/categories/技术/">技术</a>
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">Category</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a><span class="category-list-count">3</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a><span class="tag-list-count">2</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">Archive</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/">2016</a><span class="archive-list-count">4</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/blog/public/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/blog/public/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/denjones/hexo-theme-chan" title="Chan" target="_blank" rel="external">Chan</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/denjones" title="Github" target="_blank" rel="external">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/blog/public/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
   </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-java-web-crawling-startup" class="article article-type-post">
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="article-header">
       java 爬虫入门
     </h1>
   
+  
 
-      </header>
+  <div class="article-info">
+    <span class="article-date">
+  2016-08-18
+</span>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>要学习爬虫，至少需要对http协议和html代码有基本的了解。<br><b><a href="https://hit-alibaba.github.io/interview/basic/network/HTTP.html" target="_blank" rel="external">http协议</a></b><br><b><a href="http://www.w3school.com.cn/html/index.asp" target="_blank" rel="external">html语言</a></b></p>
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>要学习爬虫，至少需要对http协议和html代码有基本的了解。<br><b><a href="https://hit-alibaba.github.io/interview/basic/network/HTTP.html" target="_blank" rel="external">http协议</a></b><br><b><a href="http://www.w3school.com.cn/html/index.asp" target="_blank" rel="external">html语言</a></b></p>
 <h2 id="htmlunit"><a href="#htmlunit" class="headerlink" title="htmlunit"></a>htmlunit</h2><h3 id="htmlunit-简介"><a href="#htmlunit-简介" class="headerlink" title="htmlunit 简介"></a>htmlunit 简介</h3><p>htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素,此外htmlunit也会帮你自动保存cookie。<br>    <b><a href="http://htmlunit.sourceforge.net/" target="_blank" rel="external">htmlunit官网</a></b><br>    <b><a href="https://sourceforge.net/projects/htmlunit/files/latest/download" target="_blank" rel="external">htmlunit下载</a></b><br>其实不下载jar也可以，htmlunit，maven找得到。<br>api文档？不需要这样的东西，intellij + maven，直接就能把文档和源码都弄下来。<br>htmlunit的核心是一个叫WebClient的东西，基本上我们可以这么理解：一个WebClient实例就是一个浏览器。这意味着如果我们在某个网站拥有多个账号，就可以通过不同的浏览器登录不同的账号，然后一个并发爬取大量信息。</p>
 <p>使用WebClient之前，可以通过WebClient.getOption()方法获取浏览器配置，并对配置进行变更，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 设置请求超时时间</div><div class="line">webClient.getOptions().setTimeout(60000);</div><div class="line">// 是否允许加载css</div><div class="line">webClient.getOptions().setCssEnabled(false);</div><div class="line">// response不是200的时候是否抛出异常</div><div class="line">webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);</div><div class="line">// 是否允许applet应用（比如各种浏览器插件）运行</div><div class="line">webClient.getOptions().setAppletEnabled(false);</div><div class="line">// 是否使用格林尼治时间</div><div class="line">webClient.getOptions().setGeolocationEnabled(false);</div><div class="line">// 是否允许弹出alert框框</div><div class="line">webClient.getOptions().setPopupBlockerEnabled(false);</div><div class="line">// 是否使用不安全的ssl连接（想不装证书访问使用https协议的网站需要把这个设为true）</div><div class="line">webClient.getOptions().setUseInsecureSSL(true);</div></pre></td></tr></table></figure></p>
 <p>WebClient可以通过两种方式请求页面：<br>①<br>等效于直接从浏览器地址栏输入一个url，会执行可以执行的js，此外返回的page对象会将html里面的dom元素转换成java对象，可以通过tag，标签等选择。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">HtmlPage page = webClient.getPage(targetURL);</div></pre></td></tr></table></figure><br>②<br>只请求需要的数据，不加载js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">WebRequest request;</div><div class="line">WebResponse response = null;</div><div class="line">try &#123;</div><div class="line">  // 这里设定get post</div><div class="line">  request = new WebRequest(new URL(url), HttpMethod.GET);</div><div class="line">  if (additionalHeaders != null) &#123;</div><div class="line">    request.setAdditionalHeaders(additionalHeaders);</div><div class="line">  &#125;</div><div class="line">  response = webClient.loadWebResponse(request);</div><div class="line">&#125; catch (IOException e) &#123;</div><div class="line">  e.printStackTrace();</div><div class="line">&#125;</div><div class="line">return response;</div></pre></td></tr></table></figure></p>
@@ -157,141 +244,119 @@ htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬�
 <p><b><a href="https://github.com/isaacbao/captcha-identify-demo" target="_blank" rel="external">验证码识别DEMO</a></b></p>
 <p>总结：其实这篇外传并没有什么卵用，因为最核心的图像处理算法以及图像识别算法都没写，因为这两种都不是区区博客可以写明白的东西，有兴趣，可以自行找论文</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/" data-id="cism5wm5500046g9j4x5pm2co" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li></ul>
-
-    </footer>
   </div>
-  
+  <footer class="article-footer">
     
-<nav id="article-nav">
-  
-    <a href="/blog/public/2016/08/18/build-shadowsocks-server/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
-      <div class="article-nav-title">
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="Attribution-ShareAlike">
+      <img src="/blog/public/images/cc/cc.png">
+      
+          <img src="/blog/public/images/cc/by.png">
         
-          搭建shadowsocks服务器
-        
-      </div>
+          <img src="/blog/public/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
     </a>
-  
-  
-    <a href="/blog/public/2016/07/02/WNDR-4300-OpenWrt/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">WNDR-4300-shadowsock代理路由器搭建</div>
-    </a>
-  
-</nav>
+  </div>
 
-  
+
+    
+
+  </footer>
 </article>
 
-</section>
-        
-          <aside id="sidebar">
+
+
+
+
+
+
+          <div class="main-footer">
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
+    © 2016 Hexo - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
     </div>
   </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
+  <link rel="stylesheet" href="/blog/public/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/blog/public/PhotoSwipe/default-skin/default-skin.css">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a></li></ul>
-    </div>
-  </div>
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
-    <div class="widget tagcloud">
-      <a href="/blog/public/tags/java/" style="font-size: 10px;">java</a> <a href="/blog/public/tags/文字图像识别/" style="font-size: 10px;">文字图像识别</a> <a href="/blog/public/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/blog/public/tags/科学上网/" style="font-size: 20px;">科学上网</a>
-    </div>
-  </div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/06/">June 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/public/2016/08/18/build-shadowsocks-server/">搭建shadowsocks服务器</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/08/18/java-web-crawling-startup/">java 爬虫入门</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/07/02/WNDR-4300-OpenWrt/">WNDR-4300-shadowsock代理路由器搭建</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/06/19/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/blog/public/" class="mobile-nav-link">Home</a>
-  
-    <a href="/blog/public/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/blog/public/PhotoSwipe/photoswipe.js"></script>
+  <script src="/blog/public/PhotoSwipe/photoswipe-ui-default.js"></script>
 
 
-  <link rel="stylesheet" href="/blog/public/fancybox/jquery.fancybox.css">
-  <script src="/blog/public/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/blog/public/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/blog/public/scripts/main.js"></script>
 
-
-<script src="/blog/public/js/script.js"></script>
-
-  </div>
 </body>
 </html>
