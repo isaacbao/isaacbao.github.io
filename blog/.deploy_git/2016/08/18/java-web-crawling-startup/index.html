@@ -2,15 +2,22 @@
 <html>
 <head>
   <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
   
-  <title>java 爬虫入门 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
+    java 爬虫入门
+  
+</title>
+
+<meta name="description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
 htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java 爬虫入门">
 <meta property="og:url" content="http://isaacbao.github.io/2016/08/18/java-web-crawling-startup/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="锟斤拷？？□□烫烫烫烫">
 <meta property="og:description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
 htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/regexr.png">
@@ -30,91 +37,171 @@ htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬�
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/edit_system_varaiable.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/run_cmd.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/test_ant.png">
-<meta property="og:updated_time" content="2016-09-02T18:48:18.201Z">
+<meta property="og:updated_time" content="2016-09-03T10:29:54.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java 爬虫入门">
 <meta name="twitter:description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
 htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素">
 <meta name="twitter:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/regexr.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/blog/public/css/style.css">
-  
+
+
+  <link rel="alternative" href="/atom.xml" title="锟斤拷？？□□烫烫烫烫" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/blog/public/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/blog/public/styles/main.css">
+
+
+
+
+
 
 </head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/blog/public/">锟斤拷？？□□烫烫烫烫</a>
+</div>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/blog/public/" id="logo">Hexo</a>
-      </h1>
+  <div class="main-container">
+    <div class="sidebar">
+  <div class="header">
+    <h1 class="title"><a href="/blog/public/">锟斤拷？？□□烫烫烫烫</a></h1>
+    
+    <div class="info">
+      <div class="content">
+        
+        
+          <div class="author">Lou</div>
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="/about"><img src="http://tva2.sinaimg.cn/crop.348.152.202.202.180/6d894612jw1erw2cojkn3j20go0b4gmd.jpg"></a>
+          
+        </div>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/blog/public/">Home</a>
-        
-          <a class="main-nav-link" href="/blog/public/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://isaacbao.github.io"></form>
-      </div>
-    </div>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-java-web-crawling-startup" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/public/2016/08/18/java-web-crawling-startup/" class="article-date">
-  <time datetime="2016-08-18T14:26:12.000Z" itemprop="datePublished">2016-08-18</time>
-</a>
+  <div class="body">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/public/categories/技术/">技术</a>
+      
+        <ul class="nav">
+          
+            
+              <li class="category-list-container">
+                <a href="javascript:;">分类</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a><span class="category-list-count">3</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="tag-list-container">
+                <a href="javascript:;">标签</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a><span class="tag-list-count">2</span></li></ul>
+              </li>
+            
+          
+            
+              <li class="archive-list-container">
+                <a href="javascript:;">归档</a>
+                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/">2016</a><span class="archive-list-count">4</span></li></ul>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="/blog/public/" title="Homepage">Homepage</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/blog/public/archives" title="By Year">By Year</a>
+              </li>
+            
+          
+        </ul>
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/denjones/hexo-theme-chan" title="Chan" target="_blank" rel="external">Chan</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://github.com/denjones" title="Github" target="_blank" rel="external">Github</a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="/blog/public/atom.xml" title="RSS">RSS</a>
+              </li>
+            
+          
+        </ul>
+      
+    
   </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-java-web-crawling-startup" class="article article-type-post">
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="article-header">
       java 爬虫入门
     </h1>
   
+  
 
-      </header>
+  <div class="article-info">
+    <span class="article-date">
+  2016-08-18
+</span>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>要学习爬虫，至少需要对http协议和html代码有基本的了解。<br><b><a href="https://hit-alibaba.github.io/interview/basic/network/HTTP.html" target="_blank" rel="external">http协议</a></b><br><b><a href="http://www.w3school.com.cn/html/index.asp" target="_blank" rel="external">html语言</a></b></p>
-<h2 id="htmlunit"><a href="#htmlunit" class="headerlink" title="htmlunit"></a>htmlunit</h2><h3 id="htmlunit-简介"><a href="#htmlunit-简介" class="headerlink" title="htmlunit 简介"></a>htmlunit 简介</h3><p>htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素,此外htmlunit也会帮你自动保存cookie。<br>    <b><a href="http://htmlunit.sourceforge.net/" target="_blank" rel="external">htmlunit官网</a></b><br>    <b><a href="https://sourceforge.net/projects/htmlunit/files/latest/download" target="_blank" rel="external">htmlunit下载</a></b><br>其实不下载jar也可以，htmlunit，maven找得到。<br>api文档？不需要这样的东西，intellij + maven，直接就能把文档和源码都弄下来。<br>htmlunit的核心是一个叫WebClient的东西，基本上我们可以这么理解：一个WebClient实例就是一个浏览器。这意味着如果我们在某个网站拥有多个账号，就可以通过不同的浏览器登录不同的账号，然后一个并发爬取大量信息。</p>
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>要学习爬虫，至少需要对http协议和html代码有基本的了解。<br><b><a href="https://hit-alibaba.github.io/interview/basic/network/HTTP.html" target="_blank" rel="external">http协议</a></b><br><b><a href="http://www.w3school.com.cn/html/index.asp" target="_blank" rel="external">html语言</a></b></p>
+<h2 id="htmlunit"><a href="#htmlunit" class="headerlink" title="htmlunit"></a>htmlunit</h2><h3 id="htmlunit-简介"><a href="#htmlunit-简介" class="headerlink" title="htmlunit 简介"></a>htmlunit 简介</h3><p>htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素,此外htmlunit也会帮你自动保存cookie。<br><b><a href="http://htmlunit.sourceforge.net/" target="_blank" rel="external">htmlunit官网</a></b><br><b><a href="https://sourceforge.net/projects/htmlunit/files/latest/download" target="_blank" rel="external">htmlunit下载</a></b><br>其实不下载jar也可以，htmlunit，maven找得到。<br>api文档？不需要这样的东西，intellij + maven，直接就能把文档和源码都弄下来。<br>htmlunit的核心是一个叫WebClient的东西，基本上我们可以这么理解：一个WebClient实例就是一个浏览器。这意味着如果我们在某个网站拥有多个账号，就可以通过不同的浏览器登录不同的账号，然后一个并发爬取大量信息。</p>
 <p>使用WebClient之前，可以通过WebClient.getOption()方法获取浏览器配置，并对配置进行变更，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 设置请求超时时间</div><div class="line">webClient.getOptions().setTimeout(60000);</div><div class="line">// 是否允许加载css</div><div class="line">webClient.getOptions().setCssEnabled(false);</div><div class="line">// response不是200的时候是否抛出异常</div><div class="line">webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);</div><div class="line">// 是否允许applet应用（比如各种浏览器插件）运行</div><div class="line">webClient.getOptions().setAppletEnabled(false);</div><div class="line">// 是否使用格林尼治时间</div><div class="line">webClient.getOptions().setGeolocationEnabled(false);</div><div class="line">// 是否允许弹出alert框框</div><div class="line">webClient.getOptions().setPopupBlockerEnabled(false);</div><div class="line">// 是否使用不安全的ssl连接（想不装证书访问使用https协议的网站需要把这个设为true）</div><div class="line">webClient.getOptions().setUseInsecureSSL(true);</div></pre></td></tr></table></figure></p>
 <p>WebClient可以通过两种方式请求页面：<br>①<br>等效于直接从浏览器地址栏输入一个url，会执行可以执行的js，此外返回的page对象会将html里面的dom元素转换成java对象，可以通过tag，标签等选择。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">HtmlPage page = webClient.getPage(targetURL);</div></pre></td></tr></table></figure><br>②<br>只请求需要的数据，不加载js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">WebRequest request;</div><div class="line">WebResponse response = null;</div><div class="line">try &#123;</div><div class="line">  // 这里设定get post</div><div class="line">  request = new WebRequest(new URL(url), HttpMethod.GET);</div><div class="line">  if (additionalHeaders != null) &#123;</div><div class="line">    request.setAdditionalHeaders(additionalHeaders);</div><div class="line">  &#125;</div><div class="line">  response = webClient.loadWebResponse(request);</div><div class="line">&#125; catch (IOException e) &#123;</div><div class="line">  e.printStackTrace();</div><div class="line">&#125;</div><div class="line">return response;</div></pre></td></tr></table></figure></p>
-<h2 id="Jsoup"><a href="#Jsoup" class="headerlink" title="Jsoup"></a>Jsoup</h2><h3 id="Jsoup-简介"><a href="#Jsoup-简介" class="headerlink" title="Jsoup 简介"></a>Jsoup 简介</h3><p>Jsoup可以将纯文本的html转换成java对象，让用户可以进行诸如CSS Select之类的操作，让爬虫更加方便快捷。<br>    <b><a href="https://jsoup.org/" target="_blank" rel="external">Jsoup官网</a></b></p>
+<h2 id="Jsoup"><a href="#Jsoup" class="headerlink" title="Jsoup"></a>Jsoup</h2><h3 id="Jsoup-简介"><a href="#Jsoup-简介" class="headerlink" title="Jsoup 简介"></a>Jsoup 简介</h3><p>Jsoup可以将纯文本的html转换成java对象，让用户可以进行诸如CSS Select之类的操作，让爬虫更加方便快捷。<br><b><a href="https://jsoup.org/" target="_blank" rel="external">Jsoup官网</a></b></p>
 <p>比如像这样通过css选择器选择所有class=”search_feed”的dom元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String searchResult = extractSearchResult(scriptStr);</div><div class="line">Document searchResultDoc = Jsoup.parse(searchResult);</div><div class="line">Elements divSearchFeed = searchResultDoc.select(&quot;.search_feed&quot;);</div></pre></td></tr></table></figure></p>
 <p><b><a href="http://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank" rel="external">css选择器教学</a></b></p>
 <h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>有些时候，爬回来的数据会是一个js文件，或者是一段CDATA数据，这个时候就需要通过正则表达式提取自己所需的信息。<br><b><a href="http://www.runoob.com/regexp/regexp-tutorial.html" target="_blank" rel="external">正则表达式教学</a></b></p>
@@ -136,162 +223,130 @@ htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬�
 <h6 id="下载tess"><a href="#下载tess" class="headerlink" title="下载tess"></a><a href="https://sourceforge.net/projects/tesseract-ocr-alt/files/tesseract-ocr-setup-3.02.02.exe/download" target="_blank" rel="external">下载tess</a></h6><p>  双击安装，一些步骤需要注意下</p>
 <h2 id="B-tess4j"><a href="#B-tess4j" class="headerlink" title="B tess4j"></a>B tess4j</h2><p>  让java可以通过JNA调用tess接口，进行图像识别的工具。（不懂JNA是啥的可以问google，实在不行问百度。认不认识JNA对于阅读本文没有影响）</p>
 <h6 id="tess4j官网"><a href="#tess4j官网" class="headerlink" title="tess4j官网"></a><a href="http://tess4j.sourceforge.net/" target="_blank" rel="external">tess4j官网</a></h6><h3 id="B-1-编译tess4j"><a href="#B-1-编译tess4j" class="headerlink" title="B-1 编译tess4j"></a>B-1 编译tess4j</h3><p>  网上并不容易找到预编译好又能用的tess4j，自己动手丰衣足食。（当然用maven也是可以的，但由于tess4j比较依赖本地环境，即使用maven弄下来了也可能会因为环境问题导致各种运行时错误。）</p>
-<h4 id="B-1-1-安装ant"><a href="#B-1-1-安装ant" class="headerlink" title="B-1-1 安装ant"></a>B-1-1 安装ant</h4><h5 id="B-1-1-1-下载ant"><a href="#B-1-1-1-下载ant" class="headerlink" title="B-1-1-1 下载ant"></a>B-1-1-1 下载ant</h5><p>  tess4j可以通过apache ant来进行编译<br>    <b><a href="http://ant.apache.org/" target="_blank" rel="external">ant官网</a></b><br>    <b><a href="http://apache.claz.org//ant/binaries/apache-ant-1.9.7-bin.zip" target="_blank" rel="external">ant下载</a></b></p>
-<h5 id="B-1-1-2-设置环境变量"><a href="#B-1-1-2-设置环境变量" class="headerlink" title="B-1-1-2 设置环境变量"></a>B-1-1-2 设置环境变量</h5><pre><code>&lt;b&gt;
-  下载完毕后，假设我们把ant解压到了F盘的这个目录 ↓ 
-  &lt;br/&gt;
-  F:\soft\apache-ant-1.9.7-bin\
-&lt;/b&gt;
-&lt;b&gt;
-  bin文件夹在这里↓ 
-  &lt;br/&gt;
-  F:\soft\apache-ant-1.9.7-bin\apache-ant-1.9.7\bin\
-&lt;/b&gt;
-</code></pre><p>win+r(win就是左下角ctrl隔壁的小旗子)<br>运行<br>sysdm.cpl<br><img src="/blog/public/2016/08/18/java-web-crawling-startup/open_system_varaible.png" alt="open_system_varaible.png" title=""><br><img src="/blog/public/2016/08/18/java-web-crawling-startup/system_properties.png" alt="system_properties.png" title=""><br><img src="/blog/public/2016/08/18/java-web-crawling-startup/select-path.png" alt="select-path.png" title=""></p>
+<h4 id="B-1-1-安装ant"><a href="#B-1-1-安装ant" class="headerlink" title="B-1-1 安装ant"></a>B-1-1 安装ant</h4><h5 id="B-1-1-1-下载ant"><a href="#B-1-1-1-下载ant" class="headerlink" title="B-1-1-1 下载ant"></a>B-1-1-1 下载ant</h5><p>  tess4j可以通过apache ant来进行编译<br><b><a href="http://ant.apache.org/" target="_blank" rel="external">ant官网</a></b><br><b><a href="http://apache.claz.org//ant/binaries/apache-ant-1.9.7-bin.zip" target="_blank" rel="external">ant下载</a></b></p>
+<h5 id="B-1-1-2-设置环境变量"><a href="#B-1-1-2-设置环境变量" class="headerlink" title="B-1-1-2 设置环境变量"></a>B-1-1-2 设置环境变量</h5><p><b><br>      下载完毕后，假设我们把ant解压到了F盘的这个目录 ↓<br>      <br><br>      F:\soft\apache-ant-1.9.7-bin\<br>    </b><br><b><br>      bin文件夹在这里↓<br>      <br><br>      F:\soft\apache-ant-1.9.7-bin\apache-ant-1.9.7\bin\<br>    </b><br>win+r(win就是左下角ctrl隔壁的小旗子)<br>运行<br>sysdm.cpl<br><img src="/blog/public/2016/08/18/java-web-crawling-startup/open_system_varaible.png" alt="open_system_varaible.png" title=""><br><img src="/blog/public/2016/08/18/java-web-crawling-startup/system_properties.png" alt="system_properties.png" title=""><br><img src="/blog/public/2016/08/18/java-web-crawling-startup/select-path.png" alt="select-path.png" title=""></p>
 <p>  在最后面添加一条（和其他path之间用英文的;隔开，但是末尾不要加;）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">F:\soft\apache-ant-1.9.7-bin\apache-ant-1.9.7\bin</div></pre></td></tr></table></figure><br><img src="/blog/public/2016/08/18/java-web-crawling-startup/edit_system_varaiable1.png" alt="edit_system_varaiable1.png" title=""><br>  （安利一下WIN10，环境变量的配置十分人性化，长这样的，羡慕吧，还不赶紧升级一起喊微软爸爸）<br><img src="/blog/public/2016/08/18/java-web-crawling-startup/edit_system_varaiable.png" alt="edit_system_varaiable.png" title=""></p>
 <p>  最后确认一下环境变量到底加上没<br>win+r<br>cmd<br><img src="/blog/public/2016/08/18/java-web-crawling-startup/run_cmd.png" alt="run_cmd.png" title=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ant</div></pre></td></tr></table></figure>
-<p>  结果如图所示，就证明ant可以用了<br><img src="/blog/public/2016/08/18/java-web-crawling-startup/test_ant.png" alt="test_ant.png" title=""><br>附录：<br>    <b><a href="https://support.microsoft.com/en-us/kb/149648" target="_blank" rel="external">各种控制面板的快捷方式</a></b><br>  知道了这些，如果被人叫去修电脑，装逼效果奇佳（死屌丝码农就一修电脑的也学别人装逼，怎么装都是那副亏样，交大门口捡汽水瓶子的都比你强）</p>
-<h4 id="B-1-2-编译tess4j"><a href="#B-1-2-编译tess4j" class="headerlink" title="B-1-2 编译tess4j"></a>B-1-2 编译tess4j</h4><h5 id="B-1-2-1-下载tess4j"><a href="#B-1-2-1-下载tess4j" class="headerlink" title="B-1-2-1 下载tess4j"></a>B-1-2-1 下载tess4j</h5><p>由于tess的window傻瓜安装包只有tess3.02版本，更上面的tess3.03 3.04都需要自己编译，所以这里tess4j的源码我们也选择适应tess3.02的tess4j-2.0，想体验更高版本的新特性的高端用户可以自行编译安装tess<br>    <b><a href="https://sourceforge.net/projects/tess4j/files/tess4j/2.0/Tess4J-2.0-src.zip/download" target="_blank" rel="external">tess4J 2.0源码</a></b><br>下载后，假设tess4J的源码放在了F盘这个目录<br>    <b>F:/tess4j</b><br>Win+r<br>cmd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ant</div></pre></td></tr></table></figure><br>如果出了问题，请检查自己A-2步骤有没有做对，可以重新执行一下A-2<br>编译完毕后，就可以试用了</p>
+<p>  结果如图所示，就证明ant可以用了<br><img src="/blog/public/2016/08/18/java-web-crawling-startup/test_ant.png" alt="test_ant.png" title=""><br>附录：<br><b><a href="https://support.microsoft.com/en-us/kb/149648" target="_blank" rel="external">各种控制面板的快捷方式</a></b><br>  知道了这些，如果被人叫去修电脑，装逼效果奇佳（死屌丝码农就一修电脑的也学别人装逼，怎么装都是那副亏样，交大门口捡汽水瓶子的都比你强）</p>
+<h4 id="B-1-2-编译tess4j"><a href="#B-1-2-编译tess4j" class="headerlink" title="B-1-2 编译tess4j"></a>B-1-2 编译tess4j</h4><h5 id="B-1-2-1-下载tess4j"><a href="#B-1-2-1-下载tess4j" class="headerlink" title="B-1-2-1 下载tess4j"></a>B-1-2-1 下载tess4j</h5><p>由于tess的window傻瓜安装包只有tess3.02版本，更上面的tess3.03 3.04都需要自己编译，所以这里tess4j的源码我们也选择适应tess3.02的tess4j-2.0，想体验更高版本的新特性的高端用户可以自行编译安装tess<br><b><a href="https://sourceforge.net/projects/tess4j/files/tess4j/2.0/Tess4J-2.0-src.zip/download" target="_blank" rel="external">tess4J 2.0源码</a></b><br>下载后，假设tess4J的源码放在了F盘这个目录<br><b>F:/tess4j</b><br>Win+r<br>cmd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ant</div></pre></td></tr></table></figure><br>如果出了问题，请检查自己A-2步骤有没有做对，可以重新执行一下A-2<br>编译完毕后，就可以试用了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//初始化tess实例</div><div class="line">public Tesseract initialTesseractInstance() &#123;</div><div class="line">  Tesseract instance = new Tesseract();</div><div class="line">  URL url = this.getClass().getClassLoader().getResource(&quot;/&quot;);</div><div class="line">  String dir;</div><div class="line">  if (null == url) &#123;</div><div class="line">    url = this.getClass().getClassLoader().getResource(&quot;.&quot;);</div><div class="line">  &#125;</div><div class="line">  dir = url.getPath();</div><div class="line">  // String system_name = System.getProperty(&quot;os.name&quot;);</div><div class="line">  if (System.getProperty(&quot;os.name&quot;).toLowerCase().contains(&quot;windows&quot;)) &#123;</div><div class="line">    dir = dir.substring(1);</div><div class="line">  &#125;</div><div class="line">  instance.setDatapath(dir + &quot;tessdata&quot;);</div><div class="line">  return instance;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><b><a href="https://github.com/isaacbao/captcha-identify-demo" target="_blank" rel="external">验证码识别DEMO</a></b></p>
 <p>总结：其实这篇外传并没有什么卵用，因为最核心的图像处理算法以及图像识别算法都没写，因为这两种都不是区区博客可以写明白的东西，有兴趣，可以自行找论文</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/" data-id="cism5wm5500046g9j4x5pm2co" class="article-share-link">Partager</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li></ul>
-
-    </footer>
   </div>
-  
+  <footer class="article-footer">
     
-<nav id="article-nav">
-  
-    <a href="/blog/public/2016/08/18/build-shadowsocks-server/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
-      <div class="article-nav-title">
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="署名-相同方式共享">
+      <img src="/blog/public/images/cc/cc.png">
+      
+          <img src="/blog/public/images/cc/by.png">
         
-          搭建shadowsocks服务器
-        
-      </div>
+          <img src="/blog/public/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
     </a>
-  
-  
-    <a href="/blog/public/2016/07/02/WNDR-4300-OpenWrt/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">WNDR-4300-shadowsock代理路由器搭建</div>
-    </a>
-  
-</nav>
+  </div>
 
-  
+
+    
+
+  </footer>
 </article>
 
-</section>
-        
-          <aside id="sidebar">
+
+
+
+
+
+
+          <div class="main-footer">
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Catégories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
+    © 2016 锟斤拷？？□□烫烫烫烫 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
+  
+</div>
+
+      
+        </div>
+      
     </div>
   </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
+  <link rel="stylesheet" href="/blog/public/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/blog/public/PhotoSwipe/default-skin/default-skin.css">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a></li></ul>
-    </div>
-  </div>
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
-    <div class="widget tagcloud">
-      <a href="/blog/public/tags/java/" style="font-size: 10px;">java</a> <a href="/blog/public/tags/文字图像识别/" style="font-size: 10px;">文字图像识别</a> <a href="/blog/public/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/blog/public/tags/科学上网/" style="font-size: 20px;">科学上网</a>
-    </div>
-  </div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/06/">June 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/blog/public/2016/08/18/build-shadowsocks-server/">搭建shadowsocks服务器</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/08/18/java-web-crawling-startup/">java 爬虫入门</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/07/02/WNDR-4300-OpenWrt/">WNDR-4300-shadowsock代理路由器搭建</a>
-          </li>
-        
-          <li>
-            <a href="/blog/public/2016/06/19/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/blog/public/" class="mobile-nav-link">Home</a>
-  
-    <a href="/blog/public/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/blog/public/PhotoSwipe/photoswipe.js"></script>
+  <script src="/blog/public/PhotoSwipe/photoswipe-ui-default.js"></script>
 
 
-  <link rel="stylesheet" href="/blog/public/fancybox/jquery.fancybox.css">
-  <script src="/blog/public/fancybox/jquery.fancybox.pack.js"></script>
+<script src="/blog/public/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/blog/public/scripts/main.js"></script>
 
-
-<script src="/blog/public/js/script.js"></script>
-
-  </div>
 </body>
 </html>

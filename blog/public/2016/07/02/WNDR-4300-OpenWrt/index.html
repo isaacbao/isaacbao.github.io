@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/property.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/selectIPV4.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/setIPV4.png">
-<meta property="og:updated_time" content="2016-08-21T13:24:50.725Z">
+<meta property="og:updated_time" content="2016-09-03T10:29:59.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WNDR-4300-shadowsock代理路由器搭建">
 <meta name="twitter:description" content="给路由器刷OpenWrt系统事前准备NETGEAR-WNDR-4300  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）
@@ -75,13 +75,13 @@
       <div class="content">
         
         
-          <div class="author">John Doe</div>
+          <div class="author">Lou</div>
         
       </div>
       
         <div class="avatar">
           
-            <a href="/about"><img src="https://cn.gravatar.com/avatar/35fef74d731255cd569c2c2b0b9e87e4?s=200"></a>
+            <a href="/about"><img src="http://tva2.sinaimg.cn/crop.348.152.202.202.180/6d894612jw1erw2cojkn3j20go0b4gmd.jpg"></a>
           
         </div>
       
@@ -203,7 +203,7 @@
 <h4 id="B9"><a href="#B9" class="headerlink" title="B9"></a>B9</h4><p>开启路由器</p>
 <h4 id="B10"><a href="#B10" class="headerlink" title="B10"></a>B10</h4><p>按win+R(win就是键盘上ctrl隔壁的那个小旗子) 输入cmd</p>
 <h4 id="B11"><a href="#B11" class="headerlink" title="B11"></a>B11</h4><p>输入命令<br>ping 192.168.1.1<br>  如果ping没有超时则证明已经成功连上路由器<br>  没ping通则需要检查前面各个步骤，其中B3尤其可能出错，很可能改了无线连接而非有线连接的局域网IP</p>
-<h3 id="C-安装OpenWrt"><a href="#C-安装OpenWrt" class="headerlink" title="C 安装OpenWrt"></a>C 安装OpenWrt</h3><h4 id="C1"><a href="#C1" class="headerlink" title="C1"></a>C1</h4><p>下载OpenWrt<br>    <b><a href="https://downloads.openwrt.org/latest/ar71xx/nand/openwrt-15.05.1-ar71xx-nand-wndr4300-ubi-factory.img" target="_blank" rel="external">下载OpenWrt</a></b></p>
+<h3 id="C-安装OpenWrt"><a href="#C-安装OpenWrt" class="headerlink" title="C 安装OpenWrt"></a>C 安装OpenWrt</h3><h4 id="C1"><a href="#C1" class="headerlink" title="C1"></a>C1</h4><p>下载OpenWrt<br><b><a href="https://downloads.openwrt.org/latest/ar71xx/nand/openwrt-15.05.1-ar71xx-nand-wndr4300-ubi-factory.img" target="_blank" rel="external">下载OpenWrt</a></b></p>
 <h4 id="C2"><a href="#C2" class="headerlink" title="C2"></a>C2</h4><p>  假设openwrt-15.05.1-ar71xx-nand-wndr4300-ubi-factory.img装在F盘的soft文件夹（F:\soft）<br>  按win+R(win就是键盘上ctrl隔壁的那个小旗子) 输入cmd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">F:</div></pre></td></tr></table></figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd F:\soft</div></pre></td></tr></table></figure><br></p>
 <h3 id="D-重启"><a href="#D-重启" class="headerlink" title="D 重启"></a>D 重启</h3><h4 id="D1"><a href="#D1" class="headerlink" title="D1"></a>D1</h4><p>  完成上述步骤后，等两三分钟，等路由器重启，期间可以做点爱做的事情</p>
 <h4 id="D2"><a href="#D2" class="headerlink" title="D2"></a>D2</h4><p>  路由器重启成功后，电源指示灯亮绿色，这个时候关电源，然后再开机，如果一切正常，开机后路由器的2.4GHz 和 5GHz的等都会亮</p>
