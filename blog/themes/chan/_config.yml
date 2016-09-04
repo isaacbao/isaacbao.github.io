@@ -9,7 +9,7 @@ monochrome: true
 
 # view setting
 avatar: http://tva2.sinaimg.cn/crop.348.152.202.202.180/6d894612jw1erw2cojkn3j20go0b4gmd.jpg
-avatarLink: /about
+avatarLink: http://weibo.com/1837712914/profile?is_all=1
 maxContentWidth: 1000px # set the main content column's max-width property. keep it blank to unlimited the width
 copyright: # the copyright text in the footer, could be richtext
 
