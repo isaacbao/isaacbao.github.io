@@ -95,7 +95,7 @@ sudo vi /etc/shadowsocks-libev/config.json
     "method":"aes-256-cfb"
 }
 {% endcodeblock %}
-按一下 : （冒号，在输入法为半角英文的情况下按住shitf然后点击L右边那个键），然后输入wq保存配置文件
+按一下 : （冒号，在输入法为半角英文的情况下按住shitf然后点击L右边那个键），然后输入wq 回车 保存配置文件
 
 最后
 {% codeblock %}  
@@ -104,3 +104,7 @@ ps ax | grep ss-server
 {% endcodeblock %}
 
 如无意外ss服务器就部署成功了
+
+部署完之后呢？？？
+<b><a href="http://www.godusevpn.mobi/windows-shadowsocks-tutorials.html">点我</a></b>
+<b><a href="https://ttt.tt/150/">点我</a></b>
