@@ -21,7 +21,7 @@ categories:
   3 按小时收费，如果发现速度不理想或者不符合要求，可以马上停掉这台机器换一台别的
 
 #### A1 注册账号
-    <b><a href="http://www.vultr.com/?ref=6949606-3B">vultr注册地址</a></b>
+<b><a href="http://www.vultr.com/?ref=6949606-3B">vultr注册地址</a></b>
 
 #### A2 绑定信用卡 
   注册之后进入图中的界面，点add new添加信用卡
@@ -33,7 +33,7 @@ PS. 点完那个按钮钱就直接冲进去了，没有确认键……别手抖�
 {% asset_img charge.png %}
 
 #### A4 挑服务器
-    <b><a href="https://www.vultr.com/faq/#downloadspeedtests">获取各个机房的测试节点</a></b>
+<b><a href="https://www.vultr.com/faq/#downloadspeedtests">获取各个机房的测试节点</a></b>
   挨个点击下图中各个机房的下载文件，找到速度最快的，记下机房所在地区（location）
 {% asset_img selectLocation.png %}
 

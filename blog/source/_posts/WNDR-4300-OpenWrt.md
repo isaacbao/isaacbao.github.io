@@ -55,7 +55,7 @@ ping 192.168.1.1
 ### C 安装OpenWrt
 #### C1
 下载OpenWrt
-    <b><a href="https://downloads.openwrt.org/latest/ar71xx/nand/openwrt-15.05.1-ar71xx-nand-wndr4300-ubi-factory.img">下载OpenWrt</a></b>
+<b><a href="https://downloads.openwrt.org/latest/ar71xx/nand/openwrt-15.05.1-ar71xx-nand-wndr4300-ubi-factory.img">下载OpenWrt</a></b>
 #### C2
   假设openwrt-15.05.1-ar71xx-nand-wndr4300-ubi-factory.img装在F盘的soft文件夹（F:\soft）
   按win+R(win就是键盘上ctrl隔壁的那个小旗子) 输入cmd

@@ -19,8 +19,8 @@ categories:
 ## htmlunit
 ### htmlunit 简介
 htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素,此外htmlunit也会帮你自动保存cookie。
-    <b><a href="http://htmlunit.sourceforge.net/">htmlunit官网</a></b>
-    <b><a href="https://sourceforge.net/projects/htmlunit/files/latest/download">htmlunit下载</a></b>
+<b><a href="http://htmlunit.sourceforge.net/">htmlunit官网</a></b>
+<b><a href="https://sourceforge.net/projects/htmlunit/files/latest/download">htmlunit下载</a></b>
 其实不下载jar也可以，htmlunit，maven找得到。
 api文档？不需要这样的东西，intellij + maven，直接就能把文档和源码都弄下来。
 htmlunit的核心是一个叫WebClient的东西，基本上我们可以这么理解：一个WebClient实例就是一个浏览器。这意味着如果我们在某个网站拥有多个账号，就可以通过不同的浏览器登录不同的账号，然后一个并发爬取大量信息。
@@ -71,7 +71,7 @@ return response;
 ## Jsoup
 ### Jsoup 简介
 Jsoup可以将纯文本的html转换成java对象，让用户可以进行诸如CSS Select之类的操作，让爬虫更加方便快捷。
-    <b><a href="https://jsoup.org/">Jsoup官网</a></b>
+<b><a href="https://jsoup.org/">Jsoup官网</a></b>
 
 比如像这样通过css选择器选择所有class="search_feed"的dom元素
 {% codeblock %}
@@ -161,16 +161,16 @@ element页签里就会传送到这个元素，可以分析元素结构，到时�
 #### B-1-1 安装ant
 ##### B-1-1-1 下载ant
   tess4j可以通过apache ant来进行编译
-    <b><a href="http://ant.apache.org/">ant官网</a></b>
-    <b><a href="http://apache.claz.org//ant/binaries/apache-ant-1.9.7-bin.zip">ant下载</a></b>
+<b><a href="http://ant.apache.org/">ant官网</a></b>
+<b><a href="http://apache.claz.org//ant/binaries/apache-ant-1.9.7-bin.zip">ant下载</a></b>
 
 ##### B-1-1-2 设置环境变量
-    <b>
+<b>
       下载完毕后，假设我们把ant解压到了F盘的这个目录 ↓ 
       <br/>
       F:\soft\apache-ant-1.9.7-bin\
     </b>
-    <b>
+<b>
       bin文件夹在这里↓ 
       <br/>
       F:\soft\apache-ant-1.9.7-bin\apache-ant-1.9.7\bin\
@@ -201,15 +201,15 @@ ant
   结果如图所示，就证明ant可以用了
 {% asset_img test_ant.png %}
 附录：
-    <b><a href="https://support.microsoft.com/en-us/kb/149648">各种控制面板的快捷方式</a></b>
+<b><a href="https://support.microsoft.com/en-us/kb/149648">各种控制面板的快捷方式</a></b>
   知道了这些，如果被人叫去修电脑，装逼效果奇佳（死屌丝码农就一修电脑的也学别人装逼，怎么装都是那副亏样，交大门口捡汽水瓶子的都比你强）
 
 #### B-1-2 编译tess4j
 ##### B-1-2-1 下载tess4j
 由于tess的window傻瓜安装包只有tess3.02版本，更上面的tess3.03 3.04都需要自己编译，所以这里tess4j的源码我们也选择适应tess3.02的tess4j-2.0，想体验更高版本的新特性的高端用户可以自行编译安装tess
-    <b><a href="https://sourceforge.net/projects/tess4j/files/tess4j/2.0/Tess4J-2.0-src.zip/download">tess4J 2.0源码</a></b>
+<b><a href="https://sourceforge.net/projects/tess4j/files/tess4j/2.0/Tess4J-2.0-src.zip/download">tess4J 2.0源码</a></b>
 下载后，假设tess4J的源码放在了F盘这个目录
-    <b>F:/tess4j</b>
+<b>F:/tess4j</b>
 Win+r
 cmd
 {% codeblock %}
