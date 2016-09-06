@@ -8,13 +8,13 @@
 
 <title>
   
-    Archive: 2016/7
+    Archive: 2016/9
   
 </title>
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="锟斤拷？？□□烫烫烫烫">
-<meta property="og:url" content="http://isaacbao.github.io/archives/2016/07/index.html">
+<meta property="og:url" content="http://isaacbao.github.io/archives/2016/09/index.html">
 <meta property="og:site_name" content="锟斤拷？？□□烫烫烫烫">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="锟斤拷？？□□烫烫烫烫">
@@ -162,54 +162,35 @@
 
     <div class="post-list-item article">
       <h3 class="article-header">
-        <a href="/blog/public/2016/07/02/WNDR-4300-OpenWrt/" >
-  WNDR-4300-shadowsock代理路由器搭建
+        <a href="/blog/public/2016/09/03/intellij-import-maven-project/" >
+  通过intellij导入maven工程
 </a>
 
       </h3>
       
 
       <div class="article-info">
-        <a href="/blog/public/2016/07/02/WNDR-4300-OpenWrt/"><span class="article-date">
-  2016-07-02
+        <a href="/blog/public/2016/09/03/intellij-import-maven-project/"><span class="article-date">
+  2016-09-03
 </span>
 </a>
         
 	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/public/categories/技术/">技术</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/public/categories/技术/新手教学/">新手教学</a></li></ul></li></ul>
 	</span>
 
 
         
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/java/">java</a></li></ul>
 	</span>
 
 
       </div>
       <div class="article-entry">
         
-          <h2 id="给路由器刷OpenWrt系统"><a href="#给路由器刷OpenWrt系统" class="headerlink" title="给路由器刷OpenWrt系统"></a>给路由器刷OpenWrt系统</h2><h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="NETGEAR-WNDR-4300"><a href="#NETGEAR-WNDR-4300" class="headerlink" title="NETGEAR-WNDR-4300"></a>NETGEAR-WNDR-4300</h3><p>  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）</p>
-<h3 id="牙签（回形针、手机取卡器）"><a href="#牙签（回形针、手机取卡器）" class="headerlink" title="牙签（回形针、手机取卡器）"></a>牙签（回形针、手机取卡器）</h3><p>  用来按路由器的重置键，以便刷系统</p>
-<h3 id="网线，两根"><a href="#网线，两根" class="headerlink" title="网线，两根"></a>网线，两根</h3><p>  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电脑</p>
-<h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>  用网线将PC和路由器的任意一个LAN口连接（路由器有5个口插网线，LAN口用来接上网设备，WAN口接猫，接口下面会写明那个是LAN口那个是WAN口）</p>
-<h3 id="B-设置PC的本地IP（局域网IP）为192-168-1-2"><a href="#B-设置PC的本地IP（局域网IP）为192-168-1-2" class="headerlink" title="B 设置PC的本地IP（局域网IP）为192.168.1.2"></a>B 设置PC的本地IP（局域网IP）为192.168.1.2</h3><h4 id="B1"><a href="#B1" class="headerlink" title="B1"></a>B1</h4><p>  按win+R(win就是键盘上ctrl隔壁的那个小旗子)</p>
-<h4 id="B2"><a href="#B2" class="headerlink" title="B2"></a>B2</h4><p>  输入Ncpa.cpl，点击确定<br><img src="/blog/public/2016/07/02/WNDR-4300-OpenWrt/openNcpa.png" alt="openNcpa.png" title=""></p>
-<h4 id="B3"><a href="#B3" class="headerlink" title="B3"></a>B3</h4><p>  找到连着路由器的网络连接（用网线的话，就找到图标带网线的那个网络连接，如下图）<br><img src="/blog/public/2016/07/02/WNDR-4300-OpenWrt/selectEtherNet.png" alt="selectEtherNet.png" title=""></p>
-<h4 id="B4"><a href="#B4" class="headerlink" title="B4"></a>B4</h4><p>右键-属性<br><img src="/blog/public/2016/07/02/WNDR-4300-OpenWrt/property.png" alt="property.png" title=""></p>
-<h4 id="B5"><a href="#B5" class="headerlink" title="B5"></a>B5</h4><p>选择IPV4-属性<br><img src="/blog/public/2016/07/02/WNDR-4300-OpenWrt/selectIPV4.png" alt="selectIPV4.png" title=""></p>
-<h4 id="B6"><a href="#B6" class="headerlink" title="B6"></a>B6</h4><p>如图配置，DNS可不填<br><img src="/blog/public/2016/07/02/WNDR-4300-OpenWrt/setIPV4.png" alt="setIPV4.png" title=""></p>
-<h4 id="B7"><a href="#B7" class="headerlink" title="B7"></a>B7</h4><p>将路由器断电</p>
-<h4 id="B8"><a href="#B8" class="headerlink" title="B8"></a>B8</h4><p>  用牙签（或其他细长物体）摁一下路由器后面的重置键（ Restore Factory Settings，在电源键附近）</p>
-<h4 id="B9"><a href="#B9" class="headerlink" title="B9"></a>B9</h4><p>开启路由器</p>
-<h4 id="B10"><a href="#B10" class="headerlink" title="B10"></a>B10</h4><p>按win+R(win就是键盘上ctrl隔壁的那个小旗子) 输入cmd</p>
-<h4 id="B11"><a href="#B11" class="headerlink" title="B11"></a>B11</h4><p>输入命令<br>ping 192.168.1.1<br>  如果ping没有超时则证明已经成功连上路由器<br>  没ping通则需要检查前面各个步骤，其中B3尤其可能出错，很可能改了无线连接而非有线连接的局域网IP</p>
-<h3 id="C-安装OpenWrt"><a href="#C-安装OpenWrt" class="headerlink" title="C 安装OpenWrt"></a>C 安装OpenWrt</h3><h4 id="C1"><a href="#C1" class="headerlink" title="C1"></a>C1</h4><p>下载OpenWrt<br><b><a href="https://downloads.openwrt.org/latest/ar71xx/nand/openwrt-15.05.1-ar71xx-nand-wndr4300-ubi-factory.img" target="_blank" rel="external">下载OpenWrt</a></b></p>
-<h4 id="C2"><a href="#C2" class="headerlink" title="C2"></a>C2</h4><p>  假设openwrt-15.05.1-ar71xx-nand-wndr4300-ubi-factory.img装在F盘的soft文件夹（F:\soft）<br>  按win+R(win就是键盘上ctrl隔壁的那个小旗子) 输入cmd<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">F:</div></pre></td></tr></table></figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd F:\soft</div></pre></td></tr></table></figure><br></p>
-<h3 id="D-重启"><a href="#D-重启" class="headerlink" title="D 重启"></a>D 重启</h3><h4 id="D1"><a href="#D1" class="headerlink" title="D1"></a>D1</h4><p>  完成上述步骤后，等两三分钟，等路由器重启，期间可以做点爱做的事情</p>
-<h4 id="D2"><a href="#D2" class="headerlink" title="D2"></a>D2</h4><p>  路由器重启成功后，电源指示灯亮绿色，这个时候关电源，然后再开机，如果一切正常，开机后路由器的2.4GHz 和 5GHz的等都会亮</p>
-<p>  只要出了问题，重启都能解决</p>
-<h3 id="E-配置openwrt"><a href="#E-配置openwrt" class="headerlink" title="E 配置openwrt"></a>E 配置openwrt</h3><h4 id="E1-下载putty"><a href="#E1-下载putty" class="headerlink" title="E1 下载putty"></a>E1 下载putty</h4>
+          <p>首先打开intellij，然后import new project<br><img src="/blog/public/2016/09/03/intellij-import-maven-project/intellij_start.png" alt="intellij_start.png" title=""><br>如果之前已经打开过其他intelliJ项目的话，就直接<br><img src="/blog/public/2016/09/03/intellij-import-maven-project/new_project_from.png" alt="new_project_from.png" title=""><br>点中对应项目的pom.xml文件（maven通过pom.xml来管理项目的依赖关系）<br><img src="/blog/public/2016/09/03/intellij-import-maven-project/select_project.png" alt="select_project.png" title=""><br>一路next到这里，选择jdk的路径<br><img src="/blog/public/2016/09/03/intellij-import-maven-project/select_jdk.png" alt="select_jdk.png" title=""><br>如果没有装jdk，去 <b><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">这里</a></b>  下一个<br>下载完之后安装，然后再选择jdk路径即可</p>
+
         
       </div>
     </div>

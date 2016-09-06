@@ -8,7 +8,7 @@
 
 <title>
   
-    归档: 2016/8
+    Archive: 2016/8
   
 </title>
 
@@ -65,7 +65,7 @@
       
         <div class="avatar">
           
-            <a href="/about"><img src="http://tva2.sinaimg.cn/crop.348.152.202.202.180/6d894612jw1erw2cojkn3j20go0b4gmd.jpg"></a>
+            <a href="http://weibo.com/1837712914/profile?is_all=1"><img src="http://tva2.sinaimg.cn/crop.348.152.202.202.180/6d894612jw1erw2cojkn3j20go0b4gmd.jpg"></a>
           
         </div>
       
@@ -78,21 +78,21 @@
           
             
               <li class="category-list-container">
-                <a href="javascript:;">分类</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a><span class="category-list-count">3</span></li></ul>
+                <a href="javascript:;">Category</a>
+                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a><span class="category-list-count">4</span></li></ul>
               </li>
             
           
             
               <li class="tag-list-container">
-                <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a><span class="tag-list-count">2</span></li></ul>
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a><span class="tag-list-count">2</span></li></ul>
               </li>
             
           
             
               <li class="archive-list-container">
-                <a href="javascript:;">归档</a>
+                <a href="javascript:;">Archive</a>
                 <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/">2016</a><span class="archive-list-count">4</span></li></ul>
               </li>
             
@@ -203,9 +203,10 @@
 <h4 id="B2-通过putty连接服务器"><a href="#B2-通过putty连接服务器" class="headerlink" title="B2 通过putty连接服务器"></a>B2 通过putty连接服务器</h4><p>回到vultr个人主页，选择刚刚部署的服务器<br><img src="/blog/public/2016/08/18/build-shadowsocks-server/editServer.png" alt="editServer.png" title=""><br>点进去后可以看到服务器ip，用户名和密码（点密码右边的眼睛可以看到密码，眼睛旁边的那两个框框是复制密码到剪切板）<br><img src="/blog/public/2016/08/18/build-shadowsocks-server/editServer2.png" alt="editServer2.png" title=""><br>打开putty，在上面那个红框内输入你的服务器ip，中间那个红框里随便填些东西，然后保存<br><img src="/blog/public/2016/08/18/build-shadowsocks-server/usePutty.png" alt="usePutty.png" title=""><br>双击刚才保存的配置，进入putty，输入用户名，回车<br><img src="/blog/public/2016/08/18/build-shadowsocks-server/usePutty2.png" alt="usePutty2.png" title=""><br>输入密码（输入密码的时候，密码是看不见的，连星号都没有，输错了请重新再来，复制密码之后在putty的黑框框里按右键可以直接粘贴），回车<br><img src="/blog/public/2016/08/18/build-shadowsocks-server/usePutty3.png" alt="usePutty3.png" title=""></p>
 <p>复制这两段代码，右键，回车<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -O- http://shadowsocks.org/debian/1D27208A.gpg | sudo apt-key add -</div><div class="line">deb http://shadowsocks.org/ubuntu trusty main   </div><div class="line">sudo vi /etc/apt/sources.list     </div></pre></td></tr></table></figure><br>vi进入source.list<br>在最底下加一行<br>deb <a href="http://shadowsocks.org/ubuntu" target="_blank" rel="external">http://shadowsocks.org/ubuntu</a> trusty main</p>
 <p>然后继续<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">                </div><div class="line">sudo apt-get update                                     </div><div class="line">sudo apt-get install shadowsocks-libev    </div><div class="line">sudo vi /etc/shadowsocks-libev/config.json</div></pre></td></tr></table></figure></p>
-<p>往配置文件里填入这些东西<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</div><div class="line">    &quot;server_port&quot;:,//自己设端口10000~65535之间随便填一个</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;password&quot;:&quot;&quot;,//自己设密码</div><div class="line">    &quot;timeout&quot;:60,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>按一下 : （冒号，在输入法为半角英文的情况下按住shitf然后点击L右边那个键），然后输入wq保存配置文件</p>
+<p>往配置文件里填入这些东西<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line">&#123;</div><div class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</div><div class="line">    &quot;server_port&quot;:,//自己设端口10000~65535之间随便填一个</div><div class="line">    &quot;local_port&quot;:1080,</div><div class="line">    &quot;password&quot;:&quot;&quot;,//自己设密码</div><div class="line">    &quot;timeout&quot;:60,</div><div class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br>按一下 : （冒号，在输入法为半角英文的情况下按住shitf然后点击L右边那个键），然后输入wq 回车 保存配置文件</p>
 <p>最后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">ss-server -u -c /etc/shadowsocks-libev/config.json -f /var/run/shadowsocks.pid -v   </div><div class="line">ps ax | grep ss-server     </div></pre></td></tr></table></figure></p>
 <p>如无意外ss服务器就部署成功了</p>
+<p>部署完之后呢？？？<br><b><a href="http://www.godusevpn.mobi/windows-shadowsocks-tutorials.html" target="_blank" rel="external">点我</a></b><br><b><a href="https://ttt.tt/150/" target="_blank" rel="external">点我</a></b></p>
 
         
       </div>
