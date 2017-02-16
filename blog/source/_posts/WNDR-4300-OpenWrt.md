@@ -77,3 +77,5 @@ cd F:\soft
 
 ### E 配置openwrt
 #### E1 下载putty
+putty是一个远程连接linux主机的工具，原理可以自行google。
+<b><a href="https://the.earth.li/~sgtatham/putty/latest/x86/putty.exe">下载putty</a></b>

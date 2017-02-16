@@ -17,3 +17,6 @@ categories:
 {% asset_img select_jdk.png %}
 如果没有装jdk，去 <b><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">这里</a></b>  下一个
 下载完之后安装，然后再选择jdk路径即可
+
+选完进入intelliJ主界面，然后静待下方maven读条下载依赖
+{% asset_img wait_dependence.png %}
