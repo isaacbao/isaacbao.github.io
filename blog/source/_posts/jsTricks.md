@@ -17,21 +17,22 @@ categories:
 
 一个长成这样的for循环
 {% codeblock %}
-	for(<font color="red">var i=1</font>;<font color="blue">i<10</font>;<font color="green">i++</font> ){
-	<font color="yellow">alert(i);</font>  
+for(var i = 1;i < 10;i++){
+	alert(i);
 }
 {% endcodeblock %}  
 
 改写成这样就能实现阻塞
 {% codeblock %}
-	<font color="red">var i = 1;</font>                     //  初始化条件
+
+var i = 1;                      //  初始化条件
 var interval = 3000;            //  循环之间的时间间隔，单位毫秒
 
 function myLoop () {           
    setTimeout(function () {    
-      <font color="yellow">alert(i); </font>              
-      <font color="green">i++;</font>                       
-      <font color="blue">if (i < 10)</font> {            
+      alert(i);             
+      i++;                   
+      if (i < 10) {            
          myLoop();             
       }                        
    }, )
