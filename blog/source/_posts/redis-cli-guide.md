@@ -10,7 +10,7 @@ categories:
 
 ## redis-cli 使用备忘
 
-###  一张信用卡，支持境外支付
   redis-cli -h127.0.0.1 -p6381
+  (telnet 127.0.0.1 6381)
   auth password
   get key
