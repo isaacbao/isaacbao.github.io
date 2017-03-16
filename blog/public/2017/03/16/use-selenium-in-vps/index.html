@@ -8,16 +8,26 @@
 
 <title>
   
-    Tag: 新手教学
+    在没有图形界面的vps里使用selenium
   
 </title>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="锟斤拷？？□□烫烫烫烫">
-<meta property="og:url" content="http://isaacbao.github.io/tags/新手教学/index.html">
+<meta name="description" content="####环境CentOS release 6.8 (Final) ,装在vps上，没有gui2.6.32-642.el6.x86_64 GNU/Linux
+####安装firefox1yum search firefox
+输出大概会长这样============================= N/S Matched: firefox =============================f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在没有图形界面的vps里使用selenium">
+<meta property="og:url" content="http://isaacbao.github.io/2017/03/16/use-selenium-in-vps/index.html">
 <meta property="og:site_name" content="锟斤拷？？□□烫烫烫烫">
+<meta property="og:description" content="####环境CentOS release 6.8 (Final) ,装在vps上，没有gui2.6.32-642.el6.x86_64 GNU/Linux
+####安装firefox1yum search firefox
+输出大概会长这样============================= N/S Matched: firefox =============================f">
+<meta property="og:updated_time" content="2017-03-16T11:53:24.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="锟斤拷？？□□烫烫烫烫">
+<meta name="twitter:title" content="在没有图形界面的vps里使用selenium">
+<meta name="twitter:description" content="####环境CentOS release 6.8 (Final) ,装在vps上，没有gui2.6.32-642.el6.x86_64 GNU/Linux
+####安装firefox1yum search firefox
+输出大概会长这样============================= N/S Matched: firefox =============================f">
 
 
   <link rel="alternative" href="/atom.xml" title="锟斤拷？？□□烫烫烫烫" type="application/atom+xml">
@@ -145,51 +155,66 @@
       
         <div style="max-width: 1000px">
       
-          <h1>新手教学</h1>
-
-
+          <article id="post-use-selenium-in-vps" class="article article-type-post">
+  
+    <h1 class="article-header">
+      在没有图形界面的vps里使用selenium
+    </h1>
   
   
-    <div class="post-list">
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/blog/public/2016/09/13/start-nodejs/" >
-  start_nodejs
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/blog/public/2016/09/13/start-nodejs/"><span class="article-date">
-  2016-09-13
+  <div class="article-info">
+    <span class="article-date">
+  2017-03-16
 </span>
-</a>
-        
+
+    
 	<span class="article-category tagcloud">
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
 	</span>
 
 
-        
+    
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/新手教学/">新手教学</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/selenium/">selenium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li></ul>
 	</span>
 
 
-      </div>
-      <div class="article-entry">
-        
-          
-        
-      </div>
-    </div>
+  </div>
+  <div class="article-entry">
+    <p>####环境<br>CentOS release 6.8 (Final) ,装在vps上，没有gui<br>2.6.32-642.el6.x86_64 GNU/Linux</p>
+<p>####安装firefox<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum search firefox</div></pre></td></tr></table></figure></p>
+<p>输出大概会长这样<br>============================= N/S Matched: firefox =============================<br>firefox.i686 : Mozilla Firefox Web browser<br>firefox.x86_64 : Mozilla Firefox Web browser</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install firefox.x86_64</div></pre></td></tr></table></figure>
+<p>####安装Xvfb<br>xvfb是一个装在linux上的类似windows虚拟机的东西，没有图形界面的linux想要跑浏览器要借助xvfb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum search xvfb</div></pre></td></tr></table></figure></p>
+<p>输出大概会长这样<br>============================== N/S Matched: xvfb ===============================<br>xorg-x11-server-Xvfb.x86_64 : A X Windows System virtual framebuffer X server.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install xorg-x11-server-Xvfb.x86_64</div></pre></td></tr></table></figure>
+<p>####装完这俩之后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo Xvfb :99 -screen 0 1024x768x24 +extension RANDR &amp;</div><div class="line">export DISPLAY=:99</div><div class="line">firefox</div></pre></td></tr></table></figure><br>尝试启动firefox</p>
+<p>要重启xvfb可以通过 ps -ef |grep xvfb,然后sudo -9 kill</p>
 
-  
-    </div>
-  
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="Attribution-ShareAlike">
+      <img src="/blog/public/images/cc/cc.png">
+      
+          <img src="/blog/public/images/cc/by.png">
+        
+          <img src="/blog/public/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
 
 
 

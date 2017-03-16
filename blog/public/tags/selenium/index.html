@@ -8,13 +8,13 @@
 
 <title>
   
-    Tag: 新手教学
+    Tag: selenium
   
 </title>
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="锟斤拷？？□□烫烫烫烫">
-<meta property="og:url" content="http://isaacbao.github.io/tags/新手教学/index.html">
+<meta property="og:url" content="http://isaacbao.github.io/tags/selenium/index.html">
 <meta property="og:site_name" content="锟斤拷？？□□烫烫烫烫">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="锟斤拷？？□□烫烫烫烫">
@@ -145,7 +145,7 @@
       
         <div style="max-width: 1000px">
       
-          <h1>新手教学</h1>
+          <h1>selenium</h1>
 
 
   
@@ -155,16 +155,16 @@
 
     <div class="post-list-item article">
       <h3 class="article-header">
-        <a href="/blog/public/2016/09/13/start-nodejs/" >
-  start_nodejs
+        <a href="/blog/public/2017/03/16/use-selenium-in-vps/" >
+  在没有图形界面的vps里使用selenium
 </a>
 
       </h3>
       
 
       <div class="article-info">
-        <a href="/blog/public/2016/09/13/start-nodejs/"><span class="article-date">
-  2016-09-13
+        <a href="/blog/public/2017/03/16/use-selenium-in-vps/"><span class="article-date">
+  2017-03-16
 </span>
 </a>
         
@@ -175,14 +175,23 @@
 
         
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/新手教学/">新手教学</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/selenium/">selenium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a></li></ul>
 	</span>
 
 
       </div>
       <div class="article-entry">
         
-          
+          <p>####环境<br>CentOS release 6.8 (Final) ,装在vps上，没有gui<br>2.6.32-642.el6.x86_64 GNU/Linux</p>
+<p>####安装firefox<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum search firefox</div></pre></td></tr></table></figure></p>
+<p>输出大概会长这样<br>============================= N/S Matched: firefox =============================<br>firefox.i686 : Mozilla Firefox Web browser<br>firefox.x86_64 : Mozilla Firefox Web browser</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install firefox.x86_64</div></pre></td></tr></table></figure>
+<p>####安装Xvfb<br>xvfb是一个装在linux上的类似windows虚拟机的东西，没有图形界面的linux想要跑浏览器要借助xvfb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum search xvfb</div></pre></td></tr></table></figure></p>
+<p>输出大概会长这样<br>============================== N/S Matched: xvfb ===============================<br>xorg-x11-server-Xvfb.x86_64 : A X Windows System virtual framebuffer X server.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum install xorg-x11-server-Xvfb.x86_64</div></pre></td></tr></table></figure>
+<p>####装完这俩之后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo Xvfb :99 -screen 0 1024x768x24 +extension RANDR &amp;</div><div class="line">export DISPLAY=:99</div><div class="line">firefox</div></pre></td></tr></table></figure><br>尝试启动firefox</p>
+<p>要重启xvfb可以通过 ps -ef |grep xvfb,然后sudo -9 kill</p>
+
         
       </div>
     </div>
