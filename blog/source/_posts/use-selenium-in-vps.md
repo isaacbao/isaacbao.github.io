@@ -8,11 +8,11 @@ tags:
 categories:
 - 技术
 ---
-####环境
+#### 环境
 CentOS release 6.8 (Final) ,装在vps上，没有gui
 2.6.32-642.el6.x86_64 GNU/Linux
 
-####安装firefox
+#### 安装firefox
 先确认你服务器的repos里有没有firefox
 {% codeblock %}
 yum search firefox
@@ -30,7 +30,7 @@ firefox.x86_64 : Mozilla Firefox Web browser
 sudo yum install firefox.x86_64
 {% endcodeblock %}
 
-####安装Xvfb
+#### 安装Xvfb
 xvfb是一个装在linux上的类似windows虚拟机的东西，没有图形界面的linux想要跑浏览器要借助xvfb
 先确认你服务器的repos里有没有xvfb
 {% codeblock %}
@@ -48,7 +48,7 @@ xorg-x11-server-Xvfb.x86_64 : A X Windows System virtual framebuffer X server.
 sudo yum install xorg-x11-server-Xvfb.x86_64
 {% endcodeblock %}
 
-####装完这俩之后
+#### 装完这俩之后
 
 启动xvfb
 {% codeblock %}
@@ -79,7 +79,7 @@ Xlib:  extension "RANDR" missing on display ":99".
 到这里基本环境就配置完了
 
 
-####番外
+#### 番外
 selenium启动firefox还需要这个驱动
 https://github.com/mozilla/geckodriver/releases
 去这里搞一个geckodriver，丢到服务器
