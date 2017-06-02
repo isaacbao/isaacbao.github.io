@@ -1,16 +1,97 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
 <head>
-  <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 
-<title>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-    搭建shadowsocks服务器
   
-</title>
+  <link href="/blog/public/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/public/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/blog/public/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="科学上网," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/public/favicon.ico?v=5.1.1" />
+
+
+
+
+
 
 <meta name="description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
 A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
@@ -42,159 +123,244 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
 <meta name="twitter:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card.png">
 
 
-  <link rel="alternative" href="/atom.xml" title="锟斤拷？？□□烫烫烫烫" type="application/atom+xml">
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/public/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
 
-  <link rel="icon" href="/favicon.png">
-
-
-<link rel="stylesheet" href="/blog/public/perfect-scrollbar/css/perfect-scrollbar.min.css">
-<link rel="stylesheet" href="/blog/public/styles/main.css">
+  <link rel="canonical" href="http://isaacbao.github.io/2016/08/18/build-shadowsocks-server/"/>
 
 
 
 
 
-
+  <title>搭建shadowsocks服务器 | 锟斤拷？？□□烫烫烫烫</title>
 </head>
-<body
-  
-    class="monochrome"
-  
-  >
-  <div class="mobile-header">
-  <button class="sidebar-toggle" type="button">
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
-  <a class="title" href="/blog/public/">锟斤拷？？□□烫烫烫烫</a>
-</div>
 
-  <div class="main-container">
-    <div class="sidebar">
-  <div class="header">
-    <h1 class="title"><a href="/blog/public/">锟斤拷？？□□烫烫烫烫</a></h1>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
     
-    <div class="info">
-      <div class="content">
-        
-        
-          <div class="author">Lou</div>
-        
-      </div>
-      
-        <div class="avatar">
-          
-            <a href="http://weibo.com/1837712914/profile?is_all=1"><img src="http://tva2.sinaimg.cn/crop.348.152.202.202.180/6d894612jw1erw2cojkn3j20go0b4gmd.jpg"></a>
-          
-        </div>
-      
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/public/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">锟斤拷？？□□烫烫烫烫</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <div class="body">
-    
-      
-        <ul class="nav">
-          
-            
-              <li class="category-list-container">
-                <a href="javascript:;">Category</a>
-                <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/public/categories/技术/">技术</a><span class="category-list-count">8</span></li></ul>
-              </li>
-            
-          
-            
-              <li class="tag-list-container">
-                <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/nodejs/">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/selenium/">selenium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/搬运/">搬运</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/文字图像识别/">文字图像识别</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/新手教学/">新手教学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/新手教程/">新手教程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/爬虫/">爬虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a><span class="tag-list-count">2</span></li></ul>
-              </li>
-            
-          
-            
-              <li class="archive-list-container">
-                <a href="javascript:;">Archive</a>
-                <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2017/">2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/public/archives/2016/">2016</a><span class="archive-list-count">5</span></li></ul>
-              </li>
-            
-          
-        </ul>
-      
-        <ul class="nav">
-          
-            
-              <li>
-                <a href="/blog/public/" title="Homepage">Homepage</a>
-              </li>
-            
-          
-            
-              <li>
-                <a href="/blog/public/archives" title="By Year">By Year</a>
-              </li>
-            
-          
-        </ul>
-      
-        <ul class="nav">
-          
-            
-              <li>
-                <a href="https://github.com/denjones/hexo-theme-chan" title="Chan" target="_blank" rel="external">Chan</a>
-              </li>
-            
-          
-            
-              <li>
-                <a href="https://github.com/denjones" title="Github" target="_blank" rel="external">Github</a>
-              </li>
-            
-          
-            
-              <li>
-                <a href="/blog/public/atom.xml" title="RSS">RSS</a>
-              </li>
-            
-          
-        </ul>
-      
-    
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
   </div>
 </div>
 
-    <div class="main-content">
-      
-        <div style="max-width: 1000px">
-      
-          <article id="post-build-shadowsocks-server" class="article article-type-post">
+<nav class="site-nav">
   
-    <h1 class="article-header">
-      搭建shadowsocks服务器
-    </h1>
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/public/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/public/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/public/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
   
   
 
-  <div class="article-info">
-    <span class="article-date">
-  2016-08-18
-</span>
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/public/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="锟斤拷？？□□烫烫烫烫">
+    </span>
 
     
-	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/public/categories/技术/">技术</a></li></ul>
-	</span>
+      <header class="post-header">
 
+        
+        
+          <h1 class="post-title" itemprop="name headline">搭建shadowsocks服务器</h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-18T22:48:44+08:00">
+                2016-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/public/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/public/tags/科学上网/">科学上网</a></li></ul>
-	</span>
 
+    <div class="post-body" itemprop="articleBody">
 
-  </div>
-  <div class="article-entry">
-    <h2 id="搭建shadowsocks服务器"><a href="#搭建shadowsocks服务器" class="headerlink" title="搭建shadowsocks服务器"></a>搭建shadowsocks服务器</h2><h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="一张信用卡，支持境外支付"><a href="#一张信用卡，支持境外支付" class="headerlink" title="一张信用卡，支持境外支付"></a>一张信用卡，支持境外支付</h3><p>  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询</p>
+      
+      
+
+      
+        <h2 id="搭建shadowsocks服务器"><a href="#搭建shadowsocks服务器" class="headerlink" title="搭建shadowsocks服务器"></a>搭建shadowsocks服务器</h2><h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="一张信用卡，支持境外支付"><a href="#一张信用卡，支持境外支付" class="headerlink" title="一张信用卡，支持境外支付"></a>一张信用卡，支持境外支付</h3><p>  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询</p>
 <h3 id="A-申请服务器"><a href="#A-申请服务器" class="headerlink" title="A 申请服务器"></a>A 申请服务器</h3><p>  本文采用的服务器供应商是vultr<br>  说说本人用vultr的理由：<br>  1 有日本节点<br>  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月<br>  3 按小时收费，如果发现速度不理想或者不符合要求，可以马上停掉这台机器换一台别的</p>
 <h4 id="A1-注册账号"><a href="#A1-注册账号" class="headerlink" title="A1 注册账号"></a>A1 注册账号</h4><p><b><a href="http://www.vultr.com/?ref=6949606-3B" target="_blank" rel="external">vultr注册地址</a></b></p>
 <h4 id="A2-绑定信用卡"><a href="#A2-绑定信用卡" class="headerlink" title="A2 绑定信用卡"></a>A2 绑定信用卡</h4><p>  注册之后进入图中的界面，点add new添加信用卡<br><img src="/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card.png" alt="bind-credit-card.png" title=""><br><img src="/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card2.png" alt="bind-credit-card2.png" title=""></p>
@@ -213,119 +379,369 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
 <p>如无意外ss服务器就部署成功了</p>
 <p>部署完之后呢？？？<br><b><a href="http://www.godusevpn.mobi/windows-shadowsocks-tutorials.html" target="_blank" rel="external">点我</a></b><br><b><a href="https://ttt.tt/150/" target="_blank" rel="external">点我</a></b></p>
 
-  </div>
-  <footer class="article-footer">
-    
-  <div class="cc">
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="Attribution-ShareAlike">
-      <img src="/blog/public/images/cc/cc.png">
-      
-          <img src="/blog/public/images/cc/by.png">
-        
-          <img src="/blog/public/images/cc/sa.png">
-      
-      <span>
-        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-      </span>
-    </a>
-  </div>
-
-
-    
-
-  </footer>
-</article>
-
-
-
-
-
-
-
-          <div class="main-footer">
-  
-    © 2017 锟斤拷？？□□烫烫烫烫 - Powered by <a href="http://hexo.io" target="_blank">Hexo</a> - Theme <a href="https://github.com/denjones/hexo-theme-chan" target="_blank">Chan</a>
-  
-</div>
-
-      
-        </div>
       
     </div>
-  </div>
-  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="/blog/public/PhotoSwipe/photoswipe.css">
-  <link rel="stylesheet" href="/blog/public/PhotoSwipe/default-skin/default-skin.css">
+    <div>
+      
+        
 
-  <!-- Root element of PhotoSwipe. Must have class pswp. -->
-  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      
+    </div>
 
-    <!-- Background of PhotoSwipe.
-             It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
+    <div>
+      
+        
 
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
+      
+    </div>
 
-      <!-- Container that holds slides.
-                PhotoSwipe keeps only 3 of them in the DOM to save memory.
-                Don't modify these 3 pswp__item elements, data is added later on. -->
-      <div class="pswp__container">
-        <div class="pswp__item"></div>
-        <div class="pswp__item"></div>
-        <div class="pswp__item"></div>
-      </div>
+    <div>
+      
+        
 
-      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-      <div class="pswp__ui pswp__ui--hidden">
+      
+    </div>
 
-        <div class="pswp__top-bar">
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/public/tags/科学上网/" rel="tag"># 科学上网</a>
+          
+        </div>
+      
 
-          <!--  Controls are self-explanatory. Order can be changed. -->
+      
+      
+      
 
-          <div class="pswp__counter"></div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/public/2016/08/18/java-web-crawling-startup/" rel="next" title="java 爬虫入门">
+                <i class="fa fa-chevron-left"></i> java 爬虫入门
+              </a>
+            
+          </div>
 
-          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+          <span class="post-nav-divider"></span>
 
-          <button class="pswp__button pswp__button--share" title="Share"></button>
-
-          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-          <!-- element will get class pswp__preloader--active when preloader is running -->
-          <div class="pswp__preloader">
-            <div class="pswp__preloader__icn">
-              <div class="pswp__preloader__cut">
-                <div class="pswp__preloader__donut"></div>
-              </div>
-            </div>
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/public/2016/09/03/intellij-import-maven-project/" rel="prev" title="通过intellij导入maven工程">
+                通过intellij导入maven工程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
+      
 
-        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-          <div class="pswp__share-tooltip"></div>
-        </div>
+      
+      
+    </footer>
+  </article>
 
-        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
 
-        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
 
-        <div class="pswp__caption">
-          <div class="pswp__caption__center"></div>
-        </div>
-      </div>
+    <div class="post-spread">
+      
     </div>
   </div>
 
-  <script src="/blog/public/PhotoSwipe/photoswipe.js"></script>
-  <script src="/blog/public/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+          </div>
+          
 
 
-<script src="/blog/public/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
-<script src="/blog/public/scripts/main.js"></script>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/public/images/avatar.gif"
+               alt="Lou" />
+          <p class="site-author-name" itemprop="name">Lou</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/blog/public/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建shadowsocks服务器"><span class="nav-number">1.</span> <span class="nav-text">搭建shadowsocks服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事前准备"><span class="nav-number">2.</span> <span class="nav-text">事前准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一张信用卡，支持境外支付"><span class="nav-number">2.1.</span> <span class="nav-text">一张信用卡，支持境外支付</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-申请服务器"><span class="nav-number">2.2.</span> <span class="nav-text">A 申请服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A1-注册账号"><span class="nav-number">2.2.1.</span> <span class="nav-text">A1 注册账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A2-绑定信用卡"><span class="nav-number">2.2.2.</span> <span class="nav-text">A2 绑定信用卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A3-充钱"><span class="nav-number">2.2.3.</span> <span class="nav-text">A3 充钱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A4-挑服务器"><span class="nav-number">2.2.4.</span> <span class="nav-text">A4 挑服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-连接服务器"><span class="nav-number">2.3.</span> <span class="nav-text">B 连接服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B1-下载putty"><span class="nav-number">2.3.1.</span> <span class="nav-text">B1 下载putty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B2-通过putty连接服务器"><span class="nav-number">2.3.2.</span> <span class="nav-text">B2 通过putty连接服务器</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lou</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/blog/public/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/public/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/public/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/public/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/public/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/public/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/public/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/blog/public/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/public/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/blog/public/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/public/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>
