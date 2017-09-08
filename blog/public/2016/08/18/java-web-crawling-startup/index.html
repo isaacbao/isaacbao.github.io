@@ -58,7 +58,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -87,14 +87,12 @@
 
 
 
-<meta name="description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
-htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素">
+<meta name="description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java 爬虫入门">
 <meta property="og:url" content="http://isaacbao.github.io/2016/08/18/java-web-crawling-startup/index.html">
 <meta property="og:site_name" content="锟斤拷？？□□烫烫烫烫">
-<meta property="og:description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
-htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素">
+<meta property="og:description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/regexr.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/view.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/find-request.png">
@@ -112,11 +110,10 @@ htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬�
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/edit_system_varaiable.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/run_cmd.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/test_ant.png">
-<meta property="og:updated_time" content="2016-09-05T01:08:47.709Z">
+<meta property="og:updated_time" content="2017-09-08T07:47:23.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java 爬虫入门">
-<meta name="twitter:description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言
-htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素">
+<meta name="twitter:description" content="前置知识要学习爬虫，至少需要对http协议和html代码有基本的了解。http协议html语言">
 <meta name="twitter:image" content="http://isaacbao.github.io/blog/public/2016/08/18/java-web-crawling-startup/regexr.png">
 
 
@@ -364,7 +361,7 @@ htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬�
       
 
       
-        <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>要学习爬虫，至少需要对http协议和html代码有基本的了解。<br><b><a href="https://hit-alibaba.github.io/interview/basic/network/HTTP.html" target="_blank" rel="external">http协议</a></b><br><b><a href="http://www.w3school.com.cn/html/index.asp" target="_blank" rel="external">html语言</a></b></p>
+        <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>要学习爬虫，至少需要对http协议和html代码有基本的了解。<br><b><a href="https://hit-alibaba.github.io/interview/basic/network/HTTP.html" target="_blank" rel="external">http协议</a></b><br><b><a href="http://www.w3school.com.cn/html/index.asp" target="_blank" rel="external">html语言</a></b><br><a id="more"></a></p>
 <h2 id="htmlunit"><a href="#htmlunit" class="headerlink" title="htmlunit"></a>htmlunit</h2><h3 id="htmlunit-简介"><a href="#htmlunit-简介" class="headerlink" title="htmlunit 简介"></a>htmlunit 简介</h3><p>htmlunit是一个模拟浏览器的工具。一般的爬虫可以通过httpClient 的get post方法实现，但是有些网站针对爬虫和攻击作了一些限制，他们会通过JS代码生成一些验证参数，如果不想花心思研究这些js代码，最方便的就是模拟浏览器直接点击渲染后的html元素,此外htmlunit也会帮你自动保存cookie。<br><b><a href="http://htmlunit.sourceforge.net/" target="_blank" rel="external">htmlunit官网</a></b><br><b><a href="https://sourceforge.net/projects/htmlunit/files/latest/download" target="_blank" rel="external">htmlunit下载</a></b><br>其实不下载jar也可以，htmlunit，maven找得到。<br>api文档？不需要这样的东西，intellij + maven，直接就能把文档和源码都弄下来。<br>htmlunit的核心是一个叫WebClient的东西，基本上我们可以这么理解：一个WebClient实例就是一个浏览器。这意味着如果我们在某个网站拥有多个账号，就可以通过不同的浏览器登录不同的账号，然后一个并发爬取大量信息。</p>
 <p>使用WebClient之前，可以通过WebClient.getOption()方法获取浏览器配置，并对配置进行变更，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 设置请求超时时间</div><div class="line">webClient.getOptions().setTimeout(60000);</div><div class="line">// 是否允许加载css</div><div class="line">webClient.getOptions().setCssEnabled(false);</div><div class="line">// response不是200的时候是否抛出异常</div><div class="line">webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);</div><div class="line">// 是否允许applet应用（比如各种浏览器插件）运行</div><div class="line">webClient.getOptions().setAppletEnabled(false);</div><div class="line">// 是否使用格林尼治时间</div><div class="line">webClient.getOptions().setGeolocationEnabled(false);</div><div class="line">// 是否允许弹出alert框框</div><div class="line">webClient.getOptions().setPopupBlockerEnabled(false);</div><div class="line">// 是否使用不安全的ssl连接（想不装证书访问使用https协议的网站需要把这个设为true）</div><div class="line">webClient.getOptions().setUseInsecureSSL(true);</div></pre></td></tr></table></figure></p>
 <p>WebClient可以通过两种方式请求页面：<br>①<br>等效于直接从浏览器地址栏输入一个url，会执行可以执行的js，此外返回的page对象会将html里面的dom元素转换成java对象，可以通过tag，标签等选择。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">HtmlPage page = webClient.getPage(targetURL);</div></pre></td></tr></table></figure><br>②<br>只请求需要的数据，不加载js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">WebRequest request;</div><div class="line">WebResponse response = null;</div><div class="line">try &#123;</div><div class="line">  // 这里设定get post</div><div class="line">  request = new WebRequest(new URL(url), HttpMethod.GET);</div><div class="line">  if (additionalHeaders != null) &#123;</div><div class="line">    request.setAdditionalHeaders(additionalHeaders);</div><div class="line">  &#125;</div><div class="line">  response = webClient.loadWebResponse(request);</div><div class="line">&#125; catch (IOException e) &#123;</div><div class="line">  e.printStackTrace();</div><div class="line">&#125;</div><div class="line">return response;</div></pre></td></tr></table></figure></p>
@@ -530,7 +527,7 @@ htmlunithtmlunit 简介htmlunit是一个模拟浏览器的工具。一般的爬�
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/public/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">posting</span>
               </a>
             </div>

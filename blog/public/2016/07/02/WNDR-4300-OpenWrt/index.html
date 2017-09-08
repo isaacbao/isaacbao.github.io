@@ -58,7 +58,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -87,27 +87,27 @@
 
 
 
-<meta name="description" content="给路由器刷OpenWrt系统事前准备NETGEAR-WNDR-4300  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）
+<meta name="description" content="事前准备NETGEAR-WNDR-4300  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）
 牙签（回形针、手机取卡器）  用来按路由器的重置键，以便刷系统
-网线，两根  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电">
+网线，两根  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电脑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WNDR-4300-shadowsock代理路由器搭建">
 <meta property="og:url" content="http://isaacbao.github.io/2016/07/02/WNDR-4300-OpenWrt/index.html">
 <meta property="og:site_name" content="锟斤拷？？□□烫烫烫烫">
-<meta property="og:description" content="给路由器刷OpenWrt系统事前准备NETGEAR-WNDR-4300  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）
+<meta property="og:description" content="事前准备NETGEAR-WNDR-4300  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）
 牙签（回形针、手机取卡器）  用来按路由器的重置键，以便刷系统
-网线，两根  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电">
+网线，两根  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电脑">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/openNcpa.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/selectEtherNet.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/property.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/selectIPV4.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/setIPV4.png">
-<meta property="og:updated_time" content="2017-02-16T11:54:22.717Z">
+<meta property="og:updated_time" content="2017-09-08T07:35:56.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WNDR-4300-shadowsock代理路由器搭建">
-<meta name="twitter:description" content="给路由器刷OpenWrt系统事前准备NETGEAR-WNDR-4300  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）
+<meta name="twitter:description" content="事前准备NETGEAR-WNDR-4300  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）
 牙签（回形针、手机取卡器）  用来按路由器的重置键，以便刷系统
-网线，两根  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电">
+网线，两根  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电脑">
 <meta name="twitter:image" content="http://isaacbao.github.io/blog/public/2016/07/02/WNDR-4300-OpenWrt/openNcpa.png">
 
 
@@ -355,9 +355,9 @@
       
 
       
-        <h2 id="给路由器刷OpenWrt系统"><a href="#给路由器刷OpenWrt系统" class="headerlink" title="给路由器刷OpenWrt系统"></a>给路由器刷OpenWrt系统</h2><h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="NETGEAR-WNDR-4300"><a href="#NETGEAR-WNDR-4300" class="headerlink" title="NETGEAR-WNDR-4300"></a>NETGEAR-WNDR-4300</h3><p>  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）</p>
+        <h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="NETGEAR-WNDR-4300"><a href="#NETGEAR-WNDR-4300" class="headerlink" title="NETGEAR-WNDR-4300"></a>NETGEAR-WNDR-4300</h3><p>  淘宝入手，全新250左右，二手150左右，怕风险就多花钱，穷人心大不在意外观的就二手（WNDR4300的穿墙性能不是很强，家里墙多的需可能需要考虑别的方案）</p>
 <h3 id="牙签（回形针、手机取卡器）"><a href="#牙签（回形针、手机取卡器）" class="headerlink" title="牙签（回形针、手机取卡器）"></a>牙签（回形针、手机取卡器）</h3><p>  用来按路由器的重置键，以便刷系统</p>
-<h3 id="网线，两根"><a href="#网线，两根" class="headerlink" title="网线，两根"></a>网线，两根</h3><p>  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电脑</p>
+<h3 id="网线，两根"><a href="#网线，两根" class="headerlink" title="网线，两根"></a>网线，两根</h3><p>  一根用来连接猫和路由（这根建议尽量长一点，尽量能让路由放在电脑旁边），一根用来连接路由和电脑<br><a id="more"></a></p>
 <h3 id="A"><a href="#A" class="headerlink" title="A"></a>A</h3><p>  用网线将PC和路由器的任意一个LAN口连接（路由器有5个口插网线，LAN口用来接上网设备，WAN口接猫，接口下面会写明那个是LAN口那个是WAN口）</p>
 <h3 id="B-设置PC的本地IP（局域网IP）为192-168-1-2"><a href="#B-设置PC的本地IP（局域网IP）为192-168-1-2" class="headerlink" title="B 设置PC的本地IP（局域网IP）为192.168.1.2"></a>B 设置PC的本地IP（局域网IP）为192.168.1.2</h3><h4 id="B1"><a href="#B1" class="headerlink" title="B1"></a>B1</h4><p>  按win+R(win就是键盘上ctrl隔壁的那个小旗子)</p>
 <h4 id="B2"><a href="#B2" class="headerlink" title="B2"></a>B2</h4><p>  输入Ncpa.cpl，点击确定<br><img src="/blog/public/2016/07/02/WNDR-4300-OpenWrt/openNcpa.png" alt="openNcpa.png" title=""></p>
@@ -498,7 +498,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/public/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">posting</span>
               </a>
             </div>
@@ -555,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#给路由器刷OpenWrt系统"><span class="nav-number">1.</span> <span class="nav-text">给路由器刷OpenWrt系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事前准备"><span class="nav-number">2.</span> <span class="nav-text">事前准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NETGEAR-WNDR-4300"><span class="nav-number">2.1.</span> <span class="nav-text">NETGEAR-WNDR-4300</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牙签（回形针、手机取卡器）"><span class="nav-number">2.2.</span> <span class="nav-text">牙签（回形针、手机取卡器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网线，两根"><span class="nav-number">2.3.</span> <span class="nav-text">网线，两根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A"><span class="nav-number">2.4.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-设置PC的本地IP（局域网IP）为192-168-1-2"><span class="nav-number">2.5.</span> <span class="nav-text">B 设置PC的本地IP（局域网IP）为192.168.1.2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B1"><span class="nav-number">2.5.1.</span> <span class="nav-text">B1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B2"><span class="nav-number">2.5.2.</span> <span class="nav-text">B2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B3"><span class="nav-number">2.5.3.</span> <span class="nav-text">B3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B4"><span class="nav-number">2.5.4.</span> <span class="nav-text">B4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B5"><span class="nav-number">2.5.5.</span> <span class="nav-text">B5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B6"><span class="nav-number">2.5.6.</span> <span class="nav-text">B6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B7"><span class="nav-number">2.5.7.</span> <span class="nav-text">B7</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B8"><span class="nav-number">2.5.8.</span> <span class="nav-text">B8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B9"><span class="nav-number">2.5.9.</span> <span class="nav-text">B9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B10"><span class="nav-number">2.5.10.</span> <span class="nav-text">B10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B11"><span class="nav-number">2.5.11.</span> <span class="nav-text">B11</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-安装OpenWrt"><span class="nav-number">2.6.</span> <span class="nav-text">C 安装OpenWrt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C1"><span class="nav-number">2.6.1.</span> <span class="nav-text">C1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C2"><span class="nav-number">2.6.2.</span> <span class="nav-text">C2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-重启"><span class="nav-number">2.7.</span> <span class="nav-text">D 重启</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#D1"><span class="nav-number">2.7.1.</span> <span class="nav-text">D1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D2"><span class="nav-number">2.7.2.</span> <span class="nav-text">D2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-配置openwrt"><span class="nav-number">2.8.</span> <span class="nav-text">E 配置openwrt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#E1-下载putty"><span class="nav-number">2.8.1.</span> <span class="nav-text">E1 下载putty</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事前准备"><span class="nav-number">1.</span> <span class="nav-text">事前准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NETGEAR-WNDR-4300"><span class="nav-number">1.1.</span> <span class="nav-text">NETGEAR-WNDR-4300</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牙签（回形针、手机取卡器）"><span class="nav-number">1.2.</span> <span class="nav-text">牙签（回形针、手机取卡器）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网线，两根"><span class="nav-number">1.3.</span> <span class="nav-text">网线，两根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A"><span class="nav-number">1.4.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-设置PC的本地IP（局域网IP）为192-168-1-2"><span class="nav-number">1.5.</span> <span class="nav-text">B 设置PC的本地IP（局域网IP）为192.168.1.2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B1"><span class="nav-number">1.5.1.</span> <span class="nav-text">B1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B2"><span class="nav-number">1.5.2.</span> <span class="nav-text">B2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B3"><span class="nav-number">1.5.3.</span> <span class="nav-text">B3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B4"><span class="nav-number">1.5.4.</span> <span class="nav-text">B4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B5"><span class="nav-number">1.5.5.</span> <span class="nav-text">B5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B6"><span class="nav-number">1.5.6.</span> <span class="nav-text">B6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B7"><span class="nav-number">1.5.7.</span> <span class="nav-text">B7</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B8"><span class="nav-number">1.5.8.</span> <span class="nav-text">B8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B9"><span class="nav-number">1.5.9.</span> <span class="nav-text">B9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B10"><span class="nav-number">1.5.10.</span> <span class="nav-text">B10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B11"><span class="nav-number">1.5.11.</span> <span class="nav-text">B11</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-安装OpenWrt"><span class="nav-number">1.6.</span> <span class="nav-text">C 安装OpenWrt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C1"><span class="nav-number">1.6.1.</span> <span class="nav-text">C1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C2"><span class="nav-number">1.6.2.</span> <span class="nav-text">C2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-重启"><span class="nav-number">1.7.</span> <span class="nav-text">D 重启</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#D1"><span class="nav-number">1.7.1.</span> <span class="nav-text">D1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D2"><span class="nav-number">1.7.2.</span> <span class="nav-text">D2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-配置openwrt"><span class="nav-number">1.8.</span> <span class="nav-text">E 配置openwrt</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#E1-下载putty"><span class="nav-number">1.8.1.</span> <span class="nav-text">E1 下载putty</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

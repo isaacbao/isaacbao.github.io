@@ -58,7 +58,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.proxy.ustclug.org/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -87,14 +87,12 @@
 
 
 
-<meta name="description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
-A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
+<meta name="description" content="事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建shadowsocks服务器">
 <meta property="og:url" content="http://isaacbao.github.io/2016/08/18/build-shadowsocks-server/index.html">
 <meta property="og:site_name" content="锟斤拷？？□□烫烫烫烫">
-<meta property="og:description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
-A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
+<meta property="og:description" content="事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card2.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/charge.png">
@@ -109,11 +107,10 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/usePutty.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/usePutty2.png">
 <meta property="og:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/usePutty3.png">
-<meta property="og:updated_time" content="2016-09-05T01:09:42.556Z">
+<meta property="og:updated_time" content="2017-09-08T07:39:54.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建shadowsocks服务器">
-<meta name="twitter:description" content="搭建shadowsocks服务器事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询
-A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vultr的理由：  1 有日本节点  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月  3 按小时收费，如果发现速度不理想或者不符合要">
+<meta name="twitter:description" content="事前准备一张信用卡，支持境外支付  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询">
 <meta name="twitter:image" content="http://isaacbao.github.io/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card.png">
 
 
@@ -361,7 +358,7 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
       
 
       
-        <h2 id="搭建shadowsocks服务器"><a href="#搭建shadowsocks服务器" class="headerlink" title="搭建shadowsocks服务器"></a>搭建shadowsocks服务器</h2><h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="一张信用卡，支持境外支付"><a href="#一张信用卡，支持境外支付" class="headerlink" title="一张信用卡，支持境外支付"></a>一张信用卡，支持境外支付</h3><p>  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询</p>
+        <h2 id="事前准备"><a href="#事前准备" class="headerlink" title="事前准备"></a>事前准备</h2><h3 id="一张信用卡，支持境外支付"><a href="#一张信用卡，支持境外支付" class="headerlink" title="一张信用卡，支持境外支付"></a>一张信用卡，支持境外支付</h3><p>  可以是visa，也可以是mastercard，信用卡的申请不在本教程的范畴内，请自行去找一家离家近的银行咨询<br><a id="more"></a></p>
 <h3 id="A-申请服务器"><a href="#A-申请服务器" class="headerlink" title="A 申请服务器"></a>A 申请服务器</h3><p>  本文采用的服务器供应商是vultr<br>  说说本人用vultr的理由：<br>  1 有日本节点<br>  2 价格不贵，而且我注册的时候有优惠，进门充10美金就能用10个月<br>  3 按小时收费，如果发现速度不理想或者不符合要求，可以马上停掉这台机器换一台别的</p>
 <h4 id="A1-注册账号"><a href="#A1-注册账号" class="headerlink" title="A1 注册账号"></a>A1 注册账号</h4><p><b><a href="http://www.vultr.com/?ref=6949606-3B" target="_blank" rel="external">vultr注册地址</a></b></p>
 <h4 id="A2-绑定信用卡"><a href="#A2-绑定信用卡" class="headerlink" title="A2 绑定信用卡"></a>A2 绑定信用卡</h4><p>  注册之后进入图中的界面，点add new添加信用卡<br><img src="/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card.png" alt="bind-credit-card.png" title=""><br><img src="/blog/public/2016/08/18/build-shadowsocks-server/bind-credit-card2.png" alt="bind-credit-card2.png" title=""></p>
@@ -505,7 +502,7 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
           
             <div class="site-state-item site-state-posts">
               <a href="/blog/public/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">posting</span>
               </a>
             </div>
@@ -562,7 +559,7 @@ A 申请服务器  本文采用的服务器供应商是vultr  说说本人用vul
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建shadowsocks服务器"><span class="nav-number">1.</span> <span class="nav-text">搭建shadowsocks服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事前准备"><span class="nav-number">2.</span> <span class="nav-text">事前准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一张信用卡，支持境外支付"><span class="nav-number">2.1.</span> <span class="nav-text">一张信用卡，支持境外支付</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-申请服务器"><span class="nav-number">2.2.</span> <span class="nav-text">A 申请服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A1-注册账号"><span class="nav-number">2.2.1.</span> <span class="nav-text">A1 注册账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A2-绑定信用卡"><span class="nav-number">2.2.2.</span> <span class="nav-text">A2 绑定信用卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A3-充钱"><span class="nav-number">2.2.3.</span> <span class="nav-text">A3 充钱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A4-挑服务器"><span class="nav-number">2.2.4.</span> <span class="nav-text">A4 挑服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-连接服务器"><span class="nav-number">2.3.</span> <span class="nav-text">B 连接服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B1-下载putty"><span class="nav-number">2.3.1.</span> <span class="nav-text">B1 下载putty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B2-通过putty连接服务器"><span class="nav-number">2.3.2.</span> <span class="nav-text">B2 通过putty连接服务器</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事前准备"><span class="nav-number">1.</span> <span class="nav-text">事前准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一张信用卡，支持境外支付"><span class="nav-number">1.1.</span> <span class="nav-text">一张信用卡，支持境外支付</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-申请服务器"><span class="nav-number">1.2.</span> <span class="nav-text">A 申请服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A1-注册账号"><span class="nav-number">1.2.1.</span> <span class="nav-text">A1 注册账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A2-绑定信用卡"><span class="nav-number">1.2.2.</span> <span class="nav-text">A2 绑定信用卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A3-充钱"><span class="nav-number">1.2.3.</span> <span class="nav-text">A3 充钱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#A4-挑服务器"><span class="nav-number">1.2.4.</span> <span class="nav-text">A4 挑服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-连接服务器"><span class="nav-number">1.3.</span> <span class="nav-text">B 连接服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#B1-下载putty"><span class="nav-number">1.3.1.</span> <span class="nav-text">B1 下载putty</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B2-通过putty连接服务器"><span class="nav-number">1.3.2.</span> <span class="nav-text">B2 通过putty连接服务器</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
