@@ -15,6 +15,8 @@ categories:
 ### 在for循环中间添加停顿，一般用于防止一些异步IO过高地并发执行
 出处：http://stackoverflow.com/questions/3583724/how-do-i-add-a-delay-in-a-javascript-loop
 
+<!-- More -->
+
 一个长成这样的for循环
 {% codeblock %}
 for(var i = 1;i < 10;i++){

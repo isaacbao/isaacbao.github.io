@@ -7,6 +7,8 @@ categories:
 - 技术
 - 新手教学
 ---
+
+<!-- More -->
 首先打开intellij，然后import new project
 {% asset_img intellij_start.png %}
 如果之前已经打开过其他intelliJ项目的话，就直接

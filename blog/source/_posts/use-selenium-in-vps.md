@@ -11,6 +11,7 @@ categories:
 #### 环境
 CentOS release 6.8 (Final) ,装在vps上，没有gui
 2.6.32-642.el6.x86_64 GNU/Linux
+<!-- More -->
 
 #### 安装firefox
 先确认你服务器的repos里有没有firefox

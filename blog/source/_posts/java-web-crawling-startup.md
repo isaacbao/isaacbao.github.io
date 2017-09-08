@@ -8,13 +8,11 @@ tags:
 categories:
 - 技术
 ---
-
-
-
 ## 前置知识
 要学习爬虫，至少需要对http协议和html代码有基本的了解。
 <b><a href="https://hit-alibaba.github.io/interview/basic/network/HTTP.html">http协议</a></b>
 <b><a href="http://www.w3school.com.cn/html/index.asp">html语言</a></b>
+<!-- More -->
 
 ## htmlunit
 ### htmlunit 简介
