@@ -876,14 +876,14 @@
    * @param passiveToggleFrequency 被動技能的觸發頻率（主動技能的這個參數默認為1）
    */
   function calculateSumCoefficient(sumCoefficient, selectedSkill, slvAddition, physicDPS, magicDPS, passiveToggleFrequency) {
-    selectedSkill.effectExpectation.physicATK *= slvAddition * passiveToggleFrequency;
-    selectedSkill.effectExpectation.physicDEF *= slvAddition * passiveToggleFrequency;
-    selectedSkill.effectExpectation.magicATK *= slvAddition * passiveToggleFrequency;
-    selectedSkill.effectExpectation.magicDEF *= slvAddition * passiveToggleFrequency;
-    sumCoefficient.exceptedPhysicATK += selectedSkill.effectExpectation.physicATK * slvAddition * passiveToggleFrequency;
-    sumCoefficient.exceptedPhysicDEF += selectedSkill.effectExpectation.physicDEF * slvAddition * passiveToggleFrequency;
-    sumCoefficient.exceptedMagicATK += selectedSkill.effectExpectation.magicATK * slvAddition * passiveToggleFrequency;
-    sumCoefficient.exceptedMagicDEF += selectedSkill.effectExpectation.magicDEF * slvAddition * passiveToggleFrequency;
+    var phyATKCo = selectedSkill.effectExpectation.physicATK * slvAddition * passiveToggleFrequency;
+    var phyDEFCo  = selectedSkill.effectExpectation.physicDEF * slvAddition * passiveToggleFrequency;
+    var magATKCo = selectedSkill.effectExpectation.magicATK * slvAddition * passiveToggleFrequency;
+    var magDEFCo = selectedSkill.effectExpectation.magicDEF * slvAddition * passiveToggleFrequency;
+    sumCoefficient.exceptedPhysicATK += phyATKCo;
+    sumCoefficient.exceptedPhysicDEF += phyDEFCo;
+    sumCoefficient.exceptedMagicATK += magATKCo;
+    sumCoefficient.exceptedMagicDEF += magDEFCo;
 
     physicDPS = Number(physicDPS);
     magicDPS = Number(magicDPS);
@@ -893,8 +893,8 @@
     var hitMagicProb = (magicDPS - 1) / 4;
 
     if (selectedSkill.property === "both") {
-      sumCoefficient.exceptedEffectivePhysicATK += selectedSkill.effectExpectation.physicATK * physicDPS / 5;
-      sumCoefficient.exceptedEffectiveMagicATK += selectedSkill.effectExpectation.magicATK * magicDPS / 5;
+      sumCoefficient.exceptedEffectivePhysicATK += phyATKCo * physicDPS / 5;
+      sumCoefficient.exceptedEffectiveMagicATK += magATKCo * magicDPS / 5;
     }
     if (selectedSkill.property === "physic") {
       //都没物理输出有个鬼的有效物攻buff量
@@ -903,13 +903,13 @@
       }
 
       if (selectedSkill.target === TARGET_TYPE.one) {
-        sumCoefficient.exceptedEffectivePhysicATK += selectedSkill.effectExpectation.physicATK;
+        sumCoefficient.exceptedEffectivePhysicATK += phyATKCo;
       }
       if (selectedSkill.target === TARGET_TYPE.oneOrTwo) {
-        sumCoefficient.exceptedEffectivePhysicATK += (selectedSkill.effectMin.physicATK + (selectedSkill.effectExpectation.physicATK - selectedSkill.effectMin.physicATK) * hitPhysicProb) * slvAddition;
+        sumCoefficient.exceptedEffectivePhysicATK += (selectedSkill.effectMin.physicATK + (selectedSkill.effectExpectation.physicATK - selectedSkill.effectMin.physicATK) * hitPhysicProb) * slvAddition *passiveToggleFrequency;
       }
       if (selectedSkill.target === TARGET_TYPE.two) {
-        sumCoefficient.exceptedEffectivePhysicATK += (selectedSkill.effectExpectation.physicATK / 2 + selectedSkill.effectExpectation.physicATK / 2 * hitPhysicProb) * slvAddition;
+        sumCoefficient.exceptedEffectivePhysicATK += (selectedSkill.effectExpectation.physicATK / 2 + selectedSkill.effectExpectation.physicATK / 2 * hitPhysicProb) * slvAddition*passiveToggleFrequency;
       }
     }
     if (selectedSkill.property === "magic") {
@@ -919,13 +919,13 @@
       }
 
       if (selectedSkill.target === TARGET_TYPE.one) {
-        sumCoefficient.exceptedEffectiveMagicATK += selectedSkill.effectExpectation.magicATK;
+        sumCoefficient.exceptedEffectiveMagicATK += magATKCo;
       }
       if (selectedSkill.target === TARGET_TYPE.oneOrTwo) {
-        sumCoefficient.exceptedEffectiveMagicATK += (selectedSkill.effectMin.magicATK + (selectedSkill.effectExpectation.magicATK - selectedSkill.effectMin.magicATK) * hitMagicProb) * slvAddition;
+        sumCoefficient.exceptedEffectiveMagicATK += (selectedSkill.effectMin.magicATK + (selectedSkill.effectExpectation.magicATK - selectedSkill.effectMin.magicATK) * hitMagicProb) * slvAddition*passiveToggleFrequency;
       }
       if (selectedSkill.target === TARGET_TYPE.two) {
-        sumCoefficient.exceptedEffectiveMagicATK += (selectedSkill.effectExpectation.magicATK / 2 + selectedSkill.effectExpectation.magicATK / 2 * hitMagicProb) * slvAddition;
+        sumCoefficient.exceptedEffectiveMagicATK += (selectedSkill.effectExpectation.magicATK / 2 + selectedSkill.effectExpectation.magicATK / 2 * hitMagicProb) * slvAddition*passiveToggleFrequency;
       }
     }
   }
