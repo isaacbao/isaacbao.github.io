@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>葬爱琴书计算器</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style type="text/css">
+  /*table {*/
+  /*height: 500px;*/
+  /*}*/
+
+  .skills {
+    float: left;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  td.seperator {
+    height: 2px;
+  }
+</style>
+
+<body>
+<div id="app">
+  <div class="skills">
+    <table class='active-skill-table' border="1">
+      <tr>
+        <th>主动技能</th>
+        <th>主动技能等级</th>
+      </tr>
+      <tr v-for="active_id in active_ids" class='active-skill-group' :id='active_id'>
+        <td>
+          <active-skill-dropdown :selected='active_selected' :options='active_options'></active-skill-dropdown>
+        </td>
+        <td><input class='skill-lv' type='text' value='15'/></td>
+      </tr>
+      <tr>
+        <td>平均技能等級</td>
+        <td id="avg-active-skill-lv">?</td>
+      </tr>
+    </table>
+  </div>
+  <div class="skills">
+    <table class='passive-skill-table' border="1">
+      <tr>
+        <th>被动技能</th>
+        <th>被动技能等级</th>
+      </tr>
+      <tr v-for="passive_id in passive_ids" class='passive-skill-group' :id='passive_id'>
+        <td>
+          <passive-skill-dropdown :selected='passive_selected' :options='passive_options'></passive-skill-dropdown>
+        </td>
+        <td><input class='skill-lv' type='text' value='15'/></td>
+      </tr>
+      <tr>
+        <td>平均技能等級</td>
+        <td id="avg-passive-skill-lv">?</td>
+      </tr>
+    </table>
+  </div>
+
+  <table class='status' border="1">
+    <tbody>
+    <tr>
+      <td><label for='statusPhysicATK'>物攻</label></td>
+      <td><input class='status-input' type='text' id="statusPhysicATK"/></td>
+      <td><label for='statusPhysicDEF'>物防</label></td>
+      <td><input class='status-input' type='text' id="statusPhysicDEF"/></td>
+    </tr>
+    <tr>
+      <td><label for='statusMagicATK'>魔攻</label></td>
+      <td><input class='status-input' type='text' id="statusMagicATK"/></td>
+      <td><label for='statusMagicDEF'>魔防</label></td>
+      <td><input class='status-input' type='text' id="statusMagicDEF"/></td>
+    </tr>
+    <tr>
+      <td><label for='statusMagicATK'>职业</label></td>
+      <td>
+        <select class='status-input' id="job">
+          <option value="book">书佬</option>
+          <option value="instrument">琴佬</option>
+          <option value="other">其他</option>
+        </select>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="4">我方</td>
+    </tr>
+    <tr>
+      <td><label for='ourPhysicDPS'>物攻人数</label></td>
+      <td><input class='status-input' type='text' id="ourPhysicDPS"/></td>
+      <td><label for='ourMagicDPS'>魔攻人数</label></td>
+      <td><input class='status-input' type='text' id="ourMagicDPS"/></td>
+    </tr>
+    <tr>
+      <td colspan="4">敌方</td>
+    </tr>
+    <tr>
+      <td><label for='enemyPhysicDPS'>物攻人数</label></td>
+      <td><input class='status-input' type='text' id="enemyPhysicDPS"/></td>
+      <td><label for='enemyMagicDPS'>魔攻人数</label></td>
+      <td><input class='status-input' type='text' id="enemyMagicDPS"/></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table border="1" class="result-table" id="debuff-effect">
+    <tr>
+      <td colspan="4">一轮20件武器全部丢出去之后</td>
+    </tr>
+    <tr>
+      <td colspan="4" class="seperator"></td>
+    </tr>
+    <tr>
+      <td colspan="4">debuff量</td>
+    </tr>
+    <tr>
+      <td colspan="2">攻debuff</td>
+      <td colspan="2">防debuff</td>
+    </tr>
+    <tr>
+      <td colspan="2" id="debuff-ATK-effect">0</td>
+      <td colspan="2" id="debuff-DEF-effect">0</td>
+    </tr>
+    <tr>
+      <td colspan="1">物攻debuff</td>
+      <td colspan="1">魔攻debuff</td>
+      <td colspan="1">物防debuff</td>
+      <td colspan="1">魔防debuff</td>
+    </tr>
+    <tr>
+      <td colspan="1" id="debuff-physic-ATK-effect">0</td>
+      <td colspan="1" id="debuff-magic-ATK-effect">0</td>
+      <td colspan="1" id="debuff-physic-DEF-effect">0</td>
+      <td colspan="1" id="debuff-magic-DEF-effect">0</td>
+    </tr>
+    <tr>
+      <td colspan="1">有效物攻debuff</td>
+      <td colspan="1">有效魔攻debuff</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="1" id="debuff-effective-physic-ATK-effect">0</td>
+      <td colspan="1" id="debuff-effective-magic-ATK-effect">0</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="4" class="seperator"></td>
+    </tr>
+    <tr>
+      <td colspan="4">buff量</td>
+    </tr>
+    <tr>
+      <td colspan="2">攻buff</td>
+      <td colspan="2">防buff</td>
+    </tr>
+    <tr>
+      <td colspan="2" id="buff-ATK-effect">0</td>
+      <td colspan="2" id="buff-DEF-effect">0</td>
+    </tr>
+    <tr>
+      <td colspan="1">物攻buff</td>
+      <td colspan="1">魔攻buff</td>
+      <td colspan="1">物防buff</td>
+      <td colspan="1">魔防buff</td>
+    </tr>
+    <tr>
+      <td colspan="1" id="buff-physic-ATK-effect">0</td>
+      <td colspan="1" id="buff-magic-ATK-effect">0</td>
+      <td colspan="1" id="buff-physic-DEF-effect">0</td>
+      <td colspan="1" id="buff-magic-DEF-effect">0</td>
+    </tr>
+    <tr>
+      <td colspan="1">有效物攻buff</td>
+      <td colspan="1">有效魔攻buff</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="1" id="buff-effective-physic-ATK-effect">0</td>
+      <td colspan="1" id="buff-effective-magic-ATK-effect">0</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="4" class="seperator"></td>
+    </tr>
+    <tr>
+      <td colspan="4">sp消耗</td>
+    </tr>
+    <tr>
+      <td colspan="2">原消耗</td>
+      <td colspan="2">膜力供给减免后的期望消耗</td>
+    </tr>
+    <tr>
+      <td colspan="2" id="sp-consume">0</td>
+      <td colspan="2" id="sp-consume-with-gay">0</td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">
+        <button id='calculate' onclick='calculate()'>calculate</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+<script>
+  var TARGET_TYPE = {
+    one: 1,
+    oneOrTwo: 1.5,
+    two: 2
+  };
+  var ACTIVE_SKILL_DB = {
+    debuffLMagicATK10: {
+      id: "debuffLMagicATK10",
+      name: "衰弱ノ呪詛(Ⅳ)",
+      description: "单体、魔攻",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      property: "magic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0}
+    },
+    debuffLMagicATK15: {
+      id: "debuffLMagicATK15",
+      name: "衰弱ノ呪術(Ⅲ)",
+      description: "1~2体、魔攻",
+      sp: 21,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "magic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0.044, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0.066, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0.088, physicDEF: 0, magicDEF: 0}
+    },
+    debuffLMagicATK20: {
+      id: "debuffLMagicATK20",
+      name: "衰弱ノ呪術(Ⅱ)",
+      description: "2体、魔攻",
+      sp: 25,
+      target: TARGET_TYPE.two,
+      property: "magic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0}
+    },
+    debuffLMagicATKDEF15: {
+      id: "debuffLMagicATKDEF15",
+      name: "破魔ノ呪術(Ⅲ)",
+      description: "1~2体、魔防魔攻",
+      sp: 22,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "magic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0.044, physicDEF: 0, magicDEF: 0.072},
+      effectExpectation: {physicATK: 0, magicATK: 0.066, physicDEF: 0, magicDEF: 0.108},
+      effectMax: {physicATK: 0, magicATK: 0.088, physicDEF: 0, magicDEF: 0.144}
+    },
+    debuffLPhysicATK10: {
+      id: "debuffLPhysicATK10",
+      name: "刀錆ノ呪詛(Ⅳ)",
+      description: "单体、物攻",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      property: "physic",
+      type: "debuff",
+      effectMin: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    },
+    debuffLPhysicATKDEF10: {
+      id: "debuffLPhysicATKDEF10",
+      name: "枷鎖ノ呪詛(Ⅲ)",
+      description: "单体、物攻物防",
+      sp: 19,
+      target: TARGET_TYPE.one,
+      property: "physic",
+      type: "debuff",
+      effectMin: {physicATK: 0.049, magicATK: 0, physicDEF: 0.088, magicDEF: 0},
+      effectExpectation: {physicATK: 0.049, magicATK: 0, physicDEF: 0.088, magicDEF: 0},
+      effectMax: {physicATK: 0.049, magicATK: 0, physicDEF: 0.088, magicDEF: 0}
+    },
+    debuffLAllATK15: {
+      id: "debuffLAllATK15",
+      name: "腐蝕ノ呪術(Ⅲ)",
+      description: "1~2体、物攻魔攻",
+      sp: 22,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "both",
+      type: "debuff",
+      effectMin: {physicATK: 0.044, magicATK: 0.044, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.066, magicATK: 0.066, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.088, magicATK: 0.088, physicDEF: 0, magicDEF: 0}
+    },
+    debuffLAllATK10: {
+      id: "debuffLAllATK10",
+      name: "腐蝕ノ呪詛(Ⅲ)",
+      description: "1体、物攻魔攻",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      property: "both",
+      type: "debuff",
+      effectMin: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0}
+    },
+    debuffLAllDEF10: {
+      id: "debuffLAllDEF10",
+      name: "落城ノ呪詛(Ⅲ)",
+      description: "单体、物防魔防",
+      sp: 19,
+      target: TARGET_TYPE.one,
+      property: "both",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088}
+    },
+    debuffLAllDEF15: {
+      id: "debuffLAllDEF15",
+      name: "落城ノ呪術(Ⅲ)",
+      description: "1~2体、物防魔防",
+      sp: 22,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "both",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.072, magicDEF: 0.072},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.108, magicDEF: 0.108},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.144, magicDEF: 0.144}
+    },
+    debuffLPhysicDEF20: {
+      id: "debuffLPhysicDEF20",
+      name: "壊壁ノ呪術(Ⅱ)",
+      description: "2体、物防",
+      sp: 25,
+      target: TARGET_TYPE.two,
+      property: "physic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.124, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.124, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.124, magicDEF: 0}
+    },
+    debuffLPhysicDEF15: {
+      id: "debuffLPhysicDEF15",
+      name: "壊壁ノ呪術(Ⅲ)",
+      description: "1~2体、物防",
+      sp: 21,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "physic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.079, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.1135, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.158, magicDEF: 0}
+    },
+    debuffLPhysicDEF10: {
+      id: "debuffLPhysicDEF10",
+      name: "壊壁ノ呪詛(Ⅳ)",
+      description: "单体、物防",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      property: "physic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.095, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.095, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.095, magicDEF: 0}
+    },
+    debuffLMagicDEF20: {
+      id: "debuffLMagicDEF20",
+      name: "解魔ノ呪術(Ⅱ)",
+      description: "2体、魔防",
+      sp: 25,
+      target: TARGET_TYPE.two,
+      property: "magic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124}
+    },
+    debuffLMagicDEF15: {
+      id: "debuffLMagicDEF15",
+      name: "解魔ノ呪術(Ⅲ)",
+      description: "1~2体、魔防",
+      sp: 21,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "magic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.079},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.1135},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.158}
+    },
+    debuffLMagicDEF10: {
+      id: "debuffLMagicDEF10",
+      name: "解魔ノ呪詛(Ⅳ)",
+      description: "单体、魔防",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      property: "magic",
+      type: "debuff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095}
+    },
+    buffLPhysicATK10: {
+      id: "buffLPhysicATK10",
+      name: "戦士の円舞曲(Ⅳ)",
+      description: "单体、物攻",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      property: "physic",
+      type: "buff",
+      effectMin: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    },
+    buffLPhysicATK175: {
+      id: "buffLPhysicATK175",
+      name: "戦士の哀歌(Ⅳ)",
+      description: "单体、物攻狼烟",
+      sp: 22,
+      target: TARGET_TYPE.one,
+      property: "physic",
+      type: "buff",
+      effectMin: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.0945, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.135, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    },
+    buffLPhysicATK15: {
+      id: "buffLPhysicATK15",
+      name: "戦士の輪舞曲(Ⅲ)",
+      description: "1~2体、物攻",
+      sp: 21,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "physic",
+      type: "buff",
+      effectMin: {physicATK: 0.048, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.072, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.096, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    },
+    buffLPhysicATK20: {
+      id: "buffLPhysicATK20",
+      name: "戦士の輪舞曲(Ⅱ)",
+      description: "2体、物攻",
+      sp: 25,
+      target: TARGET_TYPE.two,
+      property: "physic",
+      type: "buff",
+      effectMin: {physicATK: 0.072, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.072, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.072, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    },
+    buffLMagicATK10: {
+      id: "buffLMagicATK10",
+      name: "魔術師の円舞曲(Ⅳ)",
+      description: "单体、魔攻",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      property: "magic",
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0.54, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0.54, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0.54, physicDEF: 0, magicDEF: 0}
+    },
+    buffLMagicATK175: {
+      id: "buffLMagicATK175",
+      name: "魔術師の哀歌(Ⅳ)",
+      description: "单体、魔攻狼烟",
+      sp: 22,
+      target: TARGET_TYPE.one,
+      property: "magic",
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0.0945, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0.135, physicDEF: 0, magicDEF: 0}
+    },
+    buffLMagicATK15: {
+      id: "buffLMagicATK15",
+      name: "魔術師の輪舞曲(Ⅲ)",
+      description: "1~2体、魔攻",
+      sp: 21,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "magic",
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0.048, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0.096, physicDEF: 0, magicDEF: 0}
+    },
+    buffLMagicATK20: {
+      id: "buffLMagicATK20",
+      name: "魔術師の輪舞曲(Ⅱ)",
+      description: "2体、魔攻",
+      sp: 25,
+      target: TARGET_TYPE.two,
+      property: "magic",
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0}
+    },
+    buffLALLATK10: {
+      id: "buffLALLATK10",
+      name: "勇者の狂詩曲(Ⅲ)",
+      description: "单体、双攻",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      property: "both",
+      type: "buff",
+      effectMin: {physicATK: 0.05, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.5, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.05, magicATK: 0.05, physicDEF: 0, magicDEF: 0}
+    },
+    buffLALLATK15: {
+      id: "buffLALLATK15",
+      name: "勇者の夢想曲(Ⅲ)",
+      description: "1~2体、双攻",
+      sp: 21,
+      target: TARGET_TYPE.oneOrTwo,
+      property: "both",
+      type: "buff",
+      effectMin: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.0675, magicATK: 0.0675, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.09, magicATK: 0.09, physicDEF: 0, magicDEF: 0}
+    },
+    buffLALLATK20: {
+      id: "buffLALLATK20",
+      name: "勇者の夢想曲(Ⅱ)",
+      description: "2体、双攻",
+      sp: 26,
+      target: TARGET_TYPE.two,
+      property: "both",
+      type: "buff",
+      effectMin: {physicATK: 0.064, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.064, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.064, magicATK: 0.064, physicDEF: 0, magicDEF: 0}
+    },
+    buffLPhysicDEF15: {
+      id: "buffLPhysicDEF15",
+      name: "騎士の夜想曲(Ⅲ)",
+      description: "1~2体、物防",
+      sp: 21,
+      target: TARGET_TYPE.oneOrTwo,
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.08, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.16, magicDEF: 0}
+    },
+    buffLMagicDEF10: {
+      id: "buffLMagicDEF10",
+      name: "結界師の小夜曲(Ⅳ)",
+      description: "1体、魔防",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095}
+    },
+    buffLMagicDEF15: {
+      id: "buffLMagicDEF15",
+      name: "結界師の夜想曲(Ⅲ)",
+      description: "1~2体、魔防",
+      sp: 21,
+      target: TARGET_TYPE.oneOrTwo,
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.08},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.12},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.16}
+    },
+    buffLMagicDEF20: {
+      id: "buffLMagicDEF20",
+      name: "結界師の夜想曲(Ⅱ)",
+      description: "2体、魔防",
+      sp: 25,
+      target: TARGET_TYPE.two,
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124}
+    },
+    buffLAllDEF10: {
+      id: "buffLAllDEF10",
+      name: "聖騎士の賛美歌(Ⅲ)",
+      description: "1体、双防",
+      sp: 18,
+      target: TARGET_TYPE.one,
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088}
+    },
+    buffLAllDEF15: {
+      id: "buffLAllDEF15",
+      name: "聖騎士の福音歌(Ⅲ)",
+      description: "1~2体、双防",
+      sp: 22,
+      target: TARGET_TYPE.oneOrTwo,
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088}
+    },
+    buffLAllDEF20: {
+      id: "buffLAllDEF20",
+      name: "聖騎士の賛美歌(Ⅲ)",
+      description: "2体、双防",
+      sp: 25,
+      target: TARGET_TYPE.two,
+      type: "buff",
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12}
+    }
+
+  };
+  var PASSIVE_SKILL_TYPE = {
+    BUFF_UP: "buffUp",
+    STATUS_UP: "status_up",
+    GAY: "gay"
+  };
+  var PASSIVE_SKILL_DB = {
+    buffUp10: {
+      id: "buffUp10",
+      name: "補助支援(壱)",
+      type: PASSIVE_SKILL_TYPE.BUFF_UP,
+      basicEffect: {max: 0.1, expectation: 0.1, min: 0.1}
+    },
+    buffUp20: {
+      id: "buffUp20",
+      name: "補助支援(弐)",
+      type: PASSIVE_SKILL_TYPE.BUFF_UP,
+      basicEffect: {max: 0.2, expectation: 0.2, min: 0.2}
+    },
+    buffUp25: {
+      id: "buffUp25",
+      name: "起死回生(弐)",
+      type: PASSIVE_SKILL_TYPE.BUFF_UP,
+      basicEffect: {max: 0.27, expectation: 0.225, min: 0.18}
+    },
+    buffUp30: {
+      id: "buffUp30",
+      name: "補助支援(参)",
+      type: PASSIVE_SKILL_TYPE.BUFF_UP,
+      basicEffect: {max: 0.3, expectation: 0.3, min: 0.3}
+    },
+    physicATK20: {
+      id: "physicATK20",
+      name: "刀刃展開(Ⅱ)",
+      type: PASSIVE_SKILL_TYPE.STATUS_UP,
+      effectMin: {physicATK: 0.0037, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.0111, magicATK: 0, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.0185, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    },
+    magicATK10: {
+      id: "magicATK10",
+      name: "方陣展開(Ⅰ)",
+      type: PASSIVE_SKILL_TYPE.STATUS_UP,
+      effectMin: {physicATK: 0, magicATK: 0.0027, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0.0081, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0.0135, physicDEF: 0, magicDEF: 0}
+    },
+    allATK20: {
+      id: "allATK20",
+      name: "武器補修(Ⅱ)",
+      type: PASSIVE_SKILL_TYPE.STATUS_UP,
+      effectMin: {physicATK: 0.0033, magicATK: 0.0033, physicDEF: 0, magicDEF: 0},
+      effectExpectation: {physicATK: 0.0099, magicATK: 0.0099, physicDEF: 0, magicDEF: 0},
+      effectMax: {physicATK: 0.0165, magicATK: 0.0165, physicDEF: 0, magicDEF: 0}
+    },
+    physicDEF10: {
+      id: "physicDEF10",
+      name: "鉄盾展開(Ⅰ)",
+      type: PASSIVE_SKILL_TYPE.STATUS_UP,
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.004, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.012, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.02, magicDEF: 0}
+    },
+    physicDEF20: {
+      id: "physicDEF20",
+      name: "鉄盾展開(Ⅱ)",
+      type: PASSIVE_SKILL_TYPE.STATUS_UP,
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.006, magicDEF: 0},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.018, magicDEF: 0},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.03, magicDEF: 0}
+    },
+    allDEF10: {
+      id: "allDEF10",
+      name: "防具補修(Ⅰ)",
+      type: PASSIVE_SKILL_TYPE.STATUS_UP,
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.004, magicDEF: 0.004},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.012, magicDEF: 0.012},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.02, magicDEF: 0.02}
+    },
+    allDEF20: {
+      id: "allDEF20",
+      name: "防具補修(Ⅱ)",
+      type: PASSIVE_SKILL_TYPE.STATUS_UP,
+      effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.006, magicDEF: 0.006},
+      effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.018, magicDEF: 0.018},
+      effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.03, magicDEF: 0.03}
+    },
+    mahouGay10: {
+      id: "mahouGay10",
+      name: "魔力供給(壱)",
+      type: PASSIVE_SKILL_TYPE.GAY,
+      effect: 0.8
+    },
+    mahouGay20: {
+      id: "mahouGay20",
+      name: "魔力供給(弐)",
+      type: PASSIVE_SKILL_TYPE.GAY,
+      effect: 0.7
+    }
+  };
+
+  Vue.component('active-skill-dropdown', {
+    template: '<select class="active-skill" v-model="selectedOption" v-on:change="notify_selection"><option v-for="option in options" :value="option.id">{{ option.name +"("+option.description+")"}}</option></select>',
+    props: ['options', 'selected'],
+    data() {
+      return {
+        selectedOption: ''
+      }
+    },
+    methods: {
+      notify_selection() {
+        this.$parent.$emit('update', this.selectedOption);
+      }
+    },
+    created() {
+      this.selectedOption = this.selected;
+    }
+  });
+
+  Vue.component('passive-skill-dropdown', {
+    template: '<select class="passive-skill" v-model="selectedOption" v-on:change="notify_selection"><option v-for="option in options" :value="option.id">{{ option.name }}</option></select>',
+    props: ['options', 'selected'],
+    data() {
+      return {
+        selectedOption: ''
+      }
+    },
+    methods: {
+      notify_selection() {
+        this.$parent.$emit('update', this.selectedOption);
+      }
+    },
+    created() {
+      this.selectedOption = this.selected;
+    }
+  });
+
+  new Vue({
+    el: '#app',
+    created() {
+      this.$on('update', (selection) => {
+        this.selected = selection;
+      })
+    },
+    data: {
+      active_ids: ["active-skill-01", "active-skill-02", "active-skill-03", "active-skill-04", "active-skill-05", "active-skill-06", "active-skill-07", "active-skill-08", "active-skill-09", "active-skill-10", "active-skill-11", "active-skill-12", "active-skill-13", "active-skill-14", "active-skill-15", "active-skill-16", "active-skill-17", "active-skill-18", "active-skill-19", "active-skill-20"],
+      active_options: ACTIVE_SKILL_DB,
+      active_selected: '',
+      passive_ids: ["passive-skill-01", "passive-skill-02", "passive-skill-03", "passive-skill-04", "passive-skill-05", "passive-skill-06", "passive-skill-07", "passive-skill-08", "passive-skill-09", "passive-skill-10", "passive-skill-11", "passive-skill-12", "passive-skill-13", "passive-skill-14", "passive-skill-15", "passive-skill-16", "passive-skill-17", "passive-skill-18", "passive-skill-19", "passive-skill-20"],
+      passive_options: PASSIVE_SKILL_DB,
+      passive_selected: ''
+    }
+  });
+
+  function calculateEffectiveness(coefficient, status, buffUps, passiveSkillCoefficient, jobAddition) {
+    var buffUpEffective = 1;
+    buffUps.forEach(function (buffUp) {
+      buffUpEffective += buffUp.effect * buffUp.toggleRate;
+    });
+    var otherAddition = buffUpEffective * jobAddition;
+
+    var passiveStatusChangeEffect = {
+      physicATK: 0,
+      physicDEF: 0,
+      magicATK: 0,
+      magicDEF: 0,
+      effectivePhysicATK: 0,
+      effectiveMagicATK: 0
+    };
+    if (passiveSkillCoefficient) {
+      passiveStatusChangeEffect.physicATK += Math.floor(passiveSkillCoefficient.exceptedPhysicATK * status.physicATK);
+      passiveStatusChangeEffect.physicDEF += Math.floor(passiveSkillCoefficient.exceptedPhysicDEF * status.physicDEF);
+      passiveStatusChangeEffect.magicATK += Math.floor(passiveSkillCoefficient.exceptedMagicATK * status.magicATK);
+      passiveStatusChangeEffect.magicDEF += Math.floor(passiveSkillCoefficient.exceptedMagicDEF * status.magicDEF);
+      passiveStatusChangeEffect.effectivePhysicATK += Math.floor(passiveSkillCoefficient.exceptedEffectivePhysicATK * status.physicATK);
+      passiveStatusChangeEffect.effectiveMagicATK += Math.floor(passiveSkillCoefficient.exceptedEffectiveMagicATK * status.magicATK);
+    }
+
+    var result = {
+      physicATK: Math.floor(coefficient.exceptedPhysicATK * status.physicATK * otherAddition) + passiveStatusChangeEffect.physicATK,
+      physicDEF: Math.floor(coefficient.exceptedPhysicDEF * status.physicDEF * otherAddition) + passiveStatusChangeEffect.physicDEF,
+      magicATK: Math.floor(coefficient.exceptedMagicATK * status.magicATK * otherAddition) + passiveStatusChangeEffect.magicATK,
+      magicDEF: Math.floor(coefficient.exceptedMagicDEF * status.magicDEF * otherAddition) + passiveStatusChangeEffect.magicDEF,
+      effectivePhysicATK: Math.floor(coefficient.exceptedEffectivePhysicATK * status.physicATK * otherAddition) + passiveStatusChangeEffect.effectivePhysicATK,
+      effectiveMagicATK: Math.floor(coefficient.exceptedEffectiveMagicATK * status.magicATK * otherAddition) + passiveStatusChangeEffect.effectiveMagicATK
+    };
+    return result;
+  }
+
+  function showDebuff(result) {
+    document.getElementById("debuff-physic-ATK-effect").innerText = result.physicATK;
+    document.getElementById("debuff-physic-DEF-effect").innerText = result.physicDEF;
+    document.getElementById("debuff-magic-ATK-effect").innerText = result.magicATK;
+    document.getElementById("debuff-magic-DEF-effect").innerText = result.magicDEF;
+    document.getElementById("debuff-effective-physic-ATK-effect").innerText = result.effectivePhysicATK;
+    document.getElementById("debuff-effective-magic-ATK-effect").innerText = result.effectiveMagicATK;
+    document.getElementById("debuff-ATK-effect").innerText = result.physicATK + result.magicATK;
+    document.getElementById("debuff-DEF-effect").innerText = result.physicDEF + result.magicDEF;
+  }
+
+  function showBuff(result) {
+    document.getElementById("buff-physic-ATK-effect").innerText = result.physicATK;
+    document.getElementById("buff-physic-DEF-effect").innerText = result.physicDEF;
+    document.getElementById("buff-magic-ATK-effect").innerText = result.magicATK;
+    document.getElementById("buff-magic-DEF-effect").innerText = result.magicDEF;
+    document.getElementById("buff-effective-physic-ATK-effect").innerText = result.effectivePhysicATK;
+    document.getElementById("buff-effective-magic-ATK-effect").innerText = result.effectiveMagicATK;
+    document.getElementById("buff-ATK-effect").innerText = result.physicATK + result.magicATK;
+    document.getElementById("buff-DEF-effect").innerText = result.physicDEF + result.magicDEF;
+  }
+
+  function showSpConsume(spConsume) {
+    document.getElementById("sp-consume").innerText = spConsume.withoutGay + "";
+    document.getElementById("sp-consume-with-gay").innerText = spConsume.withGay + "";
+  }
+
+  /**
+   * 计算总技能系数
+   * @param sumCoefficient 总技能系数
+   * @param selectedSkill 技能
+   * @param slvAddition 技能等级加成
+   * @param physicDPS 物理输出人数
+   * @param magicDPS 魔法输出人数
+   * @param passiveToggleFrequency 被動技能的觸發頻率（主動技能的這個參數默認為1）
+   */
+  function calculateSumCoefficient(sumCoefficient, selectedSkill, slvAddition, physicDPS, magicDPS, passiveToggleFrequency) {
+    sumCoefficient.exceptedPhysicATK += selectedSkill.effectExpectation.physicATK * slvAddition * passiveToggleFrequency;
+    sumCoefficient.exceptedPhysicDEF += selectedSkill.effectExpectation.physicDEF * slvAddition * passiveToggleFrequency;
+    sumCoefficient.exceptedMagicATK += selectedSkill.effectExpectation.magicATK * slvAddition * passiveToggleFrequency;
+    sumCoefficient.exceptedMagicDEF += selectedSkill.effectExpectation.magicDEF * slvAddition * passiveToggleFrequency;
+
+    physicDPS = Number(physicDPS);
+    magicDPS = Number(magicDPS);
+    //二体技能飘到物理输出头上的概率
+    var hitPhysicProb = (physicDPS - 1) / 4;
+    //二体技能飘到魔法输出头上的概率
+    var hitMagicProb = (magicDPS - 1) / 4;
+
+    if (selectedSkill.property === "both") {
+      sumCoefficient.exceptedEffectivePhysicATK += selectedSkill.effectExpectation.physicATK * physicDPS / 5;
+      sumCoefficient.exceptedEffectiveMagicATK += selectedSkill.effectExpectation.magicATK * magicDPS / 5;
+    }
+    if (selectedSkill.property === "physic") {
+      //都没物理输出有个鬼的有效物攻buff量
+      if (physicDPS === 0) {
+        return;
+      }
+
+      if (selectedSkill.target === TARGET_TYPE.one) {
+        sumCoefficient.exceptedEffectivePhysicATK += selectedSkill.effectExpectation.physicATK;
+      }
+      if (selectedSkill.target === TARGET_TYPE.oneOrTwo) {
+        sumCoefficient.exceptedEffectivePhysicATK += (selectedSkill.effectMin.physicATK + (selectedSkill.effectExpectation.physicATK - selectedSkill.effectMin.physicATK) * hitPhysicProb) * slvAddition;
+      }
+      if (selectedSkill.target === TARGET_TYPE.two) {
+        sumCoefficient.exceptedEffectivePhysicATK += (selectedSkill.effectExpectation.physicATK / 2 + selectedSkill.effectExpectation.physicATK / 2 * hitPhysicProb) * slvAddition;
+      }
+    }
+    if (selectedSkill.property === "magic") {
+      //都没魔法输出有个鬼的有效魔法buff量
+      if (magicDPS === 0) {
+        return;
+      }
+
+      if (selectedSkill.target === TARGET_TYPE.one) {
+        sumCoefficient.exceptedEffectiveMagicATK += selectedSkill.effectExpectation.magicATK;
+      }
+      if (selectedSkill.target === TARGET_TYPE.oneOrTwo) {
+        sumCoefficient.exceptedEffectiveMagicATK += (selectedSkill.effectMin.magicATK + (selectedSkill.effectExpectation.magicATK - selectedSkill.effectMin.magicATK) * hitMagicProb) * slvAddition;
+      }
+      if (selectedSkill.target === TARGET_TYPE.two) {
+        sumCoefficient.exceptedEffectiveMagicATK += (selectedSkill.effectExpectation.magicATK / 2 + selectedSkill.effectExpectation.magicATK / 2 * hitMagicProb) * slvAddition;
+      }
+    }
+  }
+
+
+  function calculateSpConsume(spConsume, activeSkill, gay) {
+    spConsume.withoutGay += activeSkill.sp;
+    var combinationAmount = Math.pow(2, gay.length);
+    for (var combination = 0; combination < combinationAmount; combination++) {
+      var binaryString = combination.toString(2);
+      while (binaryString.length < gay.length) {
+        binaryString = "0" + binaryString;
+      }
+      var spDiscount = 1;
+      var probability = 1;
+      for (var gayIndex = 0; gayIndex < gay.length; gayIndex++) {
+        var currentGay = gay[gayIndex];
+        if (binaryString.charAt(gayIndex) === "1") {
+          spDiscount *= currentGay.effect;
+          probability *= currentGay.toggleRate;
+        } else {
+          probability *= currentGay.dudRate;
+        }
+      }
+      spConsume.withGay += activeSkill.sp * spDiscount * probability;
+    }
+    spConsume.withGay = Math.floor(spConsume.withGay);
+  }
+
+  function saveSelectedActiveSkills() {
+    var activeSkillGroupsElements = document.getElementsByClassName("active-skill-group");
+    var selectedActiveSkills = [];
+    var skillLvSum = 0;
+    Array.from(activeSkillGroupsElements).forEach(function (activeSkillGroup) {
+      var activeSkillSelect = activeSkillGroup.querySelector(".active-skill");
+      var selectedOption = activeSkillSelect.options[activeSkillSelect.selectedIndex];
+      if (selectedOption) {
+        var skillLv = Number(activeSkillGroup.querySelector("input.skill-lv").value);
+        skillLvSum += skillLv;
+        var activeSkill = {
+          activeSkillId: selectedOption.value,
+          skillLv: skillLv
+        };
+        selectedActiveSkills.push(activeSkill);
+      }
+    });
+    var skillLvAvg = skillLvSum / selectedActiveSkills.length;
+    skillLvAvg = skillLvAvg.toFixed(2);
+    document.getElementById("avg-active-skill-lv").innerText = skillLvAvg + "";
+    localStorage.selectedActiveSkills = JSON.stringify(selectedActiveSkills);
+  }
+
+  function initSelectedActiveSkill() {
+    if (!localStorage.selectedActiveSkills) {
+      return;
+    }
+    var selectedActiveSkills = JSON.parse(localStorage.selectedActiveSkills);
+    var activeSkillGroups = Array.from(document.getElementsByClassName("active-skill-group"));
+    var counter = 0;
+    selectedActiveSkills.forEach(function (selectedActiveSkill) {
+      var activeSkillGroup = activeSkillGroups[counter];
+      var activeSkillSelect = activeSkillGroup.querySelector(".active-skill");
+      var options = activeSkillSelect.options;
+      for (var opt, j = 0; opt = options[j]; j++) {
+        if (opt.value === selectedActiveSkill.activeSkillId) {
+          activeSkillSelect.selectedIndex = j;
+          break;
+        }
+      }
+      activeSkillGroup.querySelector("input.skill-lv").value = selectedActiveSkill.skillLv;
+      counter++;
+    });
+  }
+
+  function saveSelectedPassiveSkills() {
+    var passiveSkillGroupsElements = document.getElementsByClassName("passive-skill-group");
+    var selectedPassiveSkills = [];
+    var skillLvSum = 0;
+    Array.from(passiveSkillGroupsElements).forEach(function (passiveSkillGroup) {
+      var passiveSkillSelect = passiveSkillGroup.querySelector(".passive-skill");
+      var selectedOption = passiveSkillSelect.options[passiveSkillSelect.selectedIndex];
+      if (selectedOption) {
+        var skillLv = Number(passiveSkillGroup.querySelector("input.skill-lv").value);
+        skillLvSum += skillLv;
+        var passiveSkill = {
+          passiveSkillId: selectedOption.value,
+          skillLv: skillLv
+        };
+        selectedPassiveSkills.push(passiveSkill);
+      }
+    });
+    var skillLvAvg = skillLvSum / selectedPassiveSkills.length;
+    skillLvAvg = skillLvAvg.toFixed(2);
+    document.getElementById("avg-passive-skill-lv").innerText = skillLvAvg + "";
+    localStorage.selectedPassiveSkills = JSON.stringify(selectedPassiveSkills);
+  }
+
+  function initSelectedPassiveSkill() {
+    if (!localStorage.selectedPassiveSkills) {
+      return;
+    }
+    var selectedPassiveSkills = JSON.parse(localStorage.selectedPassiveSkills);
+    var passiveSkillGroups = Array.from(document.getElementsByClassName("passive-skill-group"));
+    var counter = 0;
+    selectedPassiveSkills.forEach(function (selectedPassiveSkill) {
+      var passiveSkillGroup = passiveSkillGroups[counter];
+      var passiveSkillSelect = passiveSkillGroup.querySelector(".passive-skill");
+      var options = passiveSkillSelect.options;
+      for (var opt, j = 0; opt = options[j]; j++) {
+        if (opt.value === selectedPassiveSkill.passiveSkillId) {
+          passiveSkillSelect.selectedIndex = j;
+          break;
+        }
+      }
+      passiveSkillGroup.querySelector("input.skill-lv").value = selectedPassiveSkill.skillLv;
+      counter++;
+    });
+  }
+
+  function saveStatus() {
+    var job;
+    var jobSelect = document.getElementById("job");
+    var selectedOption = jobSelect.options[jobSelect.selectedIndex];
+    if (selectedOption) {
+      job = selectedOption.value;
+    }
+    var status = {
+      enemyPhysicDPS: document.getElementById("enemyPhysicDPS").value,
+      enemyMagicDPS: document.getElementById("enemyMagicDPS").value,
+      ourPhysicDPS: document.getElementById("ourPhysicDPS").value,
+      ourMagicDPS: document.getElementById("ourMagicDPS").value,
+      physicATK: document.getElementById("statusPhysicATK").value,
+      physicDEF: document.getElementById("statusPhysicDEF").value,
+      magicATK: document.getElementById("statusMagicATK").value,
+      magicDEF: document.getElementById("statusMagicDEF").value,
+      job: job
+    };
+    localStorage.status = JSON.stringify(status);
+  }
+
+  function initStatus() {
+    if (!localStorage.status) {
+      return;
+    }
+    var status = JSON.parse(localStorage.status);
+    document.getElementById("enemyPhysicDPS").value = status.enemyPhysicDPS;
+    document.getElementById("enemyMagicDPS").value = status.enemyMagicDPS;
+    document.getElementById("ourPhysicDPS").value = status.ourPhysicDPS;
+    document.getElementById("ourMagicDPS").value = status.ourMagicDPS;
+    document.getElementById("statusPhysicATK").value = status.physicATK;
+    document.getElementById("statusPhysicDEF").value = status.physicDEF;
+    document.getElementById("statusMagicATK").value = status.magicATK;
+    document.getElementById("statusMagicDEF").value = status.magicDEF;
+    var jobSelect = document.getElementById("job");
+    var options = jobSelect.options;
+    for (var opt, j = 0; opt = options[j]; j++) {
+      if (opt.value === status.job) {
+        jobSelect.selectedIndex = j;
+        break;
+      }
+    }
+  }
+
+  function init() {
+    initSelectedActiveSkill();
+    initSelectedPassiveSkill();
+    initStatus();
+  }
+
+  init();
+
+  function calculate() {
+    saveSelectedActiveSkills();
+    saveSelectedPassiveSkills();
+    saveStatus();
+
+    var status = JSON.parse(localStorage.status);
+
+    var buffUps = [];
+    var gays = [];
+    var passiveBuffCoefficient = {
+      exceptedPhysicATK: 0,
+      exceptedPhysicDEF: 0,
+      exceptedMagicATK: 0,
+      exceptedMagicDEF: 0,
+      exceptedEffectivePhysicATK: 0,
+      exceptedEffectiveMagicATK: 0,
+    };
+    var selectedPassiveSkills = JSON.parse(localStorage.selectedPassiveSkills);
+    selectedPassiveSkills.forEach(function (selectedPassiveSkill) {
+      var passiveSkill = PASSIVE_SKILL_DB[selectedPassiveSkill.passiveSkillId];
+      var slvAddition = getSkillLVAddition(selectedPassiveSkill.skillLv);
+      var toggleRate = getToggleRate(selectedPassiveSkill.skillLv);
+      if (passiveSkill.type === PASSIVE_SKILL_TYPE.BUFF_UP) {
+        buffUps.push({
+          effect: passiveSkill.basicEffect.expectation * slvAddition,
+          toggleRate: toggleRate
+        });
+      }
+      if (passiveSkill.type === PASSIVE_SKILL_TYPE.STATUS_UP) {
+        var supportSkillAmount = 20;
+        var toggleFrequency = supportSkillAmount * toggleRate;
+        calculateSumCoefficient(passiveBuffCoefficient, passiveSkill, slvAddition, status.enemyPhysicDPS, status.enemyMagicDPS, toggleFrequency);
+      }
+      if (passiveSkill.type === PASSIVE_SKILL_TYPE.GAY) {
+        gays.push({
+          effect: passiveSkill.effect,
+          toggleRate: toggleRate,
+          dudRate: 1 - toggleRate
+        });
+      }
+    });
+
+    var debuffCoefficient = {
+      exceptedPhysicATK: 0,
+      exceptedPhysicDEF: 0,
+      exceptedMagicATK: 0,
+      exceptedMagicDEF: 0,
+      exceptedEffectivePhysicATK: 0,
+      exceptedEffectiveMagicATK: 0,
+    };
+    var buffCoefficient = {
+      exceptedPhysicATK: 0,
+      exceptedPhysicDEF: 0,
+      exceptedMagicATK: 0,
+      exceptedMagicDEF: 0,
+      exceptedEffectivePhysicATK: 0,
+      exceptedEffectiveMagicATK: 0,
+    };
+    var spConsume = {
+      withoutGay: 0,
+      withGay: 0
+    };
+
+    var selectedActiveSkills = JSON.parse(localStorage.selectedActiveSkills);
+    selectedActiveSkills.forEach(function (selectedActiveSkill) {
+      var activeSkill = ACTIVE_SKILL_DB[selectedActiveSkill.activeSkillId];
+      var slvAddition = getSkillLVAddition(selectedActiveSkill.skillLv);
+      calculateSpConsume(spConsume, activeSkill, gays);
+      if (activeSkill.type === "debuff") {
+        calculateSumCoefficient(debuffCoefficient, activeSkill, slvAddition, status.enemyPhysicDPS, status.enemyMagicDPS, 1);
+      } else {
+        calculateSumCoefficient(buffCoefficient, activeSkill, slvAddition, status.ourPhysicDPS, status.ourMagicDPS, 1);
+      }
+    });
+    var jobAdditionBook = 1;
+    if (status.job === "book") {
+      jobAdditionBook = 1.1;
+    }
+    var debuffResult = calculateEffectiveness(debuffCoefficient, status, buffUps, null, jobAdditionBook);
+    showDebuff(debuffResult);
+
+    var jobAdditionInstument = 1;
+    if (status.job === "instrument") {
+      jobAdditionInstument = 1.1;
+    }
+    var buffResult = calculateEffectiveness(buffCoefficient, status, buffUps, passiveBuffCoefficient, jobAdditionInstument);
+    showBuff(buffResult);
+
+    showSpConsume(spConsume);
+  }
+
+  /**
+   * 計算技能等級加成
+   * @param slv 技能等级
+   * @returns {number}
+   */
+  function getSkillLVAddition(slv) {
+    slv = Number(slv);
+    if (slv < 1 || 20 < slv) {
+      return 0;
+    }
+    var bonus = 0;
+    if (slv > 14) {
+      bonus += 0.03
+    }
+    if (slv === 20) {
+      bonus += 0.05
+    }
+    return 1 + (slv - 1) * 0.03 + bonus;
+  }
+
+  /**
+   * 計算被動技能發動率
+   * @param slv 技能等級
+   * @returns {number}
+   */
+  function getToggleRate(slv) {
+    slv = Number(slv);
+    var bonus = 0;
+    if (slv > 14) {
+      bonus += 0.005
+    }
+    if (slv === 20) {
+      bonus += 0.01
+    }
+    return 0.04 + (slv - 1) * 0.005 + bonus;
+  }
+</script>
+
+</html>
