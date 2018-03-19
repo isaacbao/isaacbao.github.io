@@ -1,0 +1,56 @@
+.skills {
+  float: left;
+}
+
+.input-tables {
+  float: left;
+}
+
+.clear {
+  clear: both
+}
+
+td, th {
+  text-align: center;
+}
+
+input.skill-lv {
+  text-align: center;
+}
+
+.result-table {
+
+}
+
+select, input {
+  border: 0;
+  width: 100%;
+}
+
+.active-skill-table {
+  width: 400px;
+  height: 500px;
+}
+
+.passive-skill-table {
+  width: 400px;
+  height: 500px;
+}
+
+.status-table {
+  width: 800px;
+  height: 200px;
+}
+
+.result-table {
+  width: 500px;
+  height: 703px;
+}
+
+.active-skill {
+  width: 300px;
+}
+
+.passive-skill {
+  width: 300px;
+}
