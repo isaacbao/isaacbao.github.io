@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
-
+<html>
 <head>
-  <title>葬爱琴书计算器</title>
+  <title>葬爱琴書計算器</title>
+  <link rel="icon" href="resource/img/kishin-ahei.png">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
   <meta name="description" content="">
   <meta name="author" content="">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -18,16 +17,12 @@
   <script async src="http://isaacbao.github.io/scripts/google-analytics-js.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
     function gtag() {
       dataLayer.push(arguments);
     }
-
     gtag('js', new Date());
-
     gtag('config', 'UA-93629863-2');
   </script>
-
   <!-- Bootstrap core CSS -->
   <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -44,8 +39,8 @@
     <div class="skills table-responsive">
       <table class='active-skill-table table-bordered table-striped' border="1">
         <tr>
-          <th>主动技能</th>
-          <th>等级</th>
+          <th>主動</th>
+          <th>等級</th>
         </tr>
         <tr v-for="active_id in active_ids" class='active-skill-group' :id='active_id'>
           <td>
@@ -55,7 +50,7 @@
           <td><input contenteditable='true' class='skill-lv' type='text' value='15'/></td>
         </tr>
         <tr>
-          <td>平均技能等級</td>
+          <td>平均等級</td>
           <td id="avg-active-skill-lv">?</td>
         </tr>
       </table>
@@ -63,8 +58,8 @@
     <div class="skills table-responsive">
       <table class='passive-skill-table table-bordered table-striped' border="1">
         <tr>
-          <th>被动技能</th>
-          <th>等级</th>
+          <th>被動</th>
+          <th>等級</th>
         </tr>
         <tr v-for="passive_id in passive_ids" class='passive-skill-group' :id='passive_id'>
           <td>
@@ -74,7 +69,7 @@
           <td><input contenteditable='true' class='skill-lv' type='text' value='15'/></td>
         </tr>
         <tr>
-          <td>平均技能等級</td>
+          <td>平均等級</td>
           <td id="avg-passive-skill-lv">?</td>
         </tr>
       </table>
@@ -101,7 +96,7 @@
           <td><label for='statusMagicATK'>职业</label></td>
           <td>
             <select class='status-input' id="job">
-              <option value="book">书佬</option>
+              <option value="book">書佬</option>
               <option value="instrument">琴佬</option>
               <option value="other">其他</option>
             </select>
@@ -118,7 +113,7 @@
           <td><input class='status-input' type='text' id="ourMagicDPS"/></td>
         </tr>
         <tr>
-          <td colspan="4">敌方</td>
+          <td colspan="4">敵方</td>
         </tr>
         <tr>
           <td><label for='enemyPhysicDPS'>物攻人数</label></td>
@@ -134,7 +129,7 @@
   <div class="result">
     <table border="1" class="result-table table-bordered table-striped" id="debuff-effect">
       <tr>
-        <td colspan="4">一轮武器</td>
+        <td colspan="4">一輪武器</td>
       </tr>
       <tr>
         <td colspan="4">debuff量</td>
