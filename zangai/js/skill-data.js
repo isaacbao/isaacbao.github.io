@@ -456,7 +456,7 @@ var PASSIVE_SKILL_DB = {
         id: "buffUp25",
         name: "起死回生(弐)",
         type: PASSIVE_SKILL_TYPE.BUFF_UP,
-        basicEffect: {max: 0.27, expectation: 0.225, min: 0.18}
+        basicEffect: {max: 0.3, expectation: 0.25, min: 0.20}
     },
     buffUp30: {
         id: "buffUp30",

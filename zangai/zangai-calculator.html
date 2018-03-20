@@ -93,7 +93,7 @@
           <td><input class='status-input' type='text' id="statusMagicDEF"/></td>
         </tr>
         <tr>
-          <td><label for='statusMagicATK'>职业</label></td>
+          <td><label for='job'>职业</label></td>
           <td>
             <select class='status-input' id="job">
               <option value="book">書佬</option>
@@ -161,24 +161,30 @@
         <td colspan="1" id="debuff-magic-DEF-effect">0</td>
       </tr>
       <tr>
+        <td colspan="4">↓ 有效攻debuff × 1.4 ＋ 有效防debuff ↓</td>
+      </tr>
+      <tr>
+        <td colspan="4" id="sum-effective-debuff-effect">0</td>
+      </tr>
+      <tr>
         <td colspan="2">有效攻debuff</td>
-        <td colspan="2"></td>
+        <td colspan="2">有效防debuff</td>
       </tr>
       <tr>
         <td colspan="2" id="effective-debuff-ATK-effect">0</td>
-        <td colspan="2"></td>
+        <td colspan="2" id="effective-debuff-DEF-effect">0</td>
       </tr>
       <tr>
         <td colspan="1">有效物攻debuff</td>
         <td colspan="1">有效魔攻debuff</td>
-        <td></td>
-        <td></td>
+        <td colspan="1">有效物防debuff</td>
+        <td colspan="1">有效魔防debuff</td>
       </tr>
       <tr>
         <td colspan="1" id="debuff-effective-physic-ATK-effect">0</td>
         <td colspan="1" id="debuff-effective-magic-ATK-effect">0</td>
-        <td></td>
-        <td></td>
+        <td colspan="1" id="debuff-effective-physic-DEF-effect">0</td>
+        <td colspan="1" id="debuff-effective-magic-DEF-effect">0</td>
       </tr>
       <tr>
         <td colspan="4">buff量</td>
@@ -210,24 +216,30 @@
         <td colspan="1" id="buff-magic-DEF-effect">0</td>
       </tr>
       <tr>
+        <td colspan="4">↓ 有效攻buff × 1.4 ＋ 有效防buff ↓</td>
+      </tr>
+      <tr>
+        <td colspan="4" id="sum-effective-buff-effect">0</td>
+      </tr>
+      <tr>
         <td colspan="2">有效攻buff</td>
-        <td colspan="2"></td>
+        <td colspan="2">有效防debuff</td>
       </tr>
       <tr>
         <td colspan="2" id="effective-buff-ATK-effect">0</td>
-        <td colspan="2"></td>
+        <td colspan="2"  id="effective-buff-DEF-effect">0</td>
       </tr>
       <tr>
         <td colspan="1">有效物攻buff</td>
         <td colspan="1">有效魔攻buff</td>
-        <td></td>
-        <td></td>
+        <td colspan="1">有效物防buff</td>
+        <td colspan="1">有效魔防buff</td>
       </tr>
       <tr>
         <td colspan="1" id="buff-effective-physic-ATK-effect">0</td>
         <td colspan="1" id="buff-effective-magic-ATK-effect">0</td>
-        <td></td>
-        <td></td>
+        <td colspan="1" id="buff-effective-physic-DEF-effect">0</td>
+        <td colspan="1" id="buff-effective-magic-DEF-effect">0</td>
       </tr>
       <tr>
         <td colspan="4">sp消耗</td>

@@ -14,7 +14,7 @@ function calculateEffectiveness(coefficient, status, buffUps, passiveSkillCoeffi
     magicATK: 0,
     magicDEF: 0,
     effectivePhysicATK: 0,
-    effectiveMagicATK: 0
+    effectiveMagicATK: 0,
   };
   if (passiveSkillCoefficient) {
     passiveStatusChangeEffect.physicATK += Math.floor(passiveSkillCoefficient.exceptedPhysicATK * status.physicATK);
@@ -31,9 +31,17 @@ function calculateEffectiveness(coefficient, status, buffUps, passiveSkillCoeffi
     magicATK: Math.floor(coefficient.exceptedMagicATK * status.magicATK * otherAddition) + passiveStatusChangeEffect.magicATK,
     magicDEF: Math.floor(coefficient.exceptedMagicDEF * status.magicDEF * otherAddition) + passiveStatusChangeEffect.magicDEF,
     effectivePhysicATK: Math.floor(coefficient.exceptedEffectivePhysicATK * status.physicATK * otherAddition) + passiveStatusChangeEffect.effectivePhysicATK,
-    effectiveMagicATK: Math.floor(coefficient.exceptedEffectiveMagicATK * status.magicATK * otherAddition) + passiveStatusChangeEffect.effectiveMagicATK
+    effectiveMagicATK: Math.floor(coefficient.exceptedEffectiveMagicATK * status.magicATK * otherAddition) + passiveStatusChangeEffect.effectiveMagicATK,
   };
   return result;
+}
+
+function calculateEffectiveDEF(effectiveness, physicDPS, magicDPS) {
+  var physicProb = physicDPS / 5;
+  var magicProb = magicDPS / 5;
+  effectiveness.effectivePhysicDEF = effectiveness.physicDEF * physicProb;
+  effectiveness.effectiveMagicDEF = effectiveness.magicDEF * magicProb;
+  return effectiveness;
 }
 
 function showDebuff(result) {
@@ -43,14 +51,20 @@ function showDebuff(result) {
   document.getElementById("debuff-magic-DEF-effect").innerText = result.magicDEF;
   document.getElementById("debuff-effective-physic-ATK-effect").innerText = result.effectivePhysicATK;
   document.getElementById("debuff-effective-magic-ATK-effect").innerText = result.effectiveMagicATK;
+  document.getElementById("debuff-effective-physic-DEF-effect").innerText = Math.floor(result.effectivePhysicDEF) + "";
+  document.getElementById("debuff-effective-magic-DEF-effect").innerText = Math.floor(result.effectiveMagicDEF) + "";
   var sumDebuffATK = result.physicATK + result.magicATK;
   var sumDebuffDEF = result.physicDEF + result.magicDEF;
   document.getElementById("debuff-ATK-effect").innerText = sumDebuffATK;
   document.getElementById("debuff-DEF-effect").innerText = result.physicDEF + result.magicDEF;
   document.getElementById("sum-debuff-effect").innerText = sumDebuffATK * 1.4 + sumDebuffDEF;
-  document.getElementById("effective-debuff-ATK-effect").innerText = result.effectivePhysicATK + result.effectiveMagicATK;
 
+  var sumEffectiveDebuffATK = Math.floor(result.effectivePhysicATK + result.effectiveMagicATK);
+  var sumEffectiveDebuffDEF = Math.floor(result.effectivePhysicDEF + result.effectiveMagicDEF);
+  document.getElementById("effective-debuff-ATK-effect").innerText = sumEffectiveDebuffATK + "";
+  document.getElementById("effective-debuff-DEF-effect").innerText = sumEffectiveDebuffDEF + "";
 
+  document.getElementById("sum-effective-debuff-effect").innerText = Math.floor(sumEffectiveDebuffATK * 1.4 + sumEffectiveDebuffDEF) + "";
 }
 
 function showBuff(result) {
@@ -60,12 +74,20 @@ function showBuff(result) {
   document.getElementById("buff-magic-DEF-effect").innerText = result.magicDEF;
   document.getElementById("buff-effective-physic-ATK-effect").innerText = result.effectivePhysicATK;
   document.getElementById("buff-effective-magic-ATK-effect").innerText = result.effectiveMagicATK;
-  var sumBuffATK = result.physicATK + result.magicATK;
-  var sumBuffDEF = result.physicDEF + result.magicDEF;
-  document.getElementById("buff-ATK-effect").innerText = sumBuffATK;
+  document.getElementById("buff-effective-physic-DEF-effect").innerText = Math.floor(result.effectivePhysicDEF) + "";
+  document.getElementById("buff-effective-magic-DEF-effect").innerText = Math.floor(result.effectiveMagicDEF) + "";
+  var sumBuffATK = Math.floor(result.physicATK + result.magicATK);
+  var sumBuffDEF = Math.floor(result.physicDEF + result.magicDEF);
+  document.getElementById("buff-ATK-effect").innerText = sumBuffATK + "";
   document.getElementById("buff-DEF-effect").innerText = result.physicDEF + result.magicDEF;
-  document.getElementById("sum-buff-effect").innerText = sumBuffATK * 1.4 + sumBuffDEF;
-  document.getElementById("effective-buff-ATK-effect").innerText = result.effectivePhysicATK + result.effectiveMagicATK;
+  document.getElementById("sum-buff-effect").innerText = sumBuffATK * 1.4 + sumBuffDEF + "";
+
+  var sumEffectiveBuffATK = Math.floor(result.effectivePhysicATK + result.effectiveMagicATK);
+  var sumEffectiveBuffDEF = Math.floor(result.effectivePhysicDEF + result.effectiveMagicDEF);
+  document.getElementById("effective-buff-ATK-effect").innerText = sumEffectiveBuffATK + "";
+  document.getElementById("effective-buff-DEF-effect").innerText = sumEffectiveBuffDEF + "";
+
+  document.getElementById("sum-effective-buff-effect").innerText = Math.floor(sumEffectiveBuffATK * 1.4 + sumEffectiveBuffDEF) + "";
 }
 
 function showSpConsume(spConsume) {
@@ -136,7 +158,6 @@ function calculateSumCoefficient(sumCoefficient, selectedSkill, slvAddition, phy
     }
   }
 }
-
 
 function calculateSpConsume(spConsume, activeSkill, gay) {
   spConsume.withoutGay += activeSkill.sp;
@@ -381,6 +402,7 @@ function calculate() {
     jobAdditionBook = 1.1;
   }
   var debuffResult = calculateEffectiveness(debuffCoefficient, status, buffUps, null, jobAdditionBook);
+  calculateEffectiveDEF(debuffResult, status.ourPhysicDPS, status.ourMagicDPS);
   showDebuff(debuffResult);
 
   var jobAdditionInstument = 1;
@@ -388,6 +410,7 @@ function calculate() {
     jobAdditionInstument = 1.1;
   }
   var buffResult = calculateEffectiveness(buffCoefficient, status, buffUps, passiveBuffCoefficient, jobAdditionInstument);
+  calculateEffectiveDEF(buffResult, status.enemyPhysicDPS, status.enemyMagicDPS);
   showBuff(buffResult);
 
   showSpConsume(spConsume);
