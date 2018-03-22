@@ -187,12 +187,17 @@ function saveSelectedActiveSkills() {
   var activeSkillGroupsElements = document.getElementsByClassName("active-skill-group");
   var selectedActiveSkills = [];
   var skillLvSum = 0;
+  var skillAmount = 0;
   Array.from(activeSkillGroupsElements).forEach(function (activeSkillGroup) {
     var activeSkillSelect = activeSkillGroup.querySelector(".active-skill");
     var selectedOption = activeSkillSelect.options[activeSkillSelect.selectedIndex];
     if (selectedOption) {
+      if(selectedOption.value === "none"){
+        return;
+      }
       var skillLv = Number(activeSkillGroup.querySelector("input.skill-lv").value);
       skillLvSum += skillLv;
+      skillAmount++;
       var activeSkill = {
         activeSkillId: selectedOption.value,
         skillLv: skillLv
@@ -200,42 +205,26 @@ function saveSelectedActiveSkills() {
       selectedActiveSkills.push(activeSkill);
     }
   });
-  var skillLvAvg = skillLvSum / selectedActiveSkills.length;
+  var skillLvAvg = skillLvSum / skillAmount;
   skillLvAvg = skillLvAvg.toFixed(2);
   document.getElementById("avg-active-skill-lv").innerText = skillLvAvg + "";
   localStorage.selectedActiveSkills = JSON.stringify(selectedActiveSkills);
-}
-
-function initSelectedActiveSkill() {
-  if (!localStorage.selectedActiveSkills) {
-    return;
-  }
-  var selectedActiveSkills = JSON.parse(localStorage.selectedActiveSkills);
-  var activeSkillGroups = Array.from(document.getElementsByClassName("active-skill-group"));
-  var counter = 0;
-  selectedActiveSkills.forEach(function (selectedActiveSkill) {
-    var activeSkillGroup = activeSkillGroups[counter];
-    var activeSkillSelect = activeSkillGroup.querySelector(".active-skill");
-    var options = activeSkillSelect.options;
-    for (var opt, j = 0; opt = options[j]; j++) {
-      if (opt.value === selectedActiveSkill.activeSkillId) {
-        activeSkillSelect.selectedIndex = j;
-        break;
-      }
-    }
-    activeSkillGroup.querySelector("input.skill-lv").value = selectedActiveSkill.skillLv;
-    counter++;
-  });
+  localStorage[localStorage.currentSet + "_selectedActiveSkills"] = localStorage.selectedActiveSkills;
 }
 
 function saveSelectedPassiveSkills() {
   var passiveSkillGroupsElements = document.getElementsByClassName("passive-skill-group");
   var selectedPassiveSkills = [];
   var skillLvSum = 0;
+  var skillAmount = 0;
   Array.from(passiveSkillGroupsElements).forEach(function (passiveSkillGroup) {
     var passiveSkillSelect = passiveSkillGroup.querySelector(".passive-skill");
     var selectedOption = passiveSkillSelect.options[passiveSkillSelect.selectedIndex];
     if (selectedOption) {
+      if(selectedOption.value === "none"){
+        return;
+      }
+      skillAmount++;
       var skillLv = Number(passiveSkillGroup.querySelector("input.skill-lv").value);
       skillLvSum += skillLv;
       var passiveSkill = {
@@ -245,32 +234,11 @@ function saveSelectedPassiveSkills() {
       selectedPassiveSkills.push(passiveSkill);
     }
   });
-  var skillLvAvg = skillLvSum / selectedPassiveSkills.length;
+  var skillLvAvg = skillLvSum / skillAmount++;;
   skillLvAvg = skillLvAvg.toFixed(2);
   document.getElementById("avg-passive-skill-lv").innerText = skillLvAvg + "";
   localStorage.selectedPassiveSkills = JSON.stringify(selectedPassiveSkills);
-}
-
-function initSelectedPassiveSkill() {
-  if (!localStorage.selectedPassiveSkills) {
-    return;
-  }
-  var selectedPassiveSkills = JSON.parse(localStorage.selectedPassiveSkills);
-  var passiveSkillGroups = Array.from(document.getElementsByClassName("passive-skill-group"));
-  var counter = 0;
-  selectedPassiveSkills.forEach(function (selectedPassiveSkill) {
-    var passiveSkillGroup = passiveSkillGroups[counter];
-    var passiveSkillSelect = passiveSkillGroup.querySelector(".passive-skill");
-    var options = passiveSkillSelect.options;
-    for (var opt, j = 0; opt = options[j]; j++) {
-      if (opt.value === selectedPassiveSkill.passiveSkillId) {
-        passiveSkillSelect.selectedIndex = j;
-        break;
-      }
-    }
-    passiveSkillGroup.querySelector("input.skill-lv").value = selectedPassiveSkill.skillLv;
-    counter++;
-  });
+  localStorage[localStorage.currentSet + "_selectedPassiveSkills"] = localStorage.selectedPassiveSkills;
 }
 
 function saveStatus() {
@@ -292,35 +260,7 @@ function saveStatus() {
     job: job
   };
   localStorage.status = JSON.stringify(status);
-}
-
-function initStatus() {
-  if (!localStorage.status) {
-    return;
-  }
-  var status = JSON.parse(localStorage.status);
-  document.getElementById("enemyPhysicDPS").value = status.enemyPhysicDPS;
-  document.getElementById("enemyMagicDPS").value = status.enemyMagicDPS;
-  document.getElementById("ourPhysicDPS").value = status.ourPhysicDPS;
-  document.getElementById("ourMagicDPS").value = status.ourMagicDPS;
-  document.getElementById("statusPhysicATK").value = status.physicATK;
-  document.getElementById("statusPhysicDEF").value = status.physicDEF;
-  document.getElementById("statusMagicATK").value = status.magicATK;
-  document.getElementById("statusMagicDEF").value = status.magicDEF;
-  var jobSelect = document.getElementById("job");
-  var options = jobSelect.options;
-  for (var opt, j = 0; opt = options[j]; j++) {
-    if (opt.value === status.job) {
-      jobSelect.selectedIndex = j;
-      break;
-    }
-  }
-}
-
-function init() {
-  initSelectedActiveSkill();
-  initSelectedPassiveSkill();
-  initStatus();
+  localStorage[localStorage.currentSet + "_status"] = localStorage.status;
 }
 
 function calculate() {
@@ -329,41 +269,6 @@ function calculate() {
   saveStatus();
 
   var status = JSON.parse(localStorage.status);
-
-  var buffUps = [];
-  var gays = [];
-  var passiveBuffCoefficient = {
-    exceptedPhysicATK: 0,
-    exceptedPhysicDEF: 0,
-    exceptedMagicATK: 0,
-    exceptedMagicDEF: 0,
-    exceptedEffectivePhysicATK: 0,
-    exceptedEffectiveMagicATK: 0,
-  };
-  var selectedPassiveSkills = JSON.parse(localStorage.selectedPassiveSkills);
-  selectedPassiveSkills.forEach(function (selectedPassiveSkill) {
-    var passiveSkill = PASSIVE_SKILL_DB[selectedPassiveSkill.passiveSkillId];
-    var slvAddition = getSkillLVAddition(selectedPassiveSkill.skillLv);
-    var toggleRate = getToggleRate(selectedPassiveSkill.skillLv);
-    if (passiveSkill.type === PASSIVE_SKILL_TYPE.BUFF_UP) {
-      buffUps.push({
-        effect: passiveSkill.basicEffect.expectation * slvAddition,
-        toggleRate: toggleRate
-      });
-    }
-    if (passiveSkill.type === PASSIVE_SKILL_TYPE.STATUS_UP) {
-      var supportSkillAmount = 20;
-      var toggleFrequency = supportSkillAmount * toggleRate;
-      calculateSumCoefficient(passiveBuffCoefficient, passiveSkill, slvAddition, status.enemyPhysicDPS, status.enemyMagicDPS, toggleFrequency);
-    }
-    if (passiveSkill.type === PASSIVE_SKILL_TYPE.GAY) {
-      gays.push({
-        effect: passiveSkill.effect,
-        toggleRate: toggleRate,
-        dudRate: 1 - toggleRate
-      });
-    }
-  });
 
   var debuffCoefficient = {
     exceptedPhysicATK: 0,
@@ -385,18 +290,74 @@ function calculate() {
     withoutGay: 0,
     withGay: 0
   };
+  var supportSkillAmount = 0;
 
-  var selectedActiveSkills = JSON.parse(localStorage.selectedActiveSkills);
-  selectedActiveSkills.forEach(function (selectedActiveSkill) {
+  var selectedActiveSkills = [];
+  var selectedActiveSkillIds = JSON.parse(localStorage.selectedActiveSkills);
+  selectedActiveSkillIds.forEach(function (selectedActiveSkill) {
+    if (selectedActiveSkill.activeSkillId === "none") {
+      return;
+    }
     var activeSkill = ACTIVE_SKILL_DB[selectedActiveSkill.activeSkillId];
     var slvAddition = getSkillLVAddition(selectedActiveSkill.skillLv);
+    selectedActiveSkills.push({
+      skill: activeSkill,
+      slvAddition: slvAddition
+    });
+    if (activeSkill.type === "debuff" || activeSkill.type === "buff") {
+      supportSkillAmount++;
+    }
+  });
+
+  var buffUps = [];
+  var gays = [];
+  var passiveBuffCoefficient = {
+    exceptedPhysicATK: 0,
+    exceptedPhysicDEF: 0,
+    exceptedMagicATK: 0,
+    exceptedMagicDEF: 0,
+    exceptedEffectivePhysicATK: 0,
+    exceptedEffectiveMagicATK: 0,
+  };
+  var selectedPassiveSkills = JSON.parse(localStorage.selectedPassiveSkills);
+  selectedPassiveSkills.forEach(function (selectedPassiveSkill) {
+    if (selectedPassiveSkill.passiveSkillId === "none") {
+      return;
+    }
+    var passiveSkill = PASSIVE_SKILL_DB[selectedPassiveSkill.passiveSkillId];
+    var slvAddition = getSkillLVAddition(selectedPassiveSkill.skillLv);
+    var toggleRate = getToggleRate(selectedPassiveSkill.skillLv);
+    if (passiveSkill.type === PASSIVE_SKILL_TYPE.BUFF_UP) {
+      buffUps.push({
+        effect: passiveSkill.basicEffect.expectation * slvAddition,
+        toggleRate: toggleRate
+      });
+    }
+    if (passiveSkill.type === PASSIVE_SKILL_TYPE.STATUS_UP) {
+      var toggleFrequency = supportSkillAmount * toggleRate;
+      calculateSumCoefficient(passiveBuffCoefficient, passiveSkill, slvAddition, status.enemyPhysicDPS, status.enemyMagicDPS, toggleFrequency);
+    }
+    if (passiveSkill.type === PASSIVE_SKILL_TYPE.GAY) {
+      gays.push({
+        effect: passiveSkill.effect,
+        toggleRate: toggleRate,
+        dudRate: 1 - toggleRate
+      });
+    }
+  });
+
+  selectedActiveSkills.forEach(function (selectedActiveSkill) {
+    var activeSkill = selectedActiveSkill.skill;
+    var slvAddition = selectedActiveSkill.slvAddition;
     calculateSpConsume(spConsume, activeSkill, gays);
     if (activeSkill.type === "debuff") {
       calculateSumCoefficient(debuffCoefficient, activeSkill, slvAddition, status.enemyPhysicDPS, status.enemyMagicDPS, 1);
-    } else {
+    } else if (activeSkill.type === "buff") {
       calculateSumCoefficient(buffCoefficient, activeSkill, slvAddition, status.ourPhysicDPS, status.ourMagicDPS, 1);
     }
   });
+
+
   var jobAdditionBook = 1;
   if (status.job === "book") {
     jobAdditionBook = 1.1;
@@ -452,3 +413,5 @@ function getToggleRate(slv) {
   }
   return 0.04 + (slv - 1) * 0.005 + bonus;
 }
+
+

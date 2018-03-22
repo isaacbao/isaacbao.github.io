@@ -54,3 +54,43 @@ select, input {
 .passive-skill {
   width: 300px;
 }
+
+/*
+侧栏
+ */
+.sidenav {
+  height: 100%;
+  width: inherit;
+  position: fixed;
+  overflow-x: hidden;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.set-selector {
+  text-align: center;
+  border-style: groove;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.set-selector.active {
+  text-align: center;
+  border: groove rgba(64, 60, 76, 0.71);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.set-selector input {
+  text-align: center;
+}
