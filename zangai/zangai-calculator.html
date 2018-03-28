@@ -38,10 +38,11 @@
   <div class="row">
     <div class="col-md-1">
       <div id="mySidenav" class="sidenav">
-        <div v-for="set_id in set_ids" class="set-selector" :id='set_id' onclick="selectSet(this)"><input type="text" :value="set_id" onblur="renameSet(this)"/></div>
+        <div v-for="set_id in set_ids" class="set-selector" :id='set_id' onclick="selectSet(this)"><input type="text" :value="set_id" onblur="renameSet(this)" /></div>
       </div>
     </div>
     <div class="col-md-10">
+      <form id="calculate-form">
       <div class='input-tables'>
         <div class="skills table-responsive">
           <table class='active-skill-table table-bordered table-striped' border="1">
@@ -54,7 +55,7 @@
                 <active-skill-dropdown :selected='active_selected'
                                        :options='active_options'></active-skill-dropdown>
               </td>
-              <td><input contenteditable='true' class='skill-lv' type='text' value='15'/></td>
+              <td><input contenteditable='true' class='skill-lv' type='text' title="範圍：1~20"  pattern="^(([1]?[1-9])|20)$" onblur="validateInput(this)" value='15' onclick="clearInput(this)"/></td>
             </tr>
             <tr>
               <td>平均等級</td>
@@ -73,7 +74,7 @@
                 <passive-skill-dropdown :selected='passive_selected'
                                         :options='passive_options'></passive-skill-dropdown>
               </td>
-              <td><input contenteditable='true' class='skill-lv' type='text' value='15'/></td>
+              <td><input contenteditable='true' class='skill-lv' type='text' title="範圍：1~20"  pattern="^(([1]?[1-9])|20)$" onblur="validateInput(this)" value='15' onclick="clearInput(this)"/></td>
             </tr>
             <tr>
               <td>平均等級</td>
@@ -95,9 +96,9 @@
             </tr>
             <tr>
               <td><label for='statusMagicATK'>魔攻</label></td>
-              <td><input class='status-input' type='text' id="statusMagicATK"/></td>
+              <td><input class='status-input' type='text' id="statusMagicATK" /></td>
               <td><label for='statusMagicDEF'>魔防</label></td>
-              <td><input class='status-input' type='text' id="statusMagicDEF"/></td>
+              <td><input class='status-input' type='text' id="statusMagicDEF" /></td>
             </tr>
             <tr>
               <td><label for='job'>职业</label></td>
@@ -115,18 +116,18 @@
             </tr>
             <tr>
               <td><label for='ourPhysicDPS'>物攻人数</label></td>
-              <td><input class='status-input' type='text' id="ourPhysicDPS"/></td>
+              <td><input class='status-input' type='text' id="ourPhysicDPS" title="範圍：0~5"  pattern="^[0-5]$" onblur="validateInput(this)" onclick="clearInput(this)"/></td>
               <td><label for='ourMagicDPS'>魔攻人数</label></td>
-              <td><input class='status-input' type='text' id="ourMagicDPS"/></td>
+              <td><input class='status-input' type='text' id="ourMagicDPS" title="範圍：0~5"  pattern="^[0-5]$" onblur="validateInput(this)" onclick="clearInput(this)"/></td>
             </tr>
             <tr>
               <td colspan="4">敵方</td>
             </tr>
             <tr>
               <td><label for='enemyPhysicDPS'>物攻人数</label></td>
-              <td><input class='status-input' type='text' id="enemyPhysicDPS"/></td>
+              <td><input class='status-input' type='text' id="enemyPhysicDPS" title="範圍：0~5"  pattern="^[0-5]$" onblur="validateInput(this)" onclick="clearInput(this)"/></td>
               <td><label for='enemyMagicDPS'>魔攻人数</label></td>
-              <td><input class='status-input' type='text' id="enemyMagicDPS"/></td>
+              <td><input class='status-input' type='text' id="enemyMagicDPS" title="範圍：0~5"  pattern="^[0-5]$" onblur="validateInput(this)" onclick="clearInput(this)"/></td>
             </tr>
             </tbody>
           </table>
@@ -261,11 +262,12 @@
           </tr>
           <tr>
             <td colspan="4" align="center">
-              !!click→<img src='resource/img/throw-human-together.jpg' onclick='calculate()'/>←click!!
+              !!click→<img src="resource/img/throw-human-together.jpg" onclick='calculate()'/>←click!!
             </td>
           </tr>
         </table>
       </div>
+      </form>
     </div>
     <div class="col-md-1"></div>
   </div>

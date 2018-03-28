@@ -96,6 +96,18 @@ var ACTIVE_SKILL_DB = {
     effectExpectation: {physicATK: 0.066, magicATK: 0, physicDEF: 0.108, magicDEF: 0},
     effectMax: {physicATK: 0.088, magicATK: 0, physicDEF: 0.144, magicDEF: 0}
   },
+  debuffLAllATK20: {
+    id: "debuffLAllATK20",
+    name: "腐蝕ノ呪術(Ⅱ)",
+    description: "2体、物攻魔攻",
+    sp: 26,
+    target: TARGET_TYPE.two,
+    property: "both",
+    type: "debuff",
+    effectMin: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0}
+  },
   debuffLAllATK15: {
     id: "debuffLAllATK15",
     name: "腐蝕ノ呪術(Ⅲ)",
@@ -260,9 +272,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "physic",
     type: "buff",
-    effectMin: {physicATK: 0.072, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.072, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.072, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.070, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.070, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.070, magicATK: 0, physicDEF: 0, magicDEF: 0}
   },
   buffLMagicATK10: {
     id: "buffLMagicATK10",
@@ -308,9 +320,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "magic",
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.070, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.070, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.070, physicDEF: 0, magicDEF: 0}
   },
   buffLALLATK10: {
     id: "buffLALLATK10",
@@ -344,9 +356,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "both",
     type: "buff",
-    effectMin: {physicATK: 0.064, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.064, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.064, magicATK: 0.064, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0., magicATK: 0.06, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0}
   },
   buffLPhysicDEF15: {
     id: "buffLPhysicDEF15",
@@ -475,6 +487,14 @@ var PASSIVE_SKILL_DB = {
     effectMin: {physicATK: 0, magicATK: 0.0027, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0, magicATK: 0.0081, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0, magicATK: 0.0135, physicDEF: 0, magicDEF: 0}
+  },
+  allATK10: {
+    id: "allATK10",
+    name: "武器補修(Ⅰ)",
+    type: PASSIVE_SKILL_TYPE.STATUS_UP,
+    effectMin: {physicATK: 0.0024, magicATK: 0.0024, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.0072, magicATK: 0.0072, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.012, magicATK: 0.012, physicDEF: 0, magicDEF: 0}
   },
   allATK20: {
     id: "allATK20",

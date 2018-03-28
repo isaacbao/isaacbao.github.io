@@ -192,7 +192,7 @@ function saveSelectedActiveSkills() {
     var activeSkillSelect = activeSkillGroup.querySelector(".active-skill");
     var selectedOption = activeSkillSelect.options[activeSkillSelect.selectedIndex];
     if (selectedOption) {
-      if(selectedOption.value === "none"){
+      if (selectedOption.value === "none") {
         return;
       }
       var skillLv = Number(activeSkillGroup.querySelector("input.skill-lv").value);
@@ -221,7 +221,7 @@ function saveSelectedPassiveSkills() {
     var passiveSkillSelect = passiveSkillGroup.querySelector(".passive-skill");
     var selectedOption = passiveSkillSelect.options[passiveSkillSelect.selectedIndex];
     if (selectedOption) {
-      if(selectedOption.value === "none"){
+      if (selectedOption.value === "none") {
         return;
       }
       skillAmount++;
@@ -234,7 +234,8 @@ function saveSelectedPassiveSkills() {
       selectedPassiveSkills.push(passiveSkill);
     }
   });
-  var skillLvAvg = skillLvSum / skillAmount++;;
+  var skillLvAvg = skillLvSum / skillAmount++;
+  ;
   skillLvAvg = skillLvAvg.toFixed(2);
   document.getElementById("avg-passive-skill-lv").innerText = skillLvAvg + "";
   localStorage.selectedPassiveSkills = JSON.stringify(selectedPassiveSkills);
@@ -267,6 +268,7 @@ function calculate() {
   saveSelectedActiveSkills();
   saveSelectedPassiveSkills();
   saveStatus();
+  document.getElementById("calculate-form").checkValidity();
 
   var status = JSON.parse(localStorage.status);
 
@@ -414,4 +416,18 @@ function getToggleRate(slv) {
   return 0.04 + (slv - 1) * 0.005 + bonus;
 }
 
+function validateInput(input) {
+  var reg = new RegExp(input.pattern);
+  input.setCustomValidity("技能等級範圍：1~20");
+  if (!reg.test(input.value)) {
+    input.style.border = '1px solid red';
+    input.value = input.title;
+    return false;
+  }
+  input.style.border = '';
+  return true;
+}
 
+function clearInput(input) {
+  input.value = "";
+}
