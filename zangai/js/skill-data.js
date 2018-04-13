@@ -122,15 +122,27 @@ var ACTIVE_SKILL_DB = {
   },
   debuffLAllATK10: {
     id: "debuffLAllATK10",
-    name: "腐蝕ノ呪詛(Ⅲ)",
+    name: "罪人の写本",
     description: "1体、物攻魔攻",
-    sp: 18,
+    sp: 19,
     target: TARGET_TYPE.one,
     property: "both",
     type: "debuff",
     effectMin: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0}
+  },
+  debuffLAllATK08: {
+    id: "debuffLAllATK08",
+    name: "黒鉄の全集",
+    description: "1体、物攻魔攻",
+    sp: 19,
+    target: TARGET_TYPE.one,
+    property: "both",
+    type: "debuff",
+    effectMin: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0}
   },
   debuffLAllDEF10: {
     id: "debuffLAllDEF10",
@@ -492,6 +504,14 @@ var PASSIVE_SKILL_DB = {
     id: "allATK10",
     name: "武器補修(Ⅰ)",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
+    effectMin: {physicATK: 0.0024, magicATK: 0.0024, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.0072, magicATK: 0.0072, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.012, magicATK: 0.012, physicDEF: 0, magicDEF: 0}
+  },
+  debuffAllATK10: {
+    id: "debuffAllATK10",
+    name: "武器破壊(Ⅰ)",
+    type: PASSIVE_SKILL_TYPE.STATUS_DOWN,
     effectMin: {physicATK: 0.0024, magicATK: 0.0024, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0.0072, magicATK: 0.0072, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0.012, magicATK: 0.012, physicDEF: 0, magicDEF: 0}
