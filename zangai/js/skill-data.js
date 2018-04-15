@@ -32,9 +32,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "magic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0.044, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.066, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.088, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.048, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.096, physicDEF: 0, magicDEF: 0}
   },
   debuffLMagicATK20: {
     id: "debuffLMagicATK20",
