@@ -438,9 +438,20 @@ var ACTIVE_SKILL_DB = {
     effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.108, magicDEF: 0.108},
     effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.144, magicDEF: 0.144}
   },
-  buffLAllDEF20: {
-    id: "buffLAllDEF20",
-    name: "聖騎士の福音歌(Ⅱ)",
+  buffLAllDEF201: {
+    id: "buffLAllDEF201",
+    name: "鱗片の提琴&古代王朝の提琴",
+    description: "2体、双防",
+    sp: 25,
+    target: TARGET_TYPE.two,
+    type: "buff",
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0.114},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0.114},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0.114}
+  },
+  buffLAllDEF202: {
+    id: "buffLAllDEF202",
+    name: "虚妄の提琴",
     description: "2体、双防",
     sp: 25,
     target: TARGET_TYPE.two,
@@ -448,6 +459,17 @@ var ACTIVE_SKILL_DB = {
     effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12},
     effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12},
     effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12}
+  },
+  buffLAllDEF203: {
+    id: "buffLAllDEF203",
+    name: "悪兎の道しるべ",
+    description: "2体、双防",
+    sp: 25,
+    target: TARGET_TYPE.two,
+    type: "buff",
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.132, magicDEF: 0.132},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.132, magicDEF: 0.132},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.132, magicDEF: 0.132}
   }
 };
 var PASSIVE_SKILL_TYPE = {
