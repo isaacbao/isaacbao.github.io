@@ -350,7 +350,7 @@ var ACTIVE_SKILL_DB = {
   },
   buffLALLATK15: {
     id: "buffLALLATK15",
-    name: "勇者の夢想曲(Ⅲ)",
+    name: "陽光の笛",
     description: "1~2体、双攻",
     sp: 21,
     target: TARGET_TYPE.oneOrTwo,
@@ -359,6 +359,18 @@ var ACTIVE_SKILL_DB = {
     effectMin: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0.0675, magicATK: 0.0675, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0.09, magicATK: 0.09, physicDEF: 0, magicDEF: 0}
+  },
+  buffLALLATK175: {
+    id: "buffLALLATK175",
+    name: "鳥冠の竪琴",
+    description: "1~2体、双攻",
+    sp: 23,
+    target: TARGET_TYPE.oneOrTwo,
+    property: "both",
+    type: "buff",
+    effectMin: {physicATK: 0.05, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.075, magicATK: 0.075, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.1, magicATK: 0.1, physicDEF: 0, magicDEF: 0}
   },
   buffLALLATK20: {
     id: "buffLALLATK20",
@@ -464,7 +476,7 @@ var ACTIVE_SKILL_DB = {
     id: "buffLAllDEF203",
     name: "悪兎の道しるべ",
     description: "2体、双防",
-    sp: 25,
+    sp: 26,
     target: TARGET_TYPE.two,
     type: "buff",
     effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.132, magicDEF: 0.132},
