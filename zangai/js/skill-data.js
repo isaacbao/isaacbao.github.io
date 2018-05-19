@@ -521,6 +521,7 @@ var PASSIVE_SKILL_DB = {
   physicATK20: {
     id: "physicATK20",
     name: "刀刃展開(Ⅱ)",
+    property:"physic",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
     effectMin: {physicATK: 0.0037, magicATK: 0, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0.0111, magicATK: 0, physicDEF: 0, magicDEF: 0},
@@ -529,6 +530,7 @@ var PASSIVE_SKILL_DB = {
   magicATK10: {
     id: "magicATK10",
     name: "方陣展開(Ⅰ)",
+    property:"magic",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
     effectMin: {physicATK: 0, magicATK: 0.0027, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0, magicATK: 0.0081, physicDEF: 0, magicDEF: 0},
@@ -537,6 +539,7 @@ var PASSIVE_SKILL_DB = {
   allATK10: {
     id: "allATK10",
     name: "武器補修(Ⅰ)",
+    property:"both",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
     effectMin: {physicATK: 0.0024, magicATK: 0.0024, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0.0072, magicATK: 0.0072, physicDEF: 0, magicDEF: 0},
@@ -545,6 +548,7 @@ var PASSIVE_SKILL_DB = {
   debuffAllATK10: {
     id: "debuffAllATK10",
     name: "武器破壊(Ⅰ)",
+    property:"both",
     type: PASSIVE_SKILL_TYPE.STATUS_DOWN,
     effectMin: {physicATK: 0.0024, magicATK: 0.0024, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0.0072, magicATK: 0.0072, physicDEF: 0, magicDEF: 0},
@@ -553,6 +557,7 @@ var PASSIVE_SKILL_DB = {
   allATK20: {
     id: "allATK20",
     name: "武器補修(Ⅱ)",
+    property:"both",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
     effectMin: {physicATK: 0.0033, magicATK: 0.0033, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0.0099, magicATK: 0.0099, physicDEF: 0, magicDEF: 0},
