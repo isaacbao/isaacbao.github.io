@@ -2,6 +2,7 @@
  * Created by Administrator on 2018/3/19.
  */
 var TARGET_TYPE = {
+  randomOne:0.5,
   one: 1,
   oneOrTwo: 1.5,
   two: 2
@@ -521,6 +522,7 @@ var PASSIVE_SKILL_DB = {
   physicATK20: {
     id: "physicATK20",
     name: "刀刃展開(Ⅱ)",
+    target: TARGET_TYPE.randomOne,
     property:"physic",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
     effectMin: {physicATK: 0.0037, magicATK: 0, physicDEF: 0, magicDEF: 0},
@@ -530,6 +532,7 @@ var PASSIVE_SKILL_DB = {
   magicATK10: {
     id: "magicATK10",
     name: "方陣展開(Ⅰ)",
+    target: TARGET_TYPE.randomOne,
     property:"magic",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
     effectMin: {physicATK: 0, magicATK: 0.0027, physicDEF: 0, magicDEF: 0},

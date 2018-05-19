@@ -131,6 +131,9 @@ function calculateSumCoefficient(sumCoefficient, selectedSkill, slvAddition, phy
       return;
     }
 
+    if (selectedSkill.target === TARGET_TYPE.randomOne) {
+      sumCoefficient.exceptedEffectivePhysicATK += phyATKCo * hitPhysicProb;
+    }
     if (selectedSkill.target === TARGET_TYPE.one) {
       sumCoefficient.exceptedEffectivePhysicATK += phyATKCo;
     }
@@ -147,6 +150,9 @@ function calculateSumCoefficient(sumCoefficient, selectedSkill, slvAddition, phy
       return;
     }
 
+    if (selectedSkill.target === TARGET_TYPE.randomOne) {
+      sumCoefficient.exceptedEffectiveMagicATK += magATKCo * hitMagicProb;
+    }
     if (selectedSkill.target === TARGET_TYPE.one) {
       sumCoefficient.exceptedEffectiveMagicATK += magATKCo;
     }
