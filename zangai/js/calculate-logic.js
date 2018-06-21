@@ -397,12 +397,12 @@ function getSkillLVAddition(slv) {
   }
   var bonus = 0;
   if (slv > 14) {
-    bonus += 0.03
+    bonus += 0.04
   }
   if (slv === 20) {
-    bonus += 0.05
+    bonus += 0.04
   }
-  return 1 + (slv - 1) * 0.03 + bonus;
+  return 1 + (slv - 1) * 0.04 + bonus;
 }
 
 /**

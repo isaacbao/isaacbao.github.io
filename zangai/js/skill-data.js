@@ -21,9 +21,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "magic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.05, physicDEF: 0, magicDEF: 0}
   },
   debuffLMagicATK15: {
     id: "debuffLMagicATK15",
@@ -33,9 +33,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "magic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0.048, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.096, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.044, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.066, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.086, physicDEF: 0, magicDEF: 0}
   },
   debuffLMagicATK20: {
     id: "debuffLMagicATK20",
@@ -45,9 +45,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "magic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.064, physicDEF: 0, magicDEF: 0}
   },
   debuffLMagicATKDEF15: {
     id: "debuffLMagicATKDEF15",
@@ -57,9 +57,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "magic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0.044, physicDEF: 0, magicDEF: 0.072},
-    effectExpectation: {physicATK: 0, magicATK: 0.066, physicDEF: 0, magicDEF: 0.108},
-    effectMax: {physicATK: 0, magicATK: 0.088, physicDEF: 0, magicDEF: 0.144}
+    effectMin: {physicATK: 0, magicATK: 0.04, physicDEF: 0, magicDEF: 0.065},
+    effectExpectation: {physicATK: 0, magicATK: 0.06, physicDEF: 0, magicDEF: 0.0975},
+    effectMax: {physicATK: 0, magicATK: 0.08, physicDEF: 0, magicDEF: 0.13}
   },
   debuffLPhysicATK10: {
     id: "debuffLPhysicATK10",
@@ -69,9 +69,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "physic",
     type: "debuff",
-    effectMin: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.05, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.05, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.05, magicATK: 0, physicDEF: 0, magicDEF: 0}
   },
   debuffLPhysicATKDEF10: {
     id: "debuffLPhysicATKDEF10",
@@ -81,9 +81,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "physic",
     type: "debuff",
-    effectMin: {physicATK: 0.049, magicATK: 0, physicDEF: 0.088, magicDEF: 0},
-    effectExpectation: {physicATK: 0.049, magicATK: 0, physicDEF: 0.088, magicDEF: 0},
-    effectMax: {physicATK: 0.049, magicATK: 0, physicDEF: 0.088, magicDEF: 0}
+    effectMin: {physicATK: 0.045, magicATK: 0, physicDEF: 0.08, magicDEF: 0},
+    effectExpectation: {physicATK: 0.045, magicATK: 0, physicDEF: 0.08, magicDEF: 0},
+    effectMax: {physicATK: 0.045, magicATK: 0, physicDEF: 0.08, magicDEF: 0}
   },
   debuffLPhysicATKDEF15: {
     id: "debuffLPhysicATKDEF15",
@@ -93,9 +93,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "physic",
     type: "debuff",
-    effectMin: {physicATK: 0.044, magicATK: 0, physicDEF: 0.072, magicDEF: 0},
-    effectExpectation: {physicATK: 0.066, magicATK: 0, physicDEF: 0.108, magicDEF: 0},
-    effectMax: {physicATK: 0.088, magicATK: 0, physicDEF: 0.144, magicDEF: 0}
+    effectMin: {physicATK: 0.04, magicATK: 0, physicDEF: 0.065, magicDEF: 0},
+    effectExpectation: {physicATK: 0.06, magicATK: 0, physicDEF: 0.0975, magicDEF: 0},
+    effectMax: {physicATK: 0.08, magicATK: 0, physicDEF: 0.13, magicDEF: 0}
   },
   debuffLAllATK20: {
     id: "debuffLAllATK20",
@@ -105,9 +105,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "both",
     type: "debuff",
-    effectMin: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.052, magicATK: 0.052, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.052, magicATK: 0.052, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.052, magicATK: 0.052, physicDEF: 0, magicDEF: 0}
   },
   debuffLAllATK15: {
     id: "debuffLAllATK15",
@@ -117,25 +117,13 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "both",
     type: "debuff",
-    effectMin: {physicATK: 0.044, magicATK: 0.044, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.066, magicATK: 0.066, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.088, magicATK: 0.088, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.04, magicATK: 0.04, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.08, magicATK: 0.08, physicDEF: 0, magicDEF: 0}
   },
   debuffLAllATK10: {
     id: "debuffLAllATK10",
-    name: "罪人の写本",
-    description: "1体、物攻魔攻",
-    sp: 19,
-    target: TARGET_TYPE.one,
-    property: "both",
-    type: "debuff",
-    effectMin: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.051, magicATK: 0.051, physicDEF: 0, magicDEF: 0}
-  },
-  debuffLAllATK08: {
-    id: "debuffLAllATK08",
-    name: "黒鉄の全集",
+    name: "腐蝕ノ呪術(Ⅲ)",
     description: "1体、物攻魔攻",
     sp: 19,
     target: TARGET_TYPE.one,
@@ -153,9 +141,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "both",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.08, magicDEF: 0.08},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.08, magicDEF: 0.08},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.08, magicDEF: 0.08}
   },
   debuffLAllDEF15: {
     id: "debuffLAllDEF15",
@@ -165,9 +153,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "both",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.072, magicDEF: 0.072},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.108, magicDEF: 0.108},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.144, magicDEF: 0.144}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.065, magicDEF: 0.065},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.0975, magicDEF: 0.0975},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.13, magicDEF: 0.13}
   },
   debuffLPhysicDEF20: {
     id: "debuffLPhysicDEF20",
@@ -177,9 +165,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "physic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.124, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.124, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.124, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0}
   },
   debuffLPhysicDEF15: {
     id: "debuffLPhysicDEF15",
@@ -189,9 +177,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "physic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.079, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.1135, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.158, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.072, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.108, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.144, magicDEF: 0}
   },
   debuffLPhysicDEF10: {
     id: "debuffLPhysicDEF10",
@@ -201,9 +189,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "physic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.095, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.095, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.095, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.086, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.086, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.086, magicDEF: 0}
   },
   debuffLMagicDEF20: {
     id: "debuffLMagicDEF20",
@@ -213,9 +201,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "magic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.114},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.114},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.114}
   },
   debuffLMagicDEF15: {
     id: "debuffLMagicDEF15",
@@ -225,9 +213,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "magic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.079},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.1135},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.158}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.072},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.108},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.144}
   },
   debuffLMagicDEF10: {
     id: "debuffLMagicDEF10",
@@ -237,9 +225,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "magic",
     type: "debuff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.086},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.086},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.086}
   },
   buffLPhysicATK10: {
     id: "buffLPhysicATK10",
@@ -249,9 +237,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "physic",
     type: "buff",
-    effectMin: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.05, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.05, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.05, magicATK: 0, physicDEF: 0, magicDEF: 0}
   },
   buffLPhysicATK175: {
     id: "buffLPhysicATK175",
@@ -261,9 +249,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "physic",
     type: "buff",
-    effectMin: {physicATK: 0.054, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.0945, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.135, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.05, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.0875, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.125, magicATK: 0, physicDEF: 0, magicDEF: 0}
   },
   buffLPhysicATK15: {
     id: "buffLPhysicATK15",
@@ -273,9 +261,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "physic",
     type: "buff",
-    effectMin: {physicATK: 0.048, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.072, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.096, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.044, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.066, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.088, magicATK: 0, physicDEF: 0, magicDEF: 0}
   },
   buffLPhysicATK20: {
     id: "buffLPhysicATK20",
@@ -285,9 +273,21 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "physic",
     type: "buff",
-    effectMin: {physicATK: 0.070, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.070, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.070, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.064, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.064, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.064, magicATK: 0, physicDEF: 0, magicDEF: 0}
+  },
+  debuffLPhysicATKDEF15: {
+    id: "buffLPhysicATKDEF15",
+    name: "英傑の夢想曲(Ⅲ)",
+    description: "1~2体、物防物攻",
+    sp: 22,
+    target: TARGET_TYPE.oneOrTwo,
+    property: "physic",
+    type: "buff",
+    effectMin: {physicATK: 0.04, magicATK: 0, physicDEF: 0.065, magicDEF: 0},
+    effectExpectation: {physicATK: 0.06, magicATK: 0, physicDEF: 0.0975, magicDEF: 0},
+    effectMax: {physicATK: 0.08, magicATK: 0, physicDEF: 0.13, magicDEF: 0}
   },
   buffLMagicATK10: {
     id: "buffLMagicATK10",
@@ -297,9 +297,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "magic",
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.05, physicDEF: 0, magicDEF: 0}
   },
   buffLMagicATK175: {
     id: "buffLMagicATK175",
@@ -309,9 +309,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "magic",
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.0945, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.135, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.0875, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.125, physicDEF: 0, magicDEF: 0}
   },
   buffLMagicATK15: {
     id: "buffLMagicATK15",
@@ -321,9 +321,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "magic",
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0.048, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.072, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.096, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.044, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.066, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.088, physicDEF: 0, magicDEF: 0}
   },
   buffLMagicATK20: {
     id: "buffLMagicATK20",
@@ -333,9 +333,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "magic",
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0.070, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0.070, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0.070, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.064, physicDEF: 0, magicDEF: 0}
   },
   buffLALLATK10: {
     id: "buffLALLATK10",
@@ -345,9 +345,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.one,
     property: "both",
     type: "buff",
-    effectMin: {physicATK: 0.05, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.05, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.05, magicATK: 0.05, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0}
   },
   buffLALLATK15: {
     id: "buffLALLATK15",
@@ -357,9 +357,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "both",
     type: "buff",
-    effectMin: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.0675, magicATK: 0.0675, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.09, magicATK: 0.09, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.04, magicATK: 0.04, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.08, magicATK: 0.08, physicDEF: 0, magicDEF: 0}
   },
   buffLALLATK175: {
     id: "buffLALLATK175",
@@ -369,9 +369,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.oneOrTwo,
     property: "both",
     type: "buff",
-    effectMin: {physicATK: 0.05, magicATK: 0.05, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.075, magicATK: 0.075, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.1, magicATK: 0.1, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.0675, magicATK: 0.0675, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.09, magicATK: 0.09, physicDEF: 0, magicDEF: 0}
   },
   buffLALLATK20: {
     id: "buffLALLATK20",
@@ -381,9 +381,9 @@ var ACTIVE_SKILL_DB = {
     target: TARGET_TYPE.two,
     property: "both",
     type: "buff",
-    effectMin: {physicATK: 0., magicATK: 0.06, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.06, magicATK: 0.06, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.054, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.054, magicATK: 0.054, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.054, magicATK: 0.054, physicDEF: 0, magicDEF: 0}
   },
   buffLPhysicDEF15: {
     id: "buffLPhysicDEF15",
@@ -392,9 +392,9 @@ var ACTIVE_SKILL_DB = {
     sp: 21,
     target: TARGET_TYPE.oneOrTwo,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.08, magicDEF: 0},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.16, magicDEF: 0}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.072, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.108, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.144, magicDEF: 0}
   },
   buffLMagicDEF10: {
     id: "buffLMagicDEF10",
@@ -403,9 +403,9 @@ var ACTIVE_SKILL_DB = {
     sp: 18,
     target: TARGET_TYPE.one,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.095}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.086},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.086},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.086}
   },
   buffLMagicDEF15: {
     id: "buffLMagicDEF15",
@@ -414,9 +414,9 @@ var ACTIVE_SKILL_DB = {
     sp: 21,
     target: TARGET_TYPE.oneOrTwo,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.08},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.12},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.16}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.072},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.108},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.144}
   },
   buffLMagicDEF20: {
     id: "buffLMagicDEF20",
@@ -425,9 +425,9 @@ var ACTIVE_SKILL_DB = {
     sp: 25,
     target: TARGET_TYPE.two,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.124}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.114},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.114},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0, magicDEF: 0.114}
   },
   buffLAllDEF10: {
     id: "buffLAllDEF10",
@@ -436,9 +436,9 @@ var ACTIVE_SKILL_DB = {
     sp: 18,
     target: TARGET_TYPE.one,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.088, magicDEF: 0.088}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.08, magicDEF: 0.08},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.08, magicDEF: 0.08},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.08, magicDEF: 0.08}
   },
   buffLAllDEF15: {
     id: "buffLAllDEF15",
@@ -447,9 +447,9 @@ var ACTIVE_SKILL_DB = {
     sp: 22,
     target: TARGET_TYPE.oneOrTwo,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.072, magicDEF: 0.072},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.108, magicDEF: 0.108},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.144, magicDEF: 0.144}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.0525, magicDEF: 0.0525},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.0975, magicDEF: 0.0975},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.13, magicDEF: 0.13}
   },
   buffLAllDEF201: {
     id: "buffLAllDEF201",
@@ -458,9 +458,9 @@ var ACTIVE_SKILL_DB = {
     sp: 25,
     target: TARGET_TYPE.two,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0.114},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0.114},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.114, magicDEF: 0.114}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.104, magicDEF: 0.104},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.104, magicDEF: 0.104},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.104, magicDEF: 0.104}
   },
   buffLAllDEF202: {
     id: "buffLAllDEF202",
@@ -469,9 +469,9 @@ var ACTIVE_SKILL_DB = {
     sp: 25,
     target: TARGET_TYPE.two,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.11, magicDEF: 0.11},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.11, magicDEF: 0.11},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.11, magicDEF: 0.11}
   },
   buffLAllDEF203: {
     id: "buffLAllDEF203",
@@ -480,9 +480,9 @@ var ACTIVE_SKILL_DB = {
     sp: 26,
     target: TARGET_TYPE.two,
     type: "buff",
-    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.132, magicDEF: 0.132},
-    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.132, magicDEF: 0.132},
-    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.132, magicDEF: 0.132}
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.12, magicDEF: 0.12}
   }
 };
 var PASSIVE_SKILL_TYPE = {
@@ -505,19 +505,19 @@ var PASSIVE_SKILL_DB = {
     id: "buffUp20",
     name: "補助支援(弐)",
     type: PASSIVE_SKILL_TYPE.BUFF_UP,
-    basicEffect: {max: 0.2, expectation: 0.2, min: 0.2}
+    basicEffect: {max: 0.15, expectation: 0.15, min: 0.15}
   },
   buffUp25: {
     id: "buffUp25",
     name: "起死回生(弐)",
     type: PASSIVE_SKILL_TYPE.BUFF_UP,
-    basicEffect: {max: 0.3, expectation: 0.25, min: 0.20}
+    basicEffect: {max: 0.3, expectation: 0.225, min: 0.15}
   },
   buffUp30: {
     id: "buffUp30",
     name: "補助支援(参)",
     type: PASSIVE_SKILL_TYPE.BUFF_UP,
-    basicEffect: {max: 0.3, expectation: 0.3, min: 0.3}
+    basicEffect: {max: 0.2, expectation: 0.2, min: 0.2}
   },
   physicATK20: {
     id: "physicATK20",
@@ -525,9 +525,9 @@ var PASSIVE_SKILL_DB = {
     target: TARGET_TYPE.randomOne,
     property:"physic",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
-    effectMin: {physicATK: 0.0037, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectExpectation: {physicATK: 0.0111, magicATK: 0, physicDEF: 0, magicDEF: 0},
-    effectMax: {physicATK: 0.0185, magicATK: 0, physicDEF: 0, magicDEF: 0}
+    effectMin: {physicATK: 0.0034, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.0102, magicATK: 0, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.017, magicATK: 0, physicDEF: 0, magicDEF: 0}
   },
   magicATK10: {
     id: "magicATK10",
