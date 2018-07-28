@@ -157,6 +157,18 @@ var ACTIVE_SKILL_DB = {
     effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.0975, magicDEF: 0.0975},
     effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.13, magicDEF: 0.13}
   },
+  debuffLAllDEF20: {
+    id: "debuffLAllDEF20",
+    name: "落城ノ呪術(Ⅱ)",
+    description: "2体、物防魔防",
+    sp: 25,
+    target: TARGET_TYPE.two,
+    property: "both",
+    type: "debuff",
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.104, magicDEF: 0.104},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.104, magicDEF: 0.104},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.104, magicDEF: 0.104}
+  },
   debuffLPhysicDEF20: {
     id: "debuffLPhysicDEF20",
     name: "壊壁ノ呪術(Ⅱ)",
@@ -539,6 +551,16 @@ var PASSIVE_SKILL_DB = {
     effectExpectation: {physicATK: 0, magicATK: 0.0081, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0, magicATK: 0.0135, physicDEF: 0, magicDEF: 0}
   },
+  magicATK20: {
+    id: "magicATK20",
+    name: "方陣展開(Ⅱ)",
+    target: TARGET_TYPE.randomOne,
+    property:"magic",
+    type: PASSIVE_SKILL_TYPE.STATUS_UP,
+    effectMin: {physicATK: 0, magicATK: 0.0034, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0, magicATK: 0.0102, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0, magicATK: 0.017, physicDEF: 0, magicDEF: 0}
+  },
   allATK10: {
     id: "allATK10",
     name: "武器補修(Ⅰ)",
@@ -562,6 +584,15 @@ var PASSIVE_SKILL_DB = {
     name: "武器補修(Ⅱ)",
     property:"both",
     type: PASSIVE_SKILL_TYPE.STATUS_UP,
+    effectMin: {physicATK: 0.0033, magicATK: 0.0033, physicDEF: 0, magicDEF: 0},
+    effectExpectation: {physicATK: 0.0099, magicATK: 0.0099, physicDEF: 0, magicDEF: 0},
+    effectMax: {physicATK: 0.0165, magicATK: 0.0165, physicDEF: 0, magicDEF: 0}
+  },
+  debuffAllATK20: {
+    id: "debuffAllATK20",
+    name: "武器破壊(Ⅱ)",
+    property:"both",
+    type: PASSIVE_SKILL_TYPE.STATUS_DOWN,
     effectMin: {physicATK: 0.0033, magicATK: 0.0033, physicDEF: 0, magicDEF: 0},
     effectExpectation: {physicATK: 0.0099, magicATK: 0.0099, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0.0165, magicATK: 0.0165, physicDEF: 0, magicDEF: 0}
