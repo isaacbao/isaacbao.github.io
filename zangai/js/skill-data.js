@@ -277,7 +277,7 @@ var ACTIVE_SKILL_DB = {
     effectExpectation: {physicATK: 0.064, magicATK: 0, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0.064, magicATK: 0, physicDEF: 0, magicDEF: 0}
   },
-  debuffLPhysicATKDEF15: {
+  buffLPhysicATKDEF15: {
     id: "buffLPhysicATKDEF15",
     name: "英傑の夢想曲(Ⅲ)",
     description: "1~2体、物防物攻",
