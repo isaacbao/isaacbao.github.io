@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>葬爱琴書計算器</title>
+  <link rel="icon" href="resource/img/kishin-ahei.png">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="http://isaacbao.github.io/scripts/google-analytics-js.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-93629863-2');
+  </script>
+  <!-- Bootstrap core CSS -->
+  <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<link rel="stylesheet" href="css/zangai-calculator.css">
+
+<div style="display:none;">
+  <script src="https://s13.cnzz.com/z_stat.php?id=1273156222&web_id=1273156222" language="JavaScript"></script>
+</div>
+
+<body>
+<div id="app" class="container-fluid">
+  <div class="row">
+    <div class="col-md-1">
+      <div id="mySidenav" class="sidenav">
+        <div v-for="set_id in set_ids" class="set-selector" :id='set_id' onclick="selectSet(this)"><input type="text" :value="set_id" onblur="renameSet(this)" /></div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <form id="calculate-form">
+      <div class='input-tables'>
+        <div class="skills table-responsive">
+          <table class='active-skill-table table-bordered table-striped' border="1">
+            <tr>
+              <th>コロスキル</th>
+              <th>等級</th>
+            </tr>
+            <tr v-for="active_id in active_ids" class='active-skill-group' :id='active_id'>
+              <td>
+                <active-skill-dropdown :selected='active_selected'
+                                       :options='active_options'></active-skill-dropdown>
+              </td>
+              <td><input contenteditable='true' class='skill-lv' type='text' title="範圍：1~20"  pattern="^(([1]?[1-9])|[1-2]0)$" onblur="validateInput(this)" value='15' onclick="clearInput(this)"/></td>
+            </tr>
+            <tr>
+              <td>SLV.AVG</td>
+              <td id="avg-active-skill-lv">?</td>
+            </tr>
+          </table>
+        </div>
+        <div class="skills table-responsive">
+          <table class='passive-skill-table table-bordered table-striped' border="1">
+            <tr>
+              <th>補助スキル</th>
+              <th>等級</th>
+            </tr>
+            <tr v-for="passive_id in passive_ids" class='passive-skill-group' :id='passive_id'>
+              <td>
+                <passive-skill-dropdown :selected='passive_selected'
+                                        :options='passive_options'></passive-skill-dropdown>
+              </td>
+              <td><input contenteditable='true' class='skill-lv' type='text' title="範圍：1~20"  pattern="^(([1]?[1-9])|[1-2]0)$" onblur="validateInput(this)" value='15' onclick="clearInput(this)"/></td>
+            </tr>
+            <tr>
+              <td>SLV.AVG</td>
+              <td id="avg-passive-skill-lv">?</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class='clear'></div>
+
+        <div class="status table-responsive">
+          <table class='status-table table-bordered table-striped' border="1">
+            <tbody>
+            <tr>
+              <td><label for='statusPhysicATK'>物攻</label></td>
+              <td><input contenteditable='true' class='status-input' type='text' id="statusPhysicATK"/></td>
+              <td><label for='statusPhysicDEF'>物防</label></td>
+              <td><input contenteditable='true' class='status-input' type='text' id="statusPhysicDEF"/></td>
+            </tr>
+            <tr>
+              <td><label for='statusMagicATK'>魔攻</label></td>
+              <td><input class='status-input' type='text' id="statusMagicATK" /></td>
+              <td><label for='statusMagicDEF'>魔防</label></td>
+              <td><input class='status-input' type='text' id="statusMagicDEF" /></td>
+            </tr>
+            <tr>
+              <td><label for='job'>ジョブ</label></td>
+              <td>
+                <select class='status-input' id="job">
+                  <option value="book">書</option>
+                  <option value="instrument">琴</option>
+                  <option value="other">other</option>
+                </select>
+              </td>
+              <td colspan='2'></td>
+            </tr>
+            <tr>
+              <td colspan="4">我方</td>
+            </tr>
+            <tr>
+              <td><label for='ourPhysicDPS'>物攻人数</label></td>
+              <td><input class='status-input' type='text' id="ourPhysicDPS" title="範圍：0~5"  pattern="^[0-5]$" onblur="validateInput(this)" onclick="clearInput(this)"/></td>
+              <td><label for='ourMagicDPS'>魔攻人数</label></td>
+              <td><input class='status-input' type='text' id="ourMagicDPS" title="範圍：0~5"  pattern="^[0-5]$" onblur="validateInput(this)" onclick="clearInput(this)"/></td>
+            </tr>
+            <tr>
+              <td colspan="4">敵方</td>
+            </tr>
+            <tr>
+              <td><label for='enemyPhysicDPS'>物攻人数</label></td>
+              <td><input class='status-input' type='text' id="enemyPhysicDPS" title="範圍：0~5"  pattern="^[0-5]$" onblur="validateInput(this)" onclick="clearInput(this)"/></td>
+              <td><label for='enemyMagicDPS'>魔攻人数</label></td>
+              <td><input class='status-input' type='text' id="enemyMagicDPS" title="範圍：0~5"  pattern="^[0-5]$" onblur="validateInput(this)" onclick="clearInput(this)"/></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="result">
+        <table border="1" class="result-table table-bordered table-striped" id="debuff-effect">
+          <tr>
+            <td colspan="4">リロードまですべでの武器を出すのバフデバフ期待値</td>
+          </tr>
+          <tr>
+            <td colspan="4">デバフ量</td>
+          </tr>
+          <tr>
+            <td colspan="4">↓ 攻デバフ × 1.4 ＋ 防デバフ ↓</td>
+          </tr>
+          <tr>
+            <td colspan="4" id="sum-debuff-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="2">攻デバフ</td>
+            <td colspan="2">防デバフ</td>
+          </tr>
+          <tr>
+            <td colspan="2" id="debuff-ATK-effect">0</td>
+            <td colspan="2" id="debuff-DEF-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="1">物攻デバフ</td>
+            <td colspan="1">魔攻デバフ</td>
+            <td colspan="1">物防デバフ</td>
+            <td colspan="1">魔防デバフ</td>
+          </tr>
+          <tr>
+            <td colspan="1" id="debuff-physic-ATK-effect">0</td>
+            <td colspan="1" id="debuff-magic-ATK-effect">0</td>
+            <td colspan="1" id="debuff-physic-DEF-effect">0</td>
+            <td colspan="1" id="debuff-magic-DEF-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="4">↓ 有效攻デバフ × 1.4 ＋ 有效防デバフ ↓</td>
+          </tr>
+          <tr>
+            <td colspan="4" id="sum-effective-debuff-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="2">有效攻デバフ</td>
+            <td colspan="2">有效防デバフ</td>
+          </tr>
+          <tr>
+            <td colspan="2" id="effective-debuff-ATK-effect">0</td>
+            <td colspan="2" id="effective-debuff-DEF-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="1">有效物攻デバフ</td>
+            <td colspan="1">有效魔攻デバフ</td>
+            <td colspan="1">有效物防デバフ</td>
+            <td colspan="1">有效魔防デバフ</td>
+          </tr>
+          <tr>
+            <td colspan="1" id="debuff-effective-physic-ATK-effect">0</td>
+            <td colspan="1" id="debuff-effective-magic-ATK-effect">0</td>
+            <td colspan="1" id="debuff-effective-physic-DEF-effect">0</td>
+            <td colspan="1" id="debuff-effective-magic-DEF-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="4">バフ量</td>
+          </tr>
+          <tr>
+            <td colspan="4">↓ 攻バフ × 1.4 ＋ 防バフ ↓</td>
+          </tr>
+          <tr>
+            <td colspan="4" id="sum-buff-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="2">攻バフ</td>
+            <td colspan="2">防バフ</td>
+          </tr>
+          <tr>
+            <td colspan="2" id="buff-ATK-effect">0</td>
+            <td colspan="2" id="buff-DEF-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="1">物攻バフ</td>
+            <td colspan="1">魔攻バフ</td>
+            <td colspan="1">物防バフ</td>
+            <td colspan="1">魔防バフ</td>
+          </tr>
+          <tr>
+            <td colspan="1" id="buff-physic-ATK-effect">0</td>
+            <td colspan="1" id="buff-magic-ATK-effect">0</td>
+            <td colspan="1" id="buff-physic-DEF-effect">0</td>
+            <td colspan="1" id="buff-magic-DEF-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="4">↓ 有效攻バフ × 1.4 ＋ 有效防バフ ↓</td>
+          </tr>
+          <tr>
+            <td colspan="4" id="sum-effective-buff-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="2">有效攻バフ</td>
+            <td colspan="2">有效防バフ</td>
+          </tr>
+          <tr>
+            <td colspan="2" id="effective-buff-ATK-effect">0</td>
+            <td colspan="2" id="effective-buff-DEF-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="1">有效物攻バフ</td>
+            <td colspan="1">有效魔攻バフ</td>
+            <td colspan="1">有效物防バフ</td>
+            <td colspan="1">有效魔防バフ</td>
+          </tr>
+          <tr>
+            <td colspan="1" id="buff-effective-physic-ATK-effect">0</td>
+            <td colspan="1" id="buff-effective-magic-ATK-effect">0</td>
+            <td colspan="1" id="buff-effective-physic-DEF-effect">0</td>
+            <td colspan="1" id="buff-effective-magic-DEF-effect">0</td>
+          </tr>
+          <tr>
+            <td colspan="4">sp消耗量</td>
+          </tr>
+          <tr>
+            <td colspan="2">元消耗量</td>
+            <td colspan="2">消耗量期待値with魔力供給</td>
+          </tr>
+          <tr>
+            <td colspan="2" id="sp-consume">0</td>
+            <td colspan="2" id="sp-consume-with-gay">0</td>
+          </tr>
+          <tr>
+            <td colspan="4" align="center">
+              !!click→<img src="resource/img/throw-human-together.jpg" onclick='calculate()'/>←click!!
+            </td>
+          </tr>
+        </table>
+      </div>
+      </form>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+</div>
+</body>
+
+<script src="js/skill-data.js" language="JavaScript"></script>
+<script src="js/calculate-logic.js" language="JavaScript"></script>
+<script src="js/init.js" language="JavaScript"></script>
+<script>
+  Vue.component('active-skill-dropdown', {
+    template: '<select class="active-skill" v-model="selectedOption" v-on:change="notify_selection"><option v-for="option in options" :value="option.id">{{ option.name +"("+option.description+")"}}</option></select>',
+    props: ['options', 'selected'],
+    data() {
+      return {
+        selectedOption: ''
+      }
+    },
+    methods: {
+      notify_selection() {
+        this.$parent.$emit('update', this.selectedOption);
+      }
+    },
+    created() {
+      this.selectedOption = this.selected;
+    }
+  });
+
+  Vue.component('passive-skill-dropdown', {
+    template: '<select class="passive-skill" v-model="selectedOption" v-on:change="notify_selection"><option v-for="option in options" :value="option.id">{{ option.name }}</option></select>',
+    props: ['options', 'selected'],
+    data() {
+      return {
+        selectedOption: ''
+      }
+    },
+    methods: {
+      notify_selection() {
+        this.$parent.$emit('update', this.selectedOption);
+      }
+    },
+    created() {
+      this.selectedOption = this.selected;
+    }
+  });
+
+  new Vue({
+    el: '#app',
+    created() {
+      this.$on('update', (selection) => {
+        this.selected = selection;
+      })
+    },
+    data: {
+      active_ids: ["active-skill-01", "active-skill-02", "active-skill-03", "active-skill-04", "active-skill-05", "active-skill-06", "active-skill-07", "active-skill-08", "active-skill-09", "active-skill-10", "active-skill-11", "active-skill-12", "active-skill-13", "active-skill-14", "active-skill-15", "active-skill-16", "active-skill-17", "active-skill-18", "active-skill-19", "active-skill-20"],
+      active_options: ACTIVE_SKILL_DB,
+      active_selected: '',
+      passive_ids: ["passive-skill-01", "passive-skill-02", "passive-skill-03", "passive-skill-04", "passive-skill-05", "passive-skill-06", "passive-skill-07", "passive-skill-08", "passive-skill-09", "passive-skill-10", "passive-skill-11", "passive-skill-12", "passive-skill-13", "passive-skill-14", "passive-skill-15", "passive-skill-16", "passive-skill-17", "passive-skill-18", "passive-skill-19", "passive-skill-20"],
+      passive_options: PASSIVE_SKILL_DB,
+      passive_selected: '',
+      set_ids: ["set1", "set2", "set3", "set4", "set5", "set6", "set7", "set8", "set9", "set10", "set11", "set12", "set13", "set14", "set15"]
+    }
+  });
+
+  init();
+</script>
+
+</html>
