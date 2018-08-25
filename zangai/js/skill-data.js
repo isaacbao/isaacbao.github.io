@@ -145,6 +145,18 @@ var ACTIVE_SKILL_DB = {
     effectExpectation: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0.045, magicATK: 0.045, physicDEF: 0, magicDEF: 0}
   },
+  debuffLAllDEF11: {
+    id: "debuffLAllDEF11",
+    name: "落城ノ呪詛(Ⅳ)",
+    description: "单体、物防魔防+",
+    sp: 20,
+    target: TARGET_TYPE.one,
+    property: "both",
+    type: "debuff",
+    effectMin: {physicATK: 0, magicATK: 0, physicDEF: 0.086, magicDEF: 0.086},
+    effectExpectation: {physicATK: 0, magicATK: 0, physicDEF: 0.086, magicDEF: 0.086},
+    effectMax: {physicATK: 0, magicATK: 0, physicDEF: 0.086, magicDEF: 0.086}
+  },
   debuffLAllDEF10: {
     id: "debuffLAllDEF10",
     name: "落城ノ呪詛(Ⅲ)",
