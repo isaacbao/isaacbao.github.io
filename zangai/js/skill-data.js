@@ -97,6 +97,18 @@ var ACTIVE_SKILL_DB = {
     effectExpectation: {physicATK: 0.06, magicATK: 0, physicDEF: 0.0975, magicDEF: 0},
     effectMax: {physicATK: 0.08, magicATK: 0, physicDEF: 0.13, magicDEF: 0}
   },
+  debuffLPhysicATKDEF20: {
+    id: "debuffLPhysicATKDEF20",
+    name: "枷鎖ノ呪術(Ⅱ)",
+    description: "2体、物防物攻",
+    sp: 26,
+    target: TARGET_TYPE.two,
+    property: "physic",
+    type: "debuff",
+    effectMin: {physicATK: 0.052, magicATK: 0, physicDEF: 0.104, magicDEF: 0},
+    effectExpectation: {physicATK: 0.052, magicATK: 0, physicDEF: 0.104, magicDEF: 0},
+    effectMax: {physicATK: 0.052, magicATK: 0, physicDEF: 0.104, magicDEF: 0}
+  },
   debuffLAllATK20: {
     id: "debuffLAllATK20",
     name: "腐蝕ノ呪術(Ⅱ)",
