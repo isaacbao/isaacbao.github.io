@@ -373,6 +373,18 @@ var ACTIVE_SKILL_DB = {
     effectExpectation: {physicATK: 0, magicATK: 0.064, physicDEF: 0, magicDEF: 0},
     effectMax: {physicATK: 0, magicATK: 0.064, physicDEF: 0, magicDEF: 0}
   },
+  buffLMagicATKDEF15: {
+    id: "buffLMagicATKDEF15",
+    name: "賢者の福音歌(Ⅲ)",
+    description: "1~2体、魔防魔攻",
+    sp: 22,
+    target: TARGET_TYPE.oneOrTwo,
+    property: "magic",
+    type: "buff",
+    effectMin: {physicATK: 0, magicATK: 0.04, physicDEF: 0, magicDEF: 0.065},
+    effectExpectation: {physicATK: 0, magicATK: 0.06, physicDEF: 0, magicDEF: 0.0975},
+    effectMax: {physicATK: 0, magicATK: 0.08, physicDEF: 0, magicDEF: 0.13}
+  },
   buffLALLATK10: {
     id: "buffLALLATK10",
     name: "勇者の狂詩曲(Ⅲ)",

@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>シノアリス計算機</title>
+  <script src="libs/jquery-2.1.1.min.js" type="text/javascript"></script>
+  <script src="libs/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script src="libs/jquery.sprintf.js" type="text/javascript"></script>
+  <script src="js/calculate-logic-healing.js"></script>
+  <link rel="stylesheet" href="css/calculate-healing.css" type="text/css">
+</head>
+<body>
+
+<h4><a href="index.html">&lt;&lt;トップページに戻る</a></h4>
+
+<table>
+  <tr>
+    <td>物攻</td>
+    <td><input size="6" class="param"/></td>
+    <td>物防</td>
+    <td><input size="6" class="param"/></td>
+  </tr>
+  <tr>
+    <td>魔攻</td>
+    <td><input size="6" class="param"/></td>
+    <td>魔防</td>
+    <td><input size="6" class="param"/></td>
+  </tr>
+  <tr>
+    <td colspan="4">ジョブボーナス/職業加成&nbsp;<input size="3" class="job" value="10"/>&nbsp;％</td>
+  </tr>
+  <tr>
+    <td colspan="4">武器Skill Lv&nbsp;<input size="2" class="slv" value="1"/></td>
+  </tr>
+  <tr>
+    <td colspan="4">
+      防具Skill Lv&nbsp;<input size="2" class="aslv" value="0"/>
+      <input size="2" class="aslv" value="0"/>
+      <input size="2" class="aslv" value="0"/>
+      <input size="2" class="aslv" value="0"/>
+    </td>
+  </tr>
+</table>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(0)">回復</button>
+  <button class="tablinks" onclick="openTab(1)">攻撃</button>
+</div>
+
+<div id="heal" class="tabcontent">
+  <table id="heal-data" border="1">
+    <thead>
+    <tr>
+      <th>スキル名/技能名</th>
+      <th>スキル倍率</th>
+      <th>回復量</th>
+      <th>回復量with舊御三家</th>
+      <th>回復量with新御三家</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div id="attack" class="tabcontent">
+  <div class="atk-line" style="font-weight: bolder;">
+    攻撃ダメージに関してはすべて暫定の近似値です。大まかな目安にしてください。
+  </div>
+  <div class="atk-line">
+    <input id="physic-attack" name="attack-type" type="radio" value="physic" checked><label for="physic-attack">物理攻撃</label>
+    <input id="magic-attack" name="attack-type" type="radio" value="magic"><label for="magic-attack">魔法攻撃</label>
+  </div>
+  <div class="atk-line">
+    攻撃力修整&nbsp;<input value="100" size="3" id="atk-buff">&nbsp;％&emsp;
+    属性補正&nbsp;<input value="100" size="3" id="atk-attr">&nbsp;％
+  </div>
+  <div class="atk-line">
+    <a href="enemy.html#enemy-data" target="_blank">対象防御力</a>&nbsp;<input id="target-def" size="6">&emsp;
+    防御力修整&nbsp;<input value="100" size="3" id="def-buff">&nbsp;％
+  </div>
+  <div class="atk-line">
+    其他乗算補正&nbsp;<input value="100" size="3" id="atk-others">&nbsp;％
+  </div>
+  <table id="attack-data" border="1">
+    <thead>
+    <tr>
+      <th>スキル名/技能名</th>
+      <th>スキル倍率</th>
+      <th>ダメージ</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+
+<p>
+  作った人：<a href="https://twitter.com/urakagi">砂井裏鍵(@urakagi)</a>
+</p>
+
+</body>
+</html>
